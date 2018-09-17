@@ -1,2 +1,3 @@
-# Internet Information Server InSpec Profile
+# Example InSpec Profile
 
+this example shows the implementation of an InSpec profile.
