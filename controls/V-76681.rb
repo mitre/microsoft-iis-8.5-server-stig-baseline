@@ -70,5 +70,16 @@ Select the following fields: Date, Time, Client IP Address, User Name, Method,
 URI Query, Protocol Status, and Referrer.
 
 Under the \"Actions\" pane, click \"Apply\"."
+
+  describe windows_feature('Web-Server') do
+    it{ should be_installed }
+  end
+  describe windows_feature('Web-WebServer') do
+    it{ should be_installed }
+  end
+  describe windows_feature('Web-Common-Http') do
+    it{ should be_installed }
+  end
+
 end
 
