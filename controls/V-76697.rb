@@ -50,5 +50,15 @@ backed up to a separate media, this is a finding.
 "
   tag "fix": "Configure system backups to include the directory paths of all
 IIS 8.5 web server and website log files."
+  describe windows_feature('Web-Server') do
+    it{ should be_installed }
+  end
+  describe windows_feature('Web-WebServer') do
+    it{ should be_installed }
+  end
+  describe windows_feature('Web-Common-Http') do
+    it{ should be_installed }
+  end
+
 end
 

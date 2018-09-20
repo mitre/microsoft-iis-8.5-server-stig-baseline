@@ -50,5 +50,14 @@ accomplished outside of the IIS 8.5 web server, this is a finding."
 perform user management outside the IIS 8.5 web server.
 
 Document how the hosted application user management is accomplished."
+  describe windows_feature('Web-Server') do
+    it{ should be_installed }
+  end
+  describe windows_feature('Web-WebServer') do
+    it{ should be_installed }
+  end
+  describe windows_feature('Web-Common-Http') do
+    it{ should be_installed }
+  end
 end
 

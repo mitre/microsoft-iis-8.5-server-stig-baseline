@@ -56,5 +56,15 @@ Under Log Event Destination, select the \"Both log file and ETW event\" radio
 button.
 
 Under the \"Actions\" pane, click \"Apply\"."
+  describe windows_feature('Web-Server') do
+    it{ should be_installed }
+  end
+  describe windows_feature('Web-WebServer') do
+    it{ should be_installed }
+  end
+  describe windows_feature('Web-Common-Http') do
+    it{ should be_installed }
+  end
+
 end
 

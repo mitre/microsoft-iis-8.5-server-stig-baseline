@@ -42,5 +42,14 @@ Note: If additional software is needed supporting documentation must be signed
 by the ISSO."
   tag "fix": "Remove all unapproved programs and roles from the production IIS
 8.5 web server."
+  describe windows_feature('Web-Server') do
+    it{ should be_installed }
+  end
+  describe windows_feature('Web-WebServer') do
+    it{ should be_installed }
+  end
+  describe windows_feature('Web-Common-Http') do
+    it{ should be_installed }
+  end
 end
 

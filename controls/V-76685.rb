@@ -63,5 +63,14 @@ server as the source, this is a finding."
   tag "fix": "Access the proxy server through which inbound web traffic is
 passed and configure settings to pass web traffic to the IIS 8.5 web server
 transparently."
+  describe windows_feature('Web-Server') do
+    it{ should be_installed }
+  end
+  describe windows_feature('Web-WebServer') do
+    it{ should be_installed }
+  end
+  describe windows_feature('Web-Common-Http') do
+    it{ should be_installed }
+  end
 end
 

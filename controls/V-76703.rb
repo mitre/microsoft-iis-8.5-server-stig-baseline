@@ -58,5 +58,15 @@ In the \"Application Request Routing\" settings window, remove the check from
 the \"Enable proxy\" check box.
 
 Click \"Apply\" in the \"Actions\" pane."
+  describe windows_feature('Web-Server') do
+    it{ should be_installed }
+  end
+  describe windows_feature('Web-WebServer') do
+    it{ should be_installed }
+  end
+  describe windows_feature('Web-Common-Http') do
+    it{ should be_installed }
+  end
+
 end
 
