@@ -8,8 +8,5 @@ summary: This Security Technical Implementation Guide is published as a tool to 
 version: 0.1.0
 
 
-attributes:
-  - name: is_proxy_server
-    type: boolean
-    default: false
+
 
