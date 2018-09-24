@@ -68,7 +68,7 @@ Click \"Apply\" in the \"Actions\" pane."
     it{ should be_installed }
   end
 
-  is_application_request_routing_proxy_checkbox_enabled = command("Get-WebConfigurationProperty -pspath 'MACHINE/WEBROOT/APPHOST' -filter "system.webServer/proxy" -name "enabled" | select -ExpandProperty Value").stdout.strip
+  is_application_request_routing_proxy_checkbox_enabled = command('Get-WebConfigurationProperty -pspath "MACHINE/WEBROOT/APPHOST" -filter "system.webServer/proxy" -name "enabled" | select -ExpandProperty Value').stdout.strip
   if (is_application_request_routing_proxy_checkbox_enabled == 'False' || is_application_request_routing_proxy_checkbox_enabled == '')
     describe 'Application Request Routing Cache and Proxy not enabled' do
       skip "control NA, Application Request Routing Cache Proxy not enabled"
