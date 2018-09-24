@@ -58,24 +58,28 @@ In the \"Application Request Routing\" settings window, remove the check from
 the \"Enable proxy\" check box.
 
 Click \"Apply\" in the \"Actions\" pane."
+
+  # System Operating as a Web Server
+
   describe windows_feature('Web-Server') do
     it{ should be_installed }
   end
   describe windows_feature('Web-WebServer') do
     it{ should be_installed }
   end
+
   describe windows_feature('Web-Common-Http') do
     it{ should be_installed }
   end
 
   is_application_request_routing_proxy_checkbox_enabled = command('Get-WebConfigurationProperty -pspath "MACHINE/WEBROOT/APPHOST" -filter "system.webServer/proxy" -name "enabled" | select -ExpandProperty Value').stdout.strip
-  if (is_application_request_routing_proxy_checkbox_enabled == 'False' || is_application_request_routing_proxy_checkbox_enabled == '')
+  if !(is_application_request_routing_proxy_checkbox_enabled == 'False' || is_application_request_routing_proxy_checkbox_enabled == '')
     describe 'Application Request Routing Cache and Proxy not enabled' do
       skip "control NA, Application Request Routing Cache Proxy not enabled"
     end
   end
 
-
+  # System Operating as a Proxy Server
 
 
 end
