@@ -80,7 +80,7 @@ Click \"Apply\" in the \"Actions\" pane."
       describe windows_feature('Web-Common-Http') do
         it { should be_installed }
       end
-      describe "Running as a web-server, the ARR proxy should not be enabled" do
+      describe "Running as a web-server, the ARR Server Proxy should not be enabled" do
         subject { proxy_enabled }
         it { should be false }
       end
