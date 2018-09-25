@@ -1,4 +1,4 @@
-acontrol "V-76679" do
+control "V-76679" do
   title "The IIS 8.5 web server remote authors or content providers must only
 use secure encrypted logons and connections to upload web server content."
   desc  "Logging onto a web server remotely using an unencrypted protocol or
