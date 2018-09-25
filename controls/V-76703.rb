@@ -1,6 +1,12 @@
+is_proxy = attribute(
+    'is_proxy',
+    description: 'this system is running as a proxy server',
+    default: false
+)
+
 control "V-76703" do
   title "The IIS 8.5 web server must not be both a website server and a proxy
-server."
+server. (In #{is_proxy ? "Proxy"  : "Web Server"} mode)"
   desc  "A web server should be primarily a web server or a proxy server but
 not both, for the same reasons that other multi-use servers are not
 recommended. Scanning for web servers that will also proxy requests into an
@@ -59,32 +65,41 @@ the \"Enable proxy\" check box.
 
 Click \"Apply\" in the \"Actions\" pane."
 
-  is_proxy_server = 'False'
-  proxy_enabled = 'True'
 
-  is_application_request_routing_proxy_checkbox_enabled = command('Get-WebConfigurationProperty -pspath "MACHINE/WEBROOT/APPHOST" -filter "system.webServer/proxy" -name "enabled" | select -ExpandProperty Value').stdout.strip
-  if (is_application_request_routing_proxy_checkbox_enabled == 'False' || is_application_request_routing_proxy_checkbox_enabled == '')
-    proxy_enabled = 'False'
-  end
+  proxy_checkbox = command('Get-WebConfigurationProperty -pspath "MACHINE/WEBROOT/APPHOST" -filter "system.webServer/proxy" -name "enabled" | select -ExpandProperty Value').stdout.strip
+  proxy_enabled = (proxy_checkbox == 'False' || proxy_checkbox == '') ? false : true
 
-  if proxy_enabled == 'True'
-    describe windows_feature('Web-Server') do
-      it{ should be_installed }
-    end
-    describe windows_feature('Web-WebServer') do
-      it{ should be_installed }
-    end
-    describe windows_feature('Web-Common-Http') do
-      it{ should be_installed }
-    end
+
+  unless is_proxy
+      describe windows_feature('Web-Server') do
+        it { should be_installed }
+      end
+      describe windows_feature('Web-WebServer') do
+        it { should be_installed }
+      end
+      describe windows_feature('Web-Common-Http') do
+        it { should be_installed }
+      end
+      describe "Running as a web-server, the ARR proxy should not be enabled" do
+        subject { proxy_enabled }
+        it { should be false }
+      end
   else
-    describe "#{proxy_enabled}" do
-      it { should cmp 'False' }
-    end
+      describe windows_feature('Web-Server') do
+        it { should be_installed }
+      end
+      describe windows_feature('Web-WebServer') do
+        it { should be_installed }
+      end
+      describe windows_feature('Web-Common-Http') do
+        it { should be_installed }
+      end
+      # describe package('arr') do
+      #   it should be installed
+      # end
+      describe "Running as a proxy-server, the ARR proxy should be enabled" do
+        subject { proxy_enabled }
+        it { should be true }
+      end
   end
-
-
-
-
 end
-
