@@ -1,3 +1,9 @@
+FILE_SYSTEM_OBJECT_COMPONENT= attribute(
+    'file_system_object_component',
+    description: 'Name of Tomcat service',
+    default: 'enabled'
+)
+
 control "V-76767" do
   title "The File System Object component must be disabled on the IIS 8.5 web
 server."
@@ -37,5 +43,13 @@ Note: If the File System Object component is required for operations and has
 supporting documentation signed by the ISSO, this is not a finding."
   tag "fix": "Run the following command, with administrator privileges, to
 unregister the File System Object: regsvr32 scrrun.dll /u."
+
+  describe registry_key('HKEY_CLASSES_ROOT\CLSID\{0D43FE01-F093-11CF-8940-00A0C9054228}') do
+    if FILE_SYSTEM_OBJECT_COMPONENT == "enabled"
+      it {should exist}
+    else
+      it{ should_not exist }
+    end
+  end
 end
 
