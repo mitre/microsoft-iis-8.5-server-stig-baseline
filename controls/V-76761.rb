@@ -35,5 +35,14 @@ If the TLS version is not TLS 1.1 or higher, according to NIST SP 800-52, or if
 non-FIPS-approved algorithms are enabled, this is a finding."
   tag "fix": "Configure the web server to use an approved TLS version according
 to NIST SP 800-52 and to disable all non-approved versions."
+
+  describe.one do
+    describe registry_key('HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.1\Client') do
+      its('Enabled') { should cmp "1" }
+    end
+    describe registry_key('HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client') do
+      its('Enabled') { should cmp "1" }
+    end
+  end
 end
 
