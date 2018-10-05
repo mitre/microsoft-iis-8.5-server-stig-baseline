@@ -55,5 +55,23 @@ TrustedInstaller: Full control
 ALL APPLICATION PACKAGES (built-in security group): Read and execute
 Users: Read and execute, list folder contents
 Creator/Owner: special permissions to subkeys"
+
+  describe directory('C:\\inetpub') do
+    # Full control for administrators
+    it { should be_allowed('full-control', by: 'SYSTEM') }
+    it { should be_allowed('full-control', by: 'WIN-EFQ98MD6RFI/Administrators') }
+    it { should be_allowed('full-control', by: 'TrustedInstaller') }
+
+    # read & execute for ALL APPLICATION PACKAGES, SYSTEM, Users
+    it { should be_readable.by('ALL APPLICATION PACKAGES') }
+    it { should be_executable.by('ALL APPLICATION PACKAGES') }
+    it { should be_readable.by('WIN-EFQ98MD6RFI/Users') }
+    it { should be_executable.by('WIN-EFQ98MD6RFI/Users') }
+
+    # users with read & execute permissions
+    it { should be_readable.by('owner') }
+    it { should be_executable.by('owner') }
+
+  end
 end
 
