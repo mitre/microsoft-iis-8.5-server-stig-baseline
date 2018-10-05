@@ -41,5 +41,9 @@ Double-click the \"Directory Browsing\" icon.
 Under the \"Actions\" pane click \"Disabled\".
 
 Under the \"Actions\" pane, click \"Apply\"."
+
+  describe command("Get-WebConfigurationProperty -pspath \"MACHINE/WEBROOT/APPHOST\" -filter \"system.webServer/directoryBrowse\" -Name enabled | select -expandProperty value").stdout.strip do
+    it {should cmp "False"}
+  end
 end
 
