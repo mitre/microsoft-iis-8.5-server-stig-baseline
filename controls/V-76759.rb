@@ -83,5 +83,25 @@ HKLM\\SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\SCHANNEL\\Protocols
 3.0\\Server
 
 With a REG_DWORD value of \"1\" for \"DisabledByDefault\""
+
+  describe registry_key('HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.1\Client') do
+    its('DisabledByDefault') { should cmp "0" }
+  end
+
+  describe registry_key('HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client') do
+    its('DisabledByDefault') { should cmp "0" }
+  end
+
+  describe registry_key('HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.0\Client') do
+    its('DisabledByDefault') { should cmp "1" }
+  end
+
+  describe registry_key('HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\SSL 2.0\Client') do
+    its('DisabledByDefault') { should cmp "1" }
+  end
+
+  describe registry_key('HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\SSL 3.0\Client') do
+    its('DisabledByDefault') { should cmp "1" }
+  end
 end
 
