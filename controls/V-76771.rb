@@ -43,5 +43,14 @@ Double-click the “Authorization Rules” icon.
 Remove all users other than “Administrator”.
 
 "
+  describe command('Get-WebConfigurationProperty -pspath "MACHINE/WEBROOT/APPHOST" -filter "system.webServer/security/authentication/anonymousAuthentication" -Name enabled | select -expandProperty value').stdout.strip do
+    it {should cmp "false"}
+  end
+  describe command('Get-WebConfigurationProperty -pspath "MACHINE/WEBROOT/APPHOST" -filter "system.webServer/security/authentication/basicAuthentication" -Name enabled | select -expandProperty value').stdout.strip do
+    it {should cmp "true"}
+  end
+  describe command('Get-WebConfigurationProperty -pspath "MACHINE/WEBROOT/APPHOST" -filter "system.webServer/security/authentication/basicAuthentication" -Name defaultLogonDomain | select -expandProperty value').stdout.strip do
+    it {should cmp "Administrator"}
+  end
 end
 
