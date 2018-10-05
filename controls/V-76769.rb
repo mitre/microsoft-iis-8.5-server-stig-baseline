@@ -48,5 +48,17 @@ Remove the check from the \"Allow unspecified CGI modules\" and the \"Allow
 unspecified ISAPI modules\" check boxes.
 
 Click OK."
+
+  describe windows_feature('Web-ISAPI-Ext') do
+    it{ should be_installed }
+  end
+
+  describe command('Get-WebConfigurationProperty -pspath "MACHINE/WEBROOT/APPHOST" -filter "system.webServer/security/isapiCgiRestriction" -Name notListedCgisAllowed | select -expandProperty value').stdout.strip do
+    it {should cmp "False"}
+  end
+  describe command('Get-WebConfigurationProperty -pspath "MACHINE/WEBROOT/APPHOST" -filter "system.webServer/security/isapiCgiRestriction" -Name notListedIsapisAllowed | select -expandProperty value').stdout.strip do
+    it {should cmp "False"}
+  end
+
 end
 
