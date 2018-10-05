@@ -64,5 +64,11 @@ applications.
 \"URIEnableCache\"
 \"UriMaxUriBytes\"
 \"UriScavengerPeriod\""
+
+  describe registry_key('HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HTTP\Parameters') do
+    its('URIEnableCache') { should_not eq nil }
+    its('UriMaxUriBytes') { should_not eq nil }
+    its('UriScavengerPeriod') { should_not eq nil }
+  end
 end
 
