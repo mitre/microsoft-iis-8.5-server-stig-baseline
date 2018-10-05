@@ -50,5 +50,13 @@ Expand the roles node, then right-click “Print Services”, and then select
 
 If the Internet Printing option is checked, clear the check box, click “Next”,
 and then click “Remove” to complete the wizard."
+
+  describe directory('%windir%\web\printers') do
+    it { should_not exist }
+  end
+
+  describe windows_feature('Print-Services') do
+    it { should_not be_installed }
+  end
 end
 
