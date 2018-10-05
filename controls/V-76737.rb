@@ -46,5 +46,9 @@ Click each error message and click \"Edit Feature Setting\" from the
 
 Set each error message to “Detailed errors for local requests and custom error
 pages for remote requests”."
+
+  describe command("Get-WebConfigurationProperty -pspath \"MACHINE/WEBROOT/APPHOST\" -filter \"system.webServer/httpErrors\" -Name errorMode").stdout.strip do
+    it {should cmp "DetailedLocalOnly"}
+  end
 end
 
