@@ -65,6 +65,8 @@ the \"Enable proxy\" check box.
 
 Click \"Apply\" in the \"Actions\" pane."
 
+  # Alternatively
+  # try this - Get-WebConfiguration system.webServer/proxy/*
 
   proxy_checkbox = command('Get-WebConfigurationProperty -pspath "MACHINE/WEBROOT/APPHOST" -filter "system.webServer/proxy" -name "enabled" | select -ExpandProperty Value').stdout.strip
   proxy_enabled = (proxy_checkbox == 'False' || proxy_checkbox == '') ? false : true
