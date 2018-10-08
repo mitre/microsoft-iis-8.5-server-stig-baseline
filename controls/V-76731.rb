@@ -50,5 +50,19 @@ Set the Encryption method to \"Auto\".
 
 Click \"Apply\" in the \"Actions\" pane.
 "
+  describe command('Get-WebConfigurationProperty -Filter system.web/machineKey -name * | select -expand decryption').stdout.strip do
+    it {should cmp "Auto"}
+  end
+  describe.one do
+    describe command('Get-WebConfigurationProperty -Filter system.web/machineKey -name * | select -expand validation').stdout.strip do
+      it {should cmp "HMACSHA256"}
+    end
+    describe command('Get-WebConfigurationProperty -Filter system.web/machineKey -name * | select -expand validation').stdout.strip do
+      it {should cmp "HMACSHA384"}
+    end
+    describe command('Get-WebConfigurationProperty -Filter system.web/machineKey -name * | select -expand validation').stdout.strip do
+      it {should cmp "HMACSHA512"}
+    end
+  end
 end
 
