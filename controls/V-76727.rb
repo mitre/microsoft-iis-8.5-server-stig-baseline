@@ -56,5 +56,11 @@ drop-down list.
 
 Under “Time-out (in minutes), enter a value of “20 or less”.
 "
+  describe command('Get-WebConfigurationProperty -Filter system.web/sessionState -name * | select -expand cookieless').stdout.strip do
+    it {should cmp "UseCookies"}
+  end
+  describe command('Get-WebConfigurationProperty -Filter system.web/sessionState -name * | select -expand timeout | select -expand Minutes').stdout.strip.to_i do
+    it {should be <= 20}
+  end
 end
 
