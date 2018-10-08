@@ -52,5 +52,8 @@ list.
 
 Click \"Apply\" in the \"Actions\" pane.
 "
+  describe command('Get-WebConfigurationProperty -Filter system.web/sessionState -name * | select -expand cookieless').stdout.strip do
+    it {should cmp "UseCookies"}
+  end
 end
 
