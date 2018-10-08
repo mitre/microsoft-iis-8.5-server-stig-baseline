@@ -45,6 +45,6 @@ Document and test the disaster recovery methods designed."
 
   describe "Manual review of DR portion of BCDR is required." do
     skip "Manual review of DR portion of BCDR is required."
-
+  end
 end
 

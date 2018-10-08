@@ -74,6 +74,6 @@ describe windows_feature('Web-Common-Http') do
     end
   describe "Manual validation required. Review Remote Administration Procedures if Remote Administration of IIS or hosted Applications is allowed" do
     skip "Manual validation required. Review Remote Administration Procedures if Remote Administration of IIS or hosted Applications is allowed"
-
+  end
 end
 

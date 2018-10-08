@@ -97,5 +97,15 @@ Click \"Apply\" under the \"Actions\" pane.
   describe windows_feature('Web-Common-Http') do
     it{ should be_installed }
   end
+
+  # get-iisSite and loop it
+
+  log_format = command('Get-WebConfiguration -pspath ?MACHINE/WEBROOT/APPHOST"  -filter "system.applicationHost/sites/siteDefaults/logFile" | select -expand logFormat" ')
+  describe "IIS Logging format" do
+    subject { log_format }
+    it { should cmp 'W3C' }
+  end
+
+
 end
 

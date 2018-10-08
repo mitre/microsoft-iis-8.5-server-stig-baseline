@@ -48,5 +48,6 @@ moving its management functions off of the IIS 8.5 web server or by accessing
 the application's management via a uniquely assigned IP address."
   describe "Manual review of hosted applications and management procedure is required" do
     skip "Manual review of hosted applications and management procedure is required"
+  end
 end
 
