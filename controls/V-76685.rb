@@ -72,5 +72,10 @@ transparently."
   describe windows_feature('Web-Common-Http') do
     it{ should be_installed }
   end
+
+  describe "Manual review of IIS Logs is required " do
+    skip "Ensure Client IP is shown in the logs in case proxy is used"
+  end
+
 end
 
