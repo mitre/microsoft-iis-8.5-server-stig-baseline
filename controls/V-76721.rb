@@ -46,5 +46,7 @@ functionality is not separated, this is a finding."
   tag "fix": "Develop a method to manage the hosted applications, either by
 moving its management functions off of the IIS 8.5 web server or by accessing
 the application's management via a uniquely assigned IP address."
+  describe "Manual review of hosted applications and management procedure is required" do
+    skip "Manual review of hosted applications and management procedure is required"
 end
 
