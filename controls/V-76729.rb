@@ -42,5 +42,9 @@ finding."
 8.5 web server in the event of the necessity for rollback.
 
 Document and test the disaster recovery methods designed."
+
+  describe "Manual review of DR portion of BCDR is required." do
+    skip "Manual review of DR portion of BCDR is required."
+
 end
 

@@ -74,7 +74,7 @@ transparently."
   end
 
   describe "Manual review of IIS Logs is required " do
-    skip "Ensure Client IP is shown in the logs in case proxy is used"
+    skip "Ensure Client IP accurately identifies the client and not proxy server ( if used north of IIS )"
   end
 
 end

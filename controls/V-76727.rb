@@ -56,5 +56,9 @@ drop-down list.
 
 Under “Time-out (in minutes), enter a value of “20 or less”.
 "
+
+  describe "Manual review of BCDR is required" do
+    skip "System is a domain controller, control not applicable"
+
 end
 
