@@ -72,6 +72,8 @@ describe windows_feature('Web-WebServer') do
 describe windows_feature('Web-Common-Http') do
       it{ should be_installed }
     end
+  describe "Manual validation required. Review Remote Administration Procedures if Remote Administration of IIS or hosted Applications is allowed" do
+    skip "Manual validation required. Review Remote Administration Procedures if Remote Administration of IIS or hosted Applications is allowed"
 
 end
 
