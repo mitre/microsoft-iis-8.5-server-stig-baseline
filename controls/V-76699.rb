@@ -59,5 +59,10 @@ Document how the hosted application user management is accomplished."
   describe windows_feature('Web-Common-Http') do
     it{ should be_installed }
   end
+
+  describe "Manual review of User Management documentation is required." do
+    skip "Ensure Centralization of User Management is documented and implemented."
+  end
+
 end
 
