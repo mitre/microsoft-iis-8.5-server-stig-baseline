@@ -35,5 +35,7 @@ applications, or tutorials which are not explicitly used by a production
 website, this is a finding."
   tag "fix": "Remove any executable sample code, example applications, or
 tutorials which are not explicitly used by a production website."
+
+  # Yarick working on this one
 end
 
