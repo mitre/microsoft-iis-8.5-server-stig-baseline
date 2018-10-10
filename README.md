@@ -58,3 +58,52 @@ $ inspec exec iis-server-baseline -t ssh://user@hostname -i /path/to/key --sudo 
 ### License 
 
 * This project is licensed under the terms of the Apache license 2.0 (apache-2.0)
+
+### Progress report
+
+|Control| Describe  |  Manual   | Completed |in-progress| Evaluated |  Tested   | Developed |   Tests   | Automated |
+|-------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|-----------|
+|V-76679|           |    yes    |    yes    |           |           |           |           |           |           |
+|V-76681|    yes    |           |    yes    |           |           |           |           |           |           |
+|V-76683|    yes    |           |    yes    |           |           |           |           |           |           |
+|V-76685|           |           |    yes    |           |           |           |           |           |           |
+|V-76687|    yes    |           |    yes    |           |           |           |           |           |           |
+|V-76689|    yes    |           |    yes    |           |           |           |           |           |           |
+|V-76695|    yes    |           |    yes    |           |           |           |           |           |           |
+|V-76697|    yes    |           |    yes    |           |           |           |           |           |           |
+|V-76699|           |    yes    |    yes    |           |           |           |           |           |           |
+|V-76701|    yes    |           |    yes    |           |           |           |           |           |           |
+|V-76703|    yes    |           |    yes    |           |           |           |           |           |           |
+|V-76705|    yes    |           |    yes    |           |           |           |           |           |           |
+|V-76707|           |           |           |    yes    |           |           |           |           |           |
+|V-76709|           |           |           |    yes    |           |           |           |           |           |
+|V-76711|           |           |           |    yes    |           |           |           |           |           |
+|V-76713|           |           |           |    yes    |           |           |           |           |           |
+|V-76715|           |           |           |    yes    |           |           |           |           |           |
+|V-76717|           |           |           |    yes    |           |           |           |           |           |
+|V-76719|           |           |           |    yes    |           |           |           |           |           |
+|V-76721|           |    yes    |    yes    |           |           |           |           |           |           |
+|V-76725|    yes    |           |    yes    |           |           |           |           |           |           |
+|V-76727|    yes    |           |    yes    |           |           |           |           |           |           |
+|V-76729|           |    yes    |    yes    |           |           |           |           |           |           |
+|V-76731|    yes    |           |    yes    |           |           |           |           |           |           |
+|V-76733|    yes    |           |    yes    |           |           |           |           |           |           |
+|V-76735|           |           |           |    yes    |           |           |           |           |           |
+|V-76737|           |    yes    |    yes    |           |           |           |           |           |           |
+|V-76739|           |           |           |    yes    |           |           |           |           |           |
+|V-76741|           |           |           |    yes    |           |           |           |           |           |
+|V-76743|    yes    |           |    yes    |           |           |           |           |           |           |
+|V-76745|    yes    |           |    yes    |           |           |           |           |           |           |
+|V-76747|    yes    |           |    yes    |           |           |           |           |           |           |
+|V-76749|    yes    |           |    yes    |           |           |           |           |           |           |
+|V-76751|           |           |           |    yes    |           |           |           |           |           |
+|V-76753|    yes    |           |    yes    |           |           |           |           |           |           |
+|V-76755|    yes    |           |    yes    |           |           |           |           |           |           |
+|V-76757|    yes    |           |    yes    |           |           |           |           |           |           |
+|V-76759|    yes    |           |    yes    |           |           |           |           |           |           |
+|V-76761|    yes    |           |    yes    |           |           |           |           |           |           |
+|V-76763|           |           |           |    yes    |           |           |           |           |           |
+|V-76765|           |           |           |    yes    |           |           |           |           |           |
+|V-76767|    yes    |           |    yes    |           |           |           |           |           |           |
+|V-76769|    yes    |           |    yes    |           |           |           |           |           |           |
+|V-76771|    yes    |           |    yes    |           |           |           |           |           |           |
