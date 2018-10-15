@@ -109,10 +109,11 @@ $ inspec exec iis-server-baseline -t ssh://user@hostname -i /path/to/key --sudo 
 |V-76771|    yes    |           |    yes    |           |           |           |            ||
 
 Legend
--Describe
--Manual
--Review-RDY
--in-progress
--Reviewed
--Tested
--Automated Unit Tested
+- Describe. Control has been evaluated and categorized as candidate for automated tests. Describe block has been written.
+- Manual. Control has been evaluated and categorized as candidate for type that needs a manual review. Describe block has been written.
+- Review-RDY. Control is ready for peer review.
+- in-progress. Initial evaluation has been completed, describe statements are being worked on.
+- Reviewed. Control has been peer reviewed.
+- Tested. Control has been peer reviewed and improved ( if needed ) and the improvements have been peer-tested.
+- Automated Unit Tested. Automation of unit testing has been developed to the final point where creation, destruction and configuration of the resources has been automated fully.
+
