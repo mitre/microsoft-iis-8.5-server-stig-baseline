@@ -61,7 +61,7 @@ $ inspec exec iis-server-baseline -t ssh://user@hostname -i /path/to/key --sudo 
 
 ### Progress report
 
-|Control| Describe  |  Manual   | Completed |in-progress| Evaluated |  Tested   |  Automated |
+|Control| Describe  |  Manual   | Review-RDY|in-progress| Reviewed  |  Tested   |  Automated Unit Tested |
 |-------|-----------|-----------|-----------|-----------|-----------|-----------|------------|
 |V-76679|           |    yes    |    yes    |           |           |           |            |
 |V-76681|    yes    |           |    yes    |           |           |           |            |
@@ -107,3 +107,12 @@ $ inspec exec iis-server-baseline -t ssh://user@hostname -i /path/to/key --sudo 
 |V-76767|    yes    |           |    yes    |           |           |           |            |
 |V-76769|    yes    |           |    yes    |           |           |           |            |
 |V-76771|    yes    |           |    yes    |           |           |           |            ||
+
+Legend
+-Describe
+-Manual
+-Review-RDY
+-in-progress
+-Reviewed
+-Tested
+-Automated Unit Tested
