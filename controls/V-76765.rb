@@ -57,5 +57,9 @@ Change passwords for any local accounts are present and are used by IIS 8.5
 verify with System Administrator that default passwords have been changed.
 
 Develop an internal process for changing passwords on a regular basis."
+
+  describe 'This test currently has no automated tests, you must check manually' do
+    skip 'This check must be preformed manually'
+  end
 end
 

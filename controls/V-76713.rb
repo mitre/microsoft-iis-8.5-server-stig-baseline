@@ -56,5 +56,9 @@ Services\" >> \"Common HTTP Features\".
 
 De-select \"WebDAV Publishing\" and click \"Next\" to complete removing the
 WebDAV Publishing feature from the IIS 8.5 web server."
+
+  describe windows_feature('Web-DAV-Publishing') do
+    it { should_not be_installed }
+  end
 end
 

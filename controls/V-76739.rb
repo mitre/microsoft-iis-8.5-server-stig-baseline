@@ -58,5 +58,9 @@ If remote management is utilized and does not meet the criteria listed above,
 this is a finding."
   tag "fix": "Ensure the web server administration is only performed over a
 secure path."
+
+  describe 'This test currently has no automated tests, you must check manually' do
+    skip 'This check must be preformed manually'
+  end
 end
 

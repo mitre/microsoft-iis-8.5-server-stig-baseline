@@ -42,5 +42,9 @@ Click the IIS 8.5 web server name.
 Double-click the \"Server Certificate\" icon.
 
 Import a valid DoD certificate and remove any non-DoD certificates."
+
+  describe 'This test currently has no automated tests, you must check manually' do
+    skip 'This check must be preformed manually'
+  end
 end
 

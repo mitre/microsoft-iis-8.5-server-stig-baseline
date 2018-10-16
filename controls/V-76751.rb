@@ -49,5 +49,9 @@ Note: If additional software is needed and has supporting documentation signed
 by the ISSO, this is not a finding."
   tag "fix": "Remove all unapproved programs and roles from the production web
 server."
+
+  describe 'This test currently has no automated tests, you must check manually' do
+    skip 'This check must be preformed manually'
+  end
 end
 

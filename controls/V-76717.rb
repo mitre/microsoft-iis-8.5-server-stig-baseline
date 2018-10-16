@@ -44,5 +44,10 @@ extensions.
 If files with .java or .jpp extensions are found, this is a finding."
   tag "fix": "Remove all files from the web server with both .java and .jpp
 extensions."
+
+  # Needs to be improved, takes too long to do a file system search
+  describe command('Get-Childitem –Path C:\ -Include *.java,*.jpp -File -Recurse -ErrorAction SilentlyContinue').stdout.strip do
+    it {should cmp ''}
+  end
 end
 
