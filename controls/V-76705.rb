@@ -35,5 +35,55 @@ applications, or tutorials which are not explicitly used by a production
 website, this is a finding."
   tag "fix": "Remove any executable sample code, example applications, or
 tutorials which are not explicitly used by a production website."
+
+  describe windows_feature('Web-Server') do
+    it{ should be_installed }
+  end
+  describe windows_feature('Web-WebServer') do
+    it{ should be_installed }
+  end
+  describe windows_feature('Web-Common-Http') do
+    it{ should be_installed }
+  end
+  #describe "Manual validation required. Review Remote Administration Procedures if Remote Administration of IIS or hosted Applications is allowed" do
+  #  skip "Manual validation required. Review Remote Administration Procedures if Remote Administration of IIS or hosted Applications is allowed"
+  #end
+
+  webroot_folder_test = command('(Get-Item C:\inetpub) -is [System.IO.DirectoryInfo]').stdout.strip
+  webroot_found = ( webroot_folder_test == '' ||  webroot_folder_test == 'False') ? false : true
+
+  describe "Able to access webroot at C:\\inetpub " do
+    subject { webroot_found }
+    it { should be true }
+  end
+
+  # Checking for Executable File Signature
+
+  C_Inetpub_two_bytes = command('Get-ChildItem -Path "C:\Inetpub" -Recurse | ForEach { if ( $_ -is [System.IO.FileInfo] ) {-join ([char[]](Get-Content  $_.FullName -Encoding byte -TotalCount 2))} }').stdout.strip.split("\r\n")
+  C_Program_Files_Common_Files_System_msadc_two_bytes = command('Get-ChildItem -Path "C:\Program Files\Common Files\System\msadc" -Recurse | ForEach { if ( $_ -is [System.IO.FileInfo] ) {-join ([char[]](Get-Content  $_.FullName -Encoding byte -TotalCount 2))} }').stdout.strip.split("\r\n")
+  C_Program_Files_x86_Common_Files_System_msadc_two_bytes = command('Get-ChildItem -Path "C:\Program Files (x86)\Common Files\System\msadc" -Recurse | ForEach { if ( $_ -is [System.IO.FileInfo] ) {-join ([char[]](Get-Content  $_.FullName -Encoding byte -TotalCount 2))} }').stdout.strip.split("\r\n")
+
+  describe 'Executable files found at C:\\Inetpub as File Signatures ' do
+    subject { C_Inetpub_two_bytes }
+    it { should_not include 'MZ' }
+  end
+
+  describe 'Executable files found at C:\\Program Files\\Common Files\\System\\msadc as as File Signatures ' do
+    subject { C_Program_Files_Common_Files_System_msadc_two_bytes  }
+    it { should_not include 'MZ' }
+  end
+
+  describe 'Executable files found at C:\\Program Files (x86)\\Common Files\\System\\msadc as File Signatures ' do
+    subject { C_Program_Files_x86_Common_Files_System_msadc_two_bytes  }
+    it { should_not include 'MZ' }
+  end
+
+  # Inspec way to check for executables
+  # nada
+
+  # Check File extensions
+  #
+
+
 end
 
