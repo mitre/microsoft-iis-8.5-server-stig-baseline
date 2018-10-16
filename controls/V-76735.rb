@@ -40,5 +40,11 @@ directories are being indexed. If so, this is a finding."
 Add the Indexing Service snap-in.
 
 Edit the indexed directories to only include web document directories."
+
+  unless registry_key('HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\ContentIndex\Catalogs').nil?
+    describe registry_key('HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\ContentIndex\Catalogs') do
+      it { should exist }
+    end
+  end
 end
 
