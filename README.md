@@ -76,9 +76,9 @@ $ inspec exec iis-server-baseline -t ssh://user@hostname -i /path/to/key --sudo 
 |V-76703|    yes    |           |    yes    |           |           |           |            |
 |V-76705|    yes    |           |    yes    |           |           |           |            |
 |V-76707|           |           |    yes    |           |           |           |            |
-|V-76709|           |     yes   |           |           |           |           |            |
+|V-76709|           |     yes   |    yes    |           |           |           |            |
 |V-76711|    yes    |           |    yes    |           |           |           |            |
-|V-76713|           |           |           |    yes    |           |           |            |
+|V-76713|    yes    |           |    yes    |           |           |           |            |
 |V-76715|           |           |           |    yes    |           |           |            |
 |V-76717|           |           |           |    yes    |           |           |            |
 |V-76719|           |           |           |    yes    |           |           |            |
