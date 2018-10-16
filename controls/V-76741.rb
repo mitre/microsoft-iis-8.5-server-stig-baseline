@@ -64,5 +64,9 @@ Configure only known, secure IP ranges are configured as \"Allow\".
 Select \"Apply\" in \"Actions\" pane.
 
 Restart the Web Management Service under the \"Actions\" pane."
+
+  describe 'This test currently has no automated tests, you must check manually' do
+    skip 'This check must be preformed manually'
+  end
 end
 

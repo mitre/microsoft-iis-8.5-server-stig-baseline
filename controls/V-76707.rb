@@ -50,5 +50,9 @@ In left pane, expand \"Local Users and Groups\" and click on \"Users\".
 
 Delete any local accounts which were created by features which have been
 uninstalled or are not used."
+
+  describe 'This test currently has no automated tests, you must check manually' do
+    skip 'This check must be preformed manually'
+  end
 end
 

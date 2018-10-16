@@ -50,5 +50,9 @@ tree, the shell, or other operating system functions and utilities.
 
 All non-administrator access to shell scripts and operating system functions
 must be mission essential and documented."
+
+  describe 'This test currently has no automated tests, you must check manually' do
+    skip 'This check must be preformed manually'
+  end
 end
 

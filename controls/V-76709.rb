@@ -45,5 +45,9 @@ necessary for operation, this is a finding.
 If any unnecessary Operating System features are installed, this is a finding."
   tag "fix": "Remove all utility programs, Operating System features or modules
 which are installed but are not necessary for web server operation."
+
+  describe 'This test currently has no automated tests, you must check manually' do
+    skip 'This check must be preformed manually'
+  end
 end
 

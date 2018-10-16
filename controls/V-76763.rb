@@ -36,5 +36,9 @@ this is a finding.
 "
   tag "fix": "Install the current version of the web server software and
 maintain appropriate service packs and patches."
+
+  describe 'This test currently has no automated tests, you must check manually' do
+    skip 'This check must be preformed manually'
+  end
 end
 
