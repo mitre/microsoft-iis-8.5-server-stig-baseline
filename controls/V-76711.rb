@@ -73,5 +73,21 @@ shell program extensions, to include at a minimum, the following extensions:
 .csh
 
 Under the \"Actions\" pane, click \"Apply\"."
+
+  describe command("Get-WebConfiguration -pspath \"MACHINE/WEBROOT/APPHOST\" -filter \"system.webServer/staticContent/mimeMap\" | ? {$_.fileextension -eq '.exe'}").stdout.strip do
+    it {should cmp ''}
+  end
+  describe command("Get-WebConfiguration -pspath \"MACHINE/WEBROOT/APPHOST\" -filter \"system.webServer/staticContent/mimeMap\" | ? {$_.fileextension -eq '.dll'}").stdout.strip do
+    it {should cmp ''}
+  end
+  describe command("Get-WebConfiguration -pspath \"MACHINE/WEBROOT/APPHOST\" -filter \"system.webServer/staticContent/mimeMap\" | ? {$_.fileextension -eq '.com'}").stdout.strip do
+    it {should cmp ''}
+  end
+  describe command("Get-WebConfiguration -pspath \"MACHINE/WEBROOT/APPHOST\" -filter \"system.webServer/staticContent/mimeMap\" | ? {$_.fileextension -eq '.bat'}").stdout.strip do
+    it {should cmp ''}
+  end
+  describe command("Get-WebConfiguration -pspath \"MACHINE/WEBROOT/APPHOST\" -filter \"system.webServer/staticContent/mimeMap\" | ? {$_.fileextension -eq '.csh'}").stdout.strip do
+    it {should cmp ''}
+  end
 end
 
