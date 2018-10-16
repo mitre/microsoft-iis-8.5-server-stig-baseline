@@ -1,3 +1,21 @@
+=begin
+MINIMAL_LOCAL_USER_COUNT = attribute(
+    'count of local users',
+    description: 'Minimum number of users required for server to operate',
+    default: 2
+)
+=end
+
+MINIMAL_LOCAL_USERS = attribute(
+    'users',
+    description: 'Minimum number of users required for server to operate',
+    default: %w[
+            Administrator
+            Guest
+            inspec
+           ]
+)
+
 control "V-76707" do
   title "The accounts created by uninstalled features (i.e., tools, utilities,
 specific, etc.) must be deleted from the IIS 8.5 server."
@@ -51,8 +69,19 @@ In left pane, expand \"Local Users and Groups\" and click on \"Users\".
 Delete any local accounts which were created by features which have been
 uninstalled or are not used."
 
-  describe 'This test currently has no automated tests, you must check manually' do
-    skip 'This check must be preformed manually'
+  local_users = command('Get-WmiObject -Class Win32_UserAccount -Filter  "LocalAccount=\'True\'" | select -ExpandProperty Name').stdout.strip.split("\r\n")
+  is_min_users = (local_users.length == MINIMAL_LOCAL_USERS.length) ? false : true
+
+  describe local_users do
+    its('length') { should eq MINIMAL_LOCAL_USERS.length }
   end
+
+  describe "List of Local Users on the system is #{(local_users.length == MINIMAL_LOCAL_USERS.length) ? "equal"  : "over"} MINIMAL Number of #{MINIMAL_LOCAL_USERS.length}, a manual review is required to determine if any of these users are left from uninstalled features (i.e., tools, utilities,
+specific, etc.)  " do
+    subject { local_users }
+    it { should cmp MINIMAL_LOCAL_USERS}
+  end
+
+
 end
 
