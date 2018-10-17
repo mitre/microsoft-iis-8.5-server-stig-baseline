@@ -61,7 +61,7 @@ $ inspec exec iis-server-baseline -t ssh://user@hostname -i /path/to/key --sudo 
 
 ### Progress report
 
-|Control| Describe  |  Manual   | Review-RDY|in-progress| Reviewed  |  Tested   |  Automated Unit Tests |
+|Control| 2. Describe  |  1. Auto/Manual (a/m)  |  4. Review-RDY  |  3. in-progress  |  5. Reviewed  |  6. Tested   |  7. Automated Unit Tests |
 |-------|-----------|-----------|-----------|-----------|-----------|-----------|------------|
 |V-76679|           |    yes    |    yes    |           |           |           |            |
 |V-76681|    yes    |           |    yes    |           |           |           |            |
@@ -109,11 +109,11 @@ $ inspec exec iis-server-baseline -t ssh://user@hostname -i /path/to/key --sudo 
 |V-76771|    yes    |           |    yes    |           |           |           |            ||
 
 Legend
-- Describe. Control has been evaluated and categorized as candidate for automated tests. Describe block has been written.
-- Manual. Control has been evaluated and categorized as candidate for type that needs a manual review. Describe block has been written.
-- Review-RDY. Control is ready for peer review.
-- in-progress. Initial evaluation has been completed, describe statements are being worked on.
-- Reviewed. Control has been peer reviewed.
-- Tested. Control has been peer reviewed and improved ( if needed ) and the improvements have been peer-tested.
-- Automated Unit Tested. Automation of unit testing has been developed to the final point where creation, destruction and configuration of the resources has been automated fully.
+- Describe: Control has been evaluated and categorized as candidate for automated tests. Describe block has been written.
+- Auto/Manual: Control has been evaluated and categorized as candidate for type that needs a manual review. Describe block has been written.
+- Awaiting Review: Control is ready for peer review.
+- in-progress: Initial evaluation has been completed, describe statements are being worked on.
+- Reviewed: Control has been peer reviewed.
+- Tested: Control has been peer reviewed and improved ( if needed ) and the improvements have been peer-tested.
+- Automated Unit Tested: Automation of unit testing has been developed to the final point where creation, destruction and configuration of the resources has been automated fully.
 
