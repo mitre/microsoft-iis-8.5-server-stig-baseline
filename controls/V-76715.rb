@@ -63,7 +63,7 @@ Get-ChildItem IIS:SSLBindings `
 	}
 }').stdout.strip.split("\r\n")
 
-  CertList_NotExpired_Issuer = command('Import-Module -Name WebAdministration;
+  CertList_Issuer = command('Import-Module -Name WebAdministration;
 Get-ChildItem IIS:SSLBindings `
 | select -expand store `
 | ForEach-Object -Process `
@@ -74,8 +74,8 @@ Get-ChildItem IIS:SSLBindings `
 	if (($cert.EnhancedKeyUsageList | select -expand FriendlyName) -eq "Server Authentication") {
     $expirationDate = $cert.NotAfter
 		if ($cert.Subject -match "=") {$subject = $cert.Subject.split("=")[1]} else {$subject = $cert.Subject}
-    if ($cert.Issuer -match "C=") {$issuer = $cert.Issuer -match  ".*\s+C=(\S+)"} else {$issuer = "unknown"}
-		if ($cert.NotAfter -gt $expirationDate) { Write-Output  "$subject issued by $issuer will expired on  $expirationDate  -- "}
+    if ($cert.Issuer -match "C=") {$issuer = $cert.Issuer -match  ".*\s+C=(\S+)"; $issuer = $matches[1]} else {$issuer = "unknown"}
+		 Write-Output  "$subject issued by $issuer will expire on  $expirationDate "
 	}
 }').stdout.strip.split("\r\n")
 
@@ -90,15 +90,17 @@ Get-ChildItem IIS:SSLBindings `
     end
   end
 
-  describe "Number of Certificates used by IIS   "  do
-    skip "Could not find any SSL Certificates used by IIS on this system "
-  end  if CertList_NotExpired_Issuer.length != 0
+
 
   CertList_NotExpired_Issuer.each do |cert|
     describe cert do
-      it { should_not match  /US/}
+      it { should match  /US/}
     end
   end
+
+  describe "Number of Certificates used by IIS   "  do
+    skip "Could not find any SSL Certificates used by IIS on this system "
+  end  if CertList_NotExpired_Issuer.length != 0
 
 
 
