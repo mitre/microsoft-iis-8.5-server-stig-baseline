@@ -97,7 +97,7 @@ tutorials which are not explicitly used by a production website."
     it { should_not include 'HTML' }
   end
 
-  describe 'Executable files found at C:\\Program Files\\Common Files\\System\\msadc as File Signatures ' do
+  describe 'Executable files found at C:\\Program Files\\Common Files\\System\\msadc as as File Signatures ' do
     subject { C_Program_Files_Common_Files_System_msadc_FileExtensions  }
     it { should_not include 'ASP' }
     it { should_not include 'ASPX' }

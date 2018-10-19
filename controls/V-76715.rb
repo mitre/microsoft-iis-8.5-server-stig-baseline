@@ -1,3 +1,9 @@
+days_until_expiration = attribute(
+    'days_until_expiration',
+    description: 'Number of days until certificate expiration we shall tolerate',
+    default: 0
+)
+
 control "V-76715" do
   title "The IIS 8.5 web server must perform RFC 5280-compliant certification
 path validation."
@@ -43,8 +49,62 @@ Double-click the \"Server Certificate\" icon.
 
 Import a valid DoD certificate and remove any non-DoD certificates."
 
-  describe 'This test currently has no automated tests, you must check manually' do
-    skip 'This check must be preformed manually'
+ CertList_Expired = command('Import-Module -Name WebAdministration;
+Get-ChildItem IIS:SSLBindings `
+| select -expand store `
+| ForEach-Object -Process `
+{
+	$DaysToExpiration = 0
+	$expirationDate = (Get-Date).AddDays($DaysToExpiration)
+	$cert = Get-ChildItem CERT:LocalMachine/$_
+	if (($cert.EnhancedKeyUsageList | select -expand FriendlyName) -eq "Server Authentication") {
+		if ($cert.Subject -match "=") {$subject = $cert.Subject.split("=")[1]} else {$subject = $cert.Subject}
+		if ($cert.NotAfter -lt $expirationDate) { Write-Output  "$subject  EXPIRED"}
+	}
+}').stdout.strip.split("\r\n")
+
+  CertList_NotExpired_Issuer = command('Import-Module -Name WebAdministration;
+Get-ChildItem IIS:SSLBindings `
+| select -expand store `
+| ForEach-Object -Process `
+{
+	$DaysToExpiration = 0
+	$expirationDate = (Get-Date).AddDays($DaysToExpiration)
+	$cert = Get-ChildItem CERT:LocalMachine/$_
+	if (($cert.EnhancedKeyUsageList | select -expand FriendlyName) -eq "Server Authentication") {
+    $expirationDate = $cert.NotAfter
+		if ($cert.Subject -match "=") {$subject = $cert.Subject.split("=")[1]} else {$subject = $cert.Subject}
+    if ($cert.Issuer -match "C=") {$issuer = $cert.Issuer -match  ".*\s+C=(\S+)"} else {$issuer = "unknown"}
+		if ($cert.NotAfter -gt $expirationDate) { Write-Output  "$subject issued by $issuer will expired on  $expirationDate  -- "}
+	}
+}').stdout.strip.split("\r\n")
+
+  #describe "Number of Expired Certificates used by IIS   "  do
+  #  subject { CertList_Expired }
+  #  its('length') {should eq 0}
+  #end
+
+  CertList_Expired.each do |cert|
+  describe cert do
+    it { should_not match  /\S+\s+EXPIRED/}
+    end
   end
+
+  describe "Number of Certificates used by IIS   "  do
+    skip "Could not find any SSL Certificates used by IIS on this system "
+  end  if CertList_NotExpired_Issuer.length != 0
+
+  CertList_NotExpired_Issuer.each do |cert|
+    describe cert do
+      it { should_not match  /US/}
+    end
+  end
+
+
+
+
+  #describe 'This test currently has no automated tests, you must check manually' do
+  #  skip 'This check must be preformed manually'
+  #end
 end
 
