@@ -60,54 +60,53 @@ $ inspec exec iis-server-baseline -t ssh://user@hostname -i /path/to/key --sudo 
 * This project is licensed under the terms of the Apache license 2.0 (apache-2.0)
 
 ### Progress report
+|Control|Auto/Manual|Describe|in-progress|Review-RDY|Reviewed|Tested|Automated Unit Tests|
+|--------|----------|----------|----------|----------|----------|----------|------------|
+|V-76701|   auto   |yes|   |yes| | | |
+|V-76735|   auto   |yes|   |yes| | | |
+|V-76725|   auto   |yes|   |yes| | | |
+|V-76711|   auto   |yes|   |yes| | | |
+|V-76731|   auto   |yes|   |yes| | | |
+|V-76705|  manual  |yes|   |yes| | | |
+|V-76715|  manual  |yes|   |yes| | | |
+|V-76721|  manual  |yes|   |yes| | | |
+|V-76683|   auto   |yes|   |yes| | | |
+|V-76761|   auto   |yes|   |yes| | | |
+|V-76755|   auto   |yes|   |yes| | | |
+|V-76745|   auto   |yes|   |yes| | | |
+|V-76771|   auto   |yes|   |yes| | | |
+|V-76751|  manual  |yes|   |yes| | | |
+|V-76687|   auto   |yes|   |yes| | | |
+|V-76765|  manual  |yes|   |yes| | | |
+|V-76697|   auto   |yes|   |yes| | | |
+|V-76741|  manual  |yes|   |yes| | | |
+|V-76689|   auto   |yes|   |yes| | | |
+|V-76699|  manual  |yes|   |yes| | | |
+|V-76679|  manual  |yes|   |yes| | | |
+|V-76739|  manual  |yes|   |yes| | | |
+|V-76729|  manual  |yes|   |yes| | | |
+|V-76709|  manual  |yes|   |yes| | | |
+|V-76719|  manual  |yes|   |yes| | | |
+|V-76759|   auto   |yes|   |yes| | | |
+|V-76749|   auto   |yes|   |yes| | | |
+|V-76769|   auto   |yes|   |yes| | | |
+|V-76733|   auto   |yes|   |yes| | | |
+|V-76707|   auto   |yes|   |yes| | | |
+|V-76717|   auto   |yes|   |yes| | | |
+|V-76703|   auto   |yes|   |yes| | | |
+|V-76737|   auto   |yes|   |yes| | | |
+|V-76727|   auto   |yes|   |yes| | | |
+|V-76713|   auto   |yes|   |yes| | | |
+|V-76753|   auto   |yes|   |yes| | | |
+|V-76767|   auto   |yes|   |yes| | | |
+|V-76685|  manual  |yes|   |yes| | | |
+|V-76695|   auto   |yes|   |yes| | | |
+|V-76743|   auto   |yes|   |yes| | | |
+|V-76763|  manual  |yes|   |yes| | | |
+|V-76681|   auto   |yes|   |yes| | | |
+|V-76757|   auto   |yes|   |yes| | | |
+|V-76747|   auto   |yes|   |yes| | | |
 
-|Control| 2. Describe  |  1. Auto/Manual (a/m)  |  4. Review-RDY  |  3. in-progress  |  5. Reviewed  |  6. Tested   |  7. Automated Unit Tests |
-|-------|-----------|-----------|-----------|-----------|-----------|-----------|------------|
-|V-76679|           |    yes    |    yes    |           |           |           |            |
-|V-76681|    yes    |           |    yes    |           |           |           |            |
-|V-76683|    yes    |           |    yes    |           |           |           |            |
-|V-76685|           |           |    yes    |           |           |           |            |
-|V-76687|    yes    |           |    yes    |           |           |           |            |
-|V-76689|    yes    |           |    yes    |           |           |           |            |
-|V-76695|    yes    |           |    yes    |           |           |           |            |
-|V-76697|    yes    |           |    yes    |           |           |           |            |
-|V-76699|           |    yes    |    yes    |           |           |           |            |
-|V-76701|    yes    |           |    yes    |           |           |           |            |
-|V-76703|    yes    |           |    yes    |           |           |           |            |
-|V-76705|    yes    |           |    yes    |           |           |           |            |
-|V-76707|           |           |    yes    |           |           |           |            |
-|V-76709|           |     yes   |    yes    |           |           |           |            |
-|V-76711|    yes    |           |    yes    |           |           |           |            |
-|V-76713|    yes    |           |    yes    |           |           |           |            |
-|V-76715|           |           |           |    yes    |           |           |            |
-|V-76717|           |           |           |    yes    |           |           |            |
-|V-76719|           |           |           |    yes    |           |           |            |
-|V-76721|           |    yes    |    yes    |           |           |           |            |
-|V-76725|    yes    |           |    yes    |           |           |           |            |
-|V-76727|    yes    |           |    yes    |           |           |           |            |
-|V-76729|           |    yes    |    yes    |           |           |           |            |
-|V-76731|    yes    |           |    yes    |           |           |           |            |
-|V-76733|    yes    |           |    yes    |           |           |           |            |
-|V-76735|           |           |           |    yes    |           |           |            |
-|V-76737|           |    yes    |    yes    |           |           |           |            |
-|V-76739|           |           |           |    yes    |           |           |            |
-|V-76741|           |           |           |    yes    |           |           |            |
-|V-76743|    yes    |           |    yes    |           |           |           |            |
-|V-76745|    yes    |           |    yes    |           |           |           |            |
-|V-76747|    yes    |           |    yes    |           |           |           |            |
-|V-76749|    yes    |           |    yes    |           |           |           |            |
-|V-76751|           |           |           |    yes    |           |           |            |
-|V-76753|    yes    |           |    yes    |           |           |           |            |
-|V-76755|    yes    |           |    yes    |           |           |           |            |
-|V-76757|    yes    |           |    yes    |           |           |           |            |
-|V-76759|    yes    |           |    yes    |           |           |           |            |
-|V-76761|    yes    |           |    yes    |           |           |           |            |
-|V-76763|           |           |           |    yes    |           |           |            |
-|V-76765|           |           |           |    yes    |           |           |            |
-|V-76767|    yes    |           |    yes    |           |           |           |            |
-|V-76769|    yes    |           |    yes    |           |           |           |            |
-|V-76771|    yes    |           |    yes    |           |           |           |            ||
- 
 Legend
 - Describe: Control has been evaluated and categorized as candidate for automated tests. Describe block has been written.
 - Auto/Manual: Control has been evaluated and categorized as candidate for type that needs a manual review. Describe block has been written.
