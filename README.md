@@ -107,7 +107,7 @@ $ inspec exec iis-server-baseline -t ssh://user@hostname -i /path/to/key --sudo 
 |V-76767|    yes    |           |    yes    |           |           |           |            |
 |V-76769|    yes    |           |    yes    |           |           |           |            |
 |V-76771|    yes    |           |    yes    |           |           |           |            ||
-
+ 
 Legend
 - Describe: Control has been evaluated and categorized as candidate for automated tests. Describe block has been written.
 - Auto/Manual: Control has been evaluated and categorized as candidate for type that needs a manual review. Describe block has been written.
