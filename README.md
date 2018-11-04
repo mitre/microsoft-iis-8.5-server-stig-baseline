@@ -8,6 +8,8 @@ This InSpec compliance profile is a collection of automated tests for secure con
 
 InSpec is an open-source run-time framework and rule language used to specify compliance, security, and policy requirements for testing any node in your infrastructure.
 
+see: https://iasecontent.disa.mil/stigs/zip/U_MS_IIS_8-5_Server_V1R5_STIG.zip
+
 ## Requirements
 
 - [ruby](https://www.ruby-lang.org/en/) version 2.4  or greater
