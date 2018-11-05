@@ -120,25 +120,5 @@ With a REG_DWORD value of \"1\" for \"DisabledByDefault\""
       expect(subject).to cmp("1")
     end
   end
-
-  # describe registry_key('HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.1\Client') do
-  #   its('DisabledByDefault') { should cmp "0" }
-  # end
-  #
-  # describe registry_key('HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client') do
-  #   its('DisabledByDefault') { should cmp "0" }
-  # end
-  #
-  # describe registry_key('HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.0\Client') do
-  #   its('DisabledByDefault') { should cmp "1" }
-  # end
-  #
-  # describe registry_key('HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\SSL 2.0\Client') do
-  #   its('DisabledByDefault') { should cmp "1" }
-  # end
-  #
-  # describe registry_key('HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\SSL 3.0\Client') do
-  #   its('DisabledByDefault') { should cmp "1" }
-  # end
 end
 
