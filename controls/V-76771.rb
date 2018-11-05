@@ -43,14 +43,26 @@ Double-click the “Authorization Rules” icon.
 Remove all users other than “Administrator”.
 
 "
-  describe command('Get-WebConfigurationProperty -pspath "MACHINE/WEBROOT/APPHOST" -filter "system.webServer/security/authentication/anonymousAuthentication" -Name enabled | select -expandProperty value').stdout.strip do
-    it {should cmp "false"}
+
+  describe "The IIS 8.5 web server must have a global authorization rule configured to restrict access to anonymousAuthentication." do
+    subject { command('Get-WebConfigurationProperty -pspath "MACHINE/WEBROOT/APPHOST" -filter "system.webServer/security/authentication/anonymousAuthentication" -Name enabled | select -expandProperty value').stdout.strip }
+    it "The anonymousAuthentication should be false" do
+      expect(subject).to cmp("false")
+    end
   end
-  describe command('Get-WebConfigurationProperty -pspath "MACHINE/WEBROOT/APPHOST" -filter "system.webServer/security/authentication/basicAuthentication" -Name enabled | select -expandProperty value').stdout.strip do
-    it {should cmp "true"}
+  describe "The IIS 8.5 web server must have a global authorization rule configured to restrict access to basicAuthentication." do
+    subject { command('Get-WebConfigurationProperty -pspath "MACHINE/WEBROOT/APPHOST" -filter "system.webServer/security/authentication/basicAuthentication" -Name enabled | select -expandProperty value').stdout.strip }
+    it "The basicAuthentication should be enabled" do
+      expect(subject).to cmp("true")
+    end
   end
-  describe command('Get-WebConfigurationProperty -pspath "MACHINE/WEBROOT/APPHOST" -filter "system.webServer/security/authentication/basicAuthentication" -Name defaultLogonDomain | select -expandProperty value').stdout.strip do
-    it {should cmp "Administrator"}
+  describe "The IIS 8.5 web server must have a global authorization rule configured to restrict access to basicAuthentication." do
+    subject { command('Get-WebConfigurationProperty -pspath "MACHINE/WEBROOT/APPHOST" -filter "system.webServer/security/authentication/basicAuthentication" -Name defaultLogonDomain | select -expandProperty value').stdout.strip }
+    it "The basicAuthentication defaultLogonDomain should be Administrator" do
+      expect(subject).to cmp("Administrator")
+    end
   end
 end
+
+
 
