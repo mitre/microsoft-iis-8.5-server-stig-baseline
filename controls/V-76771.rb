@@ -44,21 +44,25 @@ Remove all users other than “Administrator”.
 
 "
 
-  describe "The IIS 8.5 web server must have a global authorization rule configured to restrict access to anonymousAuthentication." do
+  anonymousAuthentication = command('Get-WebConfigurationProperty -pspath "MACHINE/WEBROOT/APPHOST" -filter "system.webServer/security/authentication/anonymousAuthentication" -Name enabled | select -expandProperty value').stdout.strip == "False"
+  basicAuthentication = command('Get-WebConfigurationProperty -pspath "MACHINE/WEBROOT/APPHOST" -filter "system.webServer/security/authentication/basicAuthentication" -Name enabled | select -expandProperty value').stdout.strip == "True"
+  defaultLogonDomain = command('Get-WebConfigurationProperty -pspath "MACHINE/WEBROOT/APPHOST" -filter "system.webServer/security/authentication/basicAuthentication" -Name defaultLogonDomain | select -expandProperty value').stdout.strip == "Administrator"
+
+  describe "The IIS 8.5 web server must have a global authorization rule configured to restrict access to anonymousAuthentication by disabling it. (currently: " + (anonymousAuthentication ? 'disabled' : 'enabled') + " )\n" do
     subject { command('Get-WebConfigurationProperty -pspath "MACHINE/WEBROOT/APPHOST" -filter "system.webServer/security/authentication/anonymousAuthentication" -Name enabled | select -expandProperty value').stdout.strip }
     it "The anonymousAuthentication should be false" do
       expect(subject).to cmp("false")
     end
   end
-  describe "The IIS 8.5 web server must have a global authorization rule configured to restrict access to basicAuthentication." do
+  describe "The IIS 8.5 web server must have a global authorization rule configured to restrict access to basicAuthentication, this attribute should be enabled. (currently: " + (basicAuthentication ? 'enabled' : 'disabled') + " )\n" do
     subject { command('Get-WebConfigurationProperty -pspath "MACHINE/WEBROOT/APPHOST" -filter "system.webServer/security/authentication/basicAuthentication" -Name enabled | select -expandProperty value').stdout.strip }
     it "The basicAuthentication should be enabled" do
       expect(subject).to cmp("true")
     end
   end
-  describe "The IIS 8.5 web server must have a global authorization rule configured to restrict access to basicAuthentication." do
+  describe "The IIS 8.5 web server must have a global authorization rule configured to restrict access to basicAuthentication attribute defaultLogonDomain, this attribute should be set to Administrator only. (currently: " + (defaultLogonDomain ? 'Administrator' : 'Other') + " )\n" do
     subject { command('Get-WebConfigurationProperty -pspath "MACHINE/WEBROOT/APPHOST" -filter "system.webServer/security/authentication/basicAuthentication" -Name defaultLogonDomain | select -expandProperty value').stdout.strip }
-    it "The basicAuthentication defaultLogonDomain should be Administrator" do
+    it "The basicAuthentication attribute defaultLogonDomain should be Administrator" do
       expect(subject).to cmp("Administrator")
     end
   end
