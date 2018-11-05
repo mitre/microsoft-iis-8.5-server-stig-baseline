@@ -1,6 +1,6 @@
 FILE_SYSTEM_OBJECT_COMPONENT= attribute(
     'file_system_object_component',
-    description: 'Name of Tomcat service',
+    description: 'File system object component should not be enabled unless otherwise stated',
     default: false
 )
 
