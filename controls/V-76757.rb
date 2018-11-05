@@ -51,8 +51,13 @@ Select \"True\" for the \"keepSessionIdSecure\" setting.
 
 Select \"Apply\" from the \"Actions\" pane."
 
-  describe command('Get-WebConfigurationProperty -pspath "MACHINE/WEBROOT/APPHOST" -filter "system.webServer/asp/session" -Name keepSessionIdSecure | select -expandProperty value').stdout.strip do
-    it {should cmp "true"}
+  keepSessionIdSecure = command('Get-WebConfigurationProperty -pspath "MACHINE/WEBROOT/APPHOST" -filter "system.webServer/asp/session" -Name keepSessionIdSecure | select -expandProperty value').stdout.strip == "True"
+
+  describe "IIS 8.5 web server session IDs must be sent to the client using TLS, this is performed by going to session and enabling the attribute keepSessionIdSecure. (currently: " + (keepSessionIdSecure ? 'enabled' : 'disabled') + " )\n" do
+    subject { command('Get-WebConfigurationProperty -pspath "MACHINE/WEBROOT/APPHOST" -filter "system.webServer/asp/session" -Name keepSessionIdSecure | select -expandProperty value').stdout.strip }
+    it "The keepSessionIdSecure attribute should be set to True" do
+      expect(subject).to cmp("true")
+    end
   end
 end
 
