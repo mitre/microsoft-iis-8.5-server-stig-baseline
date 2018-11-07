@@ -21,7 +21,7 @@ Other branches contain feature-specific updates.
 ### Tags
 Tags indicate official release of the project.
 
-Please note 0.x releases are works in progress and may change at any time.   
+Please note 0.x releases are works in progress (WIP) and may change at any time.   
 
 ## Requirements
 
