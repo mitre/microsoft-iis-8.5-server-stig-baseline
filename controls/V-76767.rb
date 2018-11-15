@@ -1,7 +1,7 @@
 FILE_SYSTEM_OBJECT_COMPONENT= attribute(
     'file_system_object_component',
-    description: 'Name of Tomcat service',
-    default: 'enabled'
+    description: 'File system object component should not be enabled unless otherwise stated',
+    default: false
 )
 
 control "V-76767" do
@@ -44,12 +44,23 @@ supporting documentation signed by the ISSO, this is not a finding."
   tag "fix": "Run the following command, with administrator privileges, to
 unregister the File System Object: regsvr32 scrrun.dll /u."
 
-  describe registry_key('HKEY_CLASSES_ROOT\CLSID\{0D43FE01-F093-11CF-8940-00A0C9054228}') do
-    if FILE_SYSTEM_OBJECT_COMPONENT == "enabled"
-      it {should exist}
+  scrunDllExists = registry_key('HKEY_CLASSES_ROOT\TypeLib\{420B2830-E718-11CF-893D-00A0C9054228}\1.0\0\win32').exist?
+  fileSysObjReg = registry_key('HKEY_CLASSES_ROOT\CLSID\{0D43FE01-F093-11CF-8940-00A0C9054228}')
+
+  describe "The File System Object " + (FILE_SYSTEM_OBJECT_COMPONENT ? 'should' : 'should not') + " be disabled on the IIS 8.5 web server (currently: " + (FILE_SYSTEM_OBJECT_COMPONENT ? 'enabled' : 'disabled') + " )" do
+    subject { fileSysObjReg }
+    if FILE_SYSTEM_OBJECT_COMPONENT
+      it { should exist }
     else
-      it{ should_not exist }
+      if scrunDllExists
+        it "The scrun.dll has not been removed so file system object registry key should not exist" do
+          expect(subject).not_to eq(fileSysObjReg)
+        end
+      else
+        it "The scrun.dll has been removed so file system object registry key is a dead registry" do
+          expect(subject).to eq(fileSysObjReg)
+        end
+      end
     end
   end
 end
-

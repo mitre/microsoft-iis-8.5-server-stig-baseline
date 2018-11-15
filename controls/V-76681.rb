@@ -8,7 +8,7 @@ control "V-76681" do
   title "The enhanced logging for the IIS 8.5 web server must be enabled and
 capture all user and web server events."
   desc  "Log files are a critical component to the successful management of an
-IS used within the DoD. By generating log files with useful information web
+ISS server used within the DoD. By generating log files with useful information web
 administrators can leverage them in the event of a disaster, malicious attack,
 or other site specific needs.
 

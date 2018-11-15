@@ -49,15 +49,27 @@ unspecified ISAPI modules\" check boxes.
 
 Click OK."
 
-  describe windows_feature('Web-ISAPI-Ext') do
-    it{ should be_installed }
-  end
+  isInstalledIsapiCGI = !command('Get-WindowsFeature Web-ISAPI-Ext | Where Installed').stdout.strip.nil?
+  notListedCgisAllowed = command('Get-WebConfigurationProperty -pspath "MACHINE/WEBROOT/APPHOST" -filter "system.webServer/security/isapiCgiRestriction" -Name notListedCgisAllowed | select -expandProperty value').stdout.strip == "False"
+  notListedIsapisAllowed = command('Get-WebConfigurationProperty -pspath "MACHINE/WEBROOT/APPHOST" -filter "system.webServer/security/isapiCgiRestriction" -Name notListedIsapisAllowed | select -expandProperty value').stdout.strip == "False"
 
-  describe command('Get-WebConfigurationProperty -pspath "MACHINE/WEBROOT/APPHOST" -filter "system.webServer/security/isapiCgiRestriction" -Name notListedCgisAllowed | select -expandProperty value').stdout.strip do
-    it {should cmp "False"}
+  describe "The ISAPI and CGI restrictions feature must be installed. (currently: " + (isInstalledIsapiCGI ? 'installed' : 'uninstalled') + " )\n" do
+    subject { windows_feature('Web-ISAPI-Ext') }
+    it "The ISAPI and CGI restrictions should be installed" do
+      expect(subject).to be_installed
+    end
   end
-  describe command('Get-WebConfigurationProperty -pspath "MACHINE/WEBROOT/APPHOST" -filter "system.webServer/security/isapiCgiRestriction" -Name notListedIsapisAllowed | select -expandProperty value').stdout.strip do
-    it {should cmp "False"}
+  describe "The ISAPI and CGI restrictions for notListedCgisAllowed must not be enabled. (currently: " + (notListedCgisAllowed ? 'disabled' : 'enabled') + " )\n" do
+    subject { command('Get-WebConfigurationProperty -pspath "MACHINE/WEBROOT/APPHOST" -filter "system.webServer/security/isapiCgiRestriction" -Name notListedCgisAllowed | select -expandProperty value').stdout.strip }
+    it "The ISAPI and CGI restrictions attribute notListedCgisAllowed should not be checked" do
+      expect(subject).to cmp("False")
+    end
+  end
+  describe "The ISAPI and CGI restrictions for notListedIsapisAllowed must not be enabled. (currently: " + (notListedIsapisAllowed ? 'disabled' : 'enabled') + " )\n" do
+    subject { command('Get-WebConfigurationProperty -pspath "MACHINE/WEBROOT/APPHOST" -filter "system.webServer/security/isapiCgiRestriction" -Name notListedIsapisAllowed | select -expandProperty value').stdout.strip }
+    it "The ISAPI and CGI restrictions attribute notListedIsapisAllowed should not be checked" do
+      expect(subject).to cmp("False")
+    end
   end
 
 end

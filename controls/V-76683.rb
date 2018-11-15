@@ -13,7 +13,6 @@ ability to use standard query tools, or create custom tools, for viewing
 real-time logging information in ETW. This provides a significant advantage
 over parsing text-based log files that are not updated in real time.
 
-
   "
   impact 0.7
   tag "gtitle": "SRG-APP-000092-WSR-000055"
