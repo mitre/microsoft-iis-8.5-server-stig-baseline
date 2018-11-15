@@ -63,7 +63,7 @@ Get-ChildItem IIS:SSLBindings `
 	}
 }').stdout.strip.split("\r\n")
 
-  CertList_Issuer = command('Import-Module -Name WebAdministration;
+  CertList_NotExpired_Issuer = command('Import-Module -Name WebAdministration;
 Get-ChildItem IIS:SSLBindings `
 | select -expand store `
 | ForEach-Object -Process `
