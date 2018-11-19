@@ -2,7 +2,7 @@
 |----------------|-----------------------------------------------------------------------------------|-----|-----------------|-----------|
 |Logical checks| Proper profile directory structure							|Alicia Sturtevant|*|*|
 ||JSON output review (e.g., pass/fail on ,<br>hardened, not hardened, edge cases, etc.)|*|*|*|
-||InSpec syntax checker|Alicia Sturtevant|*|*|
+||InSpec syntax checker|Alicia Sturtevant|*|Issue #16|
 ||Local commands focused on target not the runner|*|*|*|
 |Quality checks|Alignment (including tagging) to original<br> standard (i.e. STIG, CIS Benchmark, NIST Tags)|Alicia Sturtevant|*|*|
 ||Descriptive output for findings details|Alicia Sturtevant|*|Issue #15|
