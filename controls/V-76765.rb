@@ -1,21 +1,21 @@
 control "V-76765" do
   title "All accounts installed with the IIS 8.5 web server software and tools
-must have passwords assigned and default passwords changed."
+  must have passwords assigned and default passwords changed."
   desc  "During installation of the web server software, accounts are created
-for the web server to operate properly. The accounts installed can have either
-no password installed or a default password, which will be known and documented
-by the vendor and the user community.
+  for the web server to operate properly. The accounts installed can have either
+  no password installed or a default password, which will be known and documented
+  by the vendor and the user community.
 
-    The first things an attacker will try when presented with a logon screen
-are the default user identifiers with default passwords. Installed applications
-may also install accounts with no password, making the logon even easier. Once
-the web server is installed, the passwords for any created accounts should be
-changed and documented. The new passwords must meet the requirements for all
-passwords, i.e., upper/lower characters, numbers, special characters, time
-until change, reuse policy, etc.
+      The first things an attacker will try when presented with a logon screen
+  are the default user identifiers with default passwords. Installed applications
+  may also install accounts with no password, making the logon even easier. Once
+  the web server is installed, the passwords for any created accounts should be
+  changed and documented. The new passwords must meet the requirements for all
+  passwords, i.e., upper/lower characters, numbers, special characters, time
+  until change, reuse policy, etc.
 
-    Service accounts or system accounts that have no logon capability do not
-need to have passwords set or changed.
+      Service accounts or system accounts that have no logon capability do not
+  need to have passwords set or changed.
   "
   impact 0.7
   tag "gtitle": "SRG-APP-000516-WSR-000079"
@@ -37,29 +37,28 @@ need to have passwords set or changed.
   tag "ia_controls": nil
   tag "check": "Access the IIS 8.5 web server.
 
-Access Apps menu. Under Administrative Tools, select Computer Management.
+  Access Apps menu. Under Administrative Tools, select Computer Management.
 
-In left pane, expand \"Local Users and Groups\" and click on \"Users\".
+  In left pane, expand \"Local Users and Groups\" and click on \"Users\".
 
-Review the local users listed in the middle pane.
+  Review the local users listed in the middle pane.
 
-If any local accounts are present and are used by IIS 8.5 verify with System
-Administrator that default passwords have been changed.
+  If any local accounts are present and are used by IIS 8.5 verify with System
+  Administrator that default passwords have been changed.
 
-If passwords have not been changed from the default, this is a finding."
+  If passwords have not been changed from the default, this is a finding."
   tag "fix": "Access the IIS 8.5 web server.
 
-Access Apps menu. Under Administrative Tools, select Computer Management.
+  Access Apps menu. Under Administrative Tools, select Computer Management.
 
-In left pane, expand \"Local Users and Groups\" and click on \"Users\".
+  In left pane, expand \"Local Users and Groups\" and click on \"Users\".
 
-Change passwords for any local accounts are present and are used by IIS 8.5
-verify with System Administrator that default passwords have been changed.
+  Change passwords for any local accounts are present and are used by IIS 8.5
+  verify with System Administrator that default passwords have been changed.
 
-Develop an internal process for changing passwords on a regular basis."
+  Develop an internal process for changing passwords on a regular basis."
 
   describe 'This test currently has no automated tests, you must check manually' do
     skip 'This check must be preformed manually'
   end
 end
-

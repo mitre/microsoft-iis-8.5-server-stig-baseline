@@ -6,13 +6,13 @@ FILE_SYSTEM_OBJECT_COMPONENT= attribute(
 
 control "V-76767" do
   title "The File System Object component must be disabled on the IIS 8.5 web
-server."
+  server."
   desc  "Some Component Object Model (COM) components are not required for most
-applications and should be removed if possible. Most notably, consider
-disabling the File System Object component; however, this will also remove the
-Dictionary object. Be aware some programs may require this component (e.g.,
-Commerce Server), so it is highly recommended this be tested completely before
-implementing on the production web server."
+  applications and should be removed if possible. Most notably, consider
+  disabling the File System Object component; however, this will also remove the
+  Dictionary object. Be aware some programs may require this component (e.g.,
+  Commerce Server), so it is highly recommended this be tested completely before
+  implementing on the production web server."
   impact 0.7
   tag "gtitle": "SRG-APP-000516-WSR-000174"
   tag "gid": "V-76767"
@@ -32,17 +32,17 @@ implementing on the production web server."
   tag "responsibility": nil
   tag "ia_controls": nil
   tag "check": "Locate the
-HKEY_CLASSES_ROOT\\CLSID\\{0D43FE01-F093-11CF-8940-00A0C9054228} registry key.
+  HKEY_CLASSES_ROOT\\CLSID\\{0D43FE01-F093-11CF-8940-00A0C9054228} registry key.
 
-If the key exist, the File System Object component is enabled.
+  If the key exist, the File System Object component is enabled.
 
-If the File System Object component is enabled and is not required for
-operations, this is a finding.
+  If the File System Object component is enabled and is not required for
+  operations, this is a finding.
 
-Note: If the File System Object component is required for operations and has
-supporting documentation signed by the ISSO, this is not a finding."
+  Note: If the File System Object component is required for operations and has
+  supporting documentation signed by the ISSO, this is not a finding."
   tag "fix": "Run the following command, with administrator privileges, to
-unregister the File System Object: regsvr32 scrrun.dll /u."
+  unregister the File System Object: regsvr32 scrrun.dll /u."
 
   scrunDllExists = registry_key('HKEY_CLASSES_ROOT\TypeLib\{420B2830-E718-11CF-893D-00A0C9054228}\1.0\0\win32').exist?
   fileSysObjReg = registry_key('HKEY_CLASSES_ROOT\CLSID\{0D43FE01-F093-11CF-8940-00A0C9054228}')
@@ -54,8 +54,8 @@ unregister the File System Object: regsvr32 scrrun.dll /u."
     else
       if scrunDllExists
         it "The scrun.dll has not been removed so file system object registry key should not exist" do
-          expect(subject).not_to eq(fileSysObjReg)
-        end
+        expect(subject).not_to eq(fileSysObjReg)
+      end
       else
         it "The scrun.dll has been removed so file system object registry key is a dead registry" do
           expect(subject).to eq(fileSysObjReg)

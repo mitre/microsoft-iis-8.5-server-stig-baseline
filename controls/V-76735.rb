@@ -1,9 +1,9 @@
 control "V-76735" do
   title "The IIS 8.5 web server Indexing must only index web content."
   desc  "The indexing service can be used to facilitate a search function for
-websites. Enabling indexing may facilitate a directory traversal exploit and
-reveal unwanted information to a malicious user. Indexing must be limited to
-web document directories only."
+  websites. Enabling indexing may facilitate a directory traversal exploit and
+  reveal unwanted information to a malicious user. Indexing must be limited to
+  web document directories only."
   impact 0.7
   tag "gtitle": "SRG-APP-000266-WSR-000142"
   tag "gid": "V-76735"
@@ -24,22 +24,22 @@ web document directories only."
   tag "ia_controls": nil
   tag "check": "Access the IIS 8.5 Web Server.
 
-Access an administrator command prompt and type \"regedit <enter>\" to access
-the server's registry.
+  Access an administrator command prompt and type \"regedit <enter>\" to access
+  the server's registry.
 
-Navigate to
-KEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\ContentIndex\\Catalogs\\.
+  Navigate to
+  KEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\ContentIndex\\Catalogs\\.
 
-If this key exists then indexing is enabled; if the key does not exist then
-this check is Not Applicable.
+  If this key exists then indexing is enabled; if the key does not exist then
+  this check is Not Applicable.
 
-Review the Catalogs keys to determine if directories other than web document
-directories are being indexed. If so, this is a finding."
+  Review the Catalogs keys to determine if directories other than web document
+  directories are being indexed. If so, this is a finding."
   tag "fix": "Run MMC.
 
-Add the Indexing Service snap-in.
+  Add the Indexing Service snap-in.
 
-Edit the indexed directories to only include web document directories."
+  Edit the indexed directories to only include web document directories."
 
   unless registry_key('HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\ContentIndex\Catalogs').nil?
     describe registry_key('HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\ContentIndex\Catalogs') do
@@ -47,4 +47,3 @@ Edit the indexed directories to only include web document directories."
     end
   end
 end
-

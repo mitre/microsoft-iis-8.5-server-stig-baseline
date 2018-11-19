@@ -26,41 +26,40 @@ communication channel must be used."
   tag "responsibility": nil
   tag "ia_controls": nil
   tag "check": "If web administration is performed at the console, this check
-is Not Applicable.
+  is Not Applicable.
 
-If web administration is performed remotely the following checks will apply.
+  If web administration is performed remotely the following checks will apply.
 
-If administration of the server is performed remotely, it will only be
-performed securely by system administrators.
+  If administration of the server is performed remotely, it will only be
+  performed securely by system administrators.
 
-If website administration or web application administration has been delegated,
-those users will be documented and approved by the ISSO.
+  If website administration or web application administration has been delegated,
+  those users will be documented and approved by the ISSO.
 
-Remote administration must be in compliance with any requirements contained
-within the Windows Server STIGs, and any applicable network STIGs.
+  Remote administration must be in compliance with any requirements contained
+  within the Windows Server STIGs, and any applicable network STIGs.
 
-Remote administration of any kind will be restricted to documented and
-authorized personnel.
+  Remote administration of any kind will be restricted to documented and
+  authorized personnel.
 
-All users performing remote administration must be authenticated.
+  All users performing remote administration must be authenticated.
 
-All remote sessions will be encrypted and they will utilize FIPS 140-2-approved
-protocols.
+  All remote sessions will be encrypted and they will utilize FIPS 140-2-approved
+  protocols.
 
-FIPS 140-2-approved TLS versions include TLS V1.1 or greater.
+  FIPS 140-2-approved TLS versions include TLS V1.1 or greater.
 
-Review with site management how remote administration, if applicable, is
-configured on the website.
+  Review with site management how remote administration, if applicable, is
+  configured on the website.
 
-If remote management meets the criteria listed above, this is not a finding.
+  If remote management meets the criteria listed above, this is not a finding.
 
-If remote management is utilized and does not meet the criteria listed above,
-this is a finding."
+  If remote management is utilized and does not meet the criteria listed above,
+  this is a finding."
   tag "fix": "Ensure the web server administration is only performed over a
-secure path."
+  secure path."
 
   describe 'This test currently has no automated tests, you must check manually' do
     skip 'This check must be preformed manually'
   end
 end
-

@@ -16,14 +16,14 @@ Package Management Preview - x64'
 
 control "V-76701" do
   title "The IIS 8.5 web server must only contain functions necessary for
-operation."
+  operation."
   desc  "A web server can provide many features, services, and processes. Some
-of these may be deemed unnecessary or too unsecure to run on a production DoD
-system.
+  of these may be deemed unnecessary or too unsecure to run on a production DoD
+  system.
 
-    The web server must provide the capability to disable, uninstall, or
-deactivate functionality and services that are deemed to be non-essential to
-the web server mission or can adversely impact server performance.
+      The web server must provide the capability to disable, uninstall, or
+  deactivate functionality and services that are deemed to be non-essential to
+  the web server mission or can adversely impact server performance.
   "
   impact 0.7
   tag "gtitle": "SRG-APP-000141-WSR-000075"
@@ -45,19 +45,19 @@ the web server mission or can adversely impact server performance.
   tag "ia_controls": nil
   tag "check": "Click on “Start”.
 
-Open Control Panel.
+  Open Control Panel.
 
-Click on “Programs”.
+  Click on “Programs”.
 
-Click on “Programs and Features”.
+  Click on “Programs and Features”.
 
-Review the installed programs, if any programs are installed other than those
-required for the IIS 8.5 web services, this is a finding.
+  Review the installed programs, if any programs are installed other than those
+  required for the IIS 8.5 web services, this is a finding.
 
-Note: If additional software is needed supporting documentation must be signed
-by the ISSO."
+  Note: If additional software is needed supporting documentation must be signed
+  by the ISSO."
   tag "fix": "Remove all unapproved programs and roles from the production IIS
-8.5 web server."
+  8.5 web server."
   installed_software = command('Get-ItemProperty -Path "HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\*" | select -expand DisplayName ').stdout.strip.split('\n')
   installed_software_count = command('Get-ItemProperty -Path "HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\*" | select -ExpandProperty DisplayName | Measure-Object -Line | Select -expand Lines ').stdout.strip
   #  $Objs = @()

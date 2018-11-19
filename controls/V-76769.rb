@@ -1,10 +1,10 @@
 control "V-76769" do
   title "Unspecified file extensions on a production IIS 8.5 web server must be
-removed."
+  removed."
   desc  "By allowing unspecified file extensions to execute, the web servers
-attack surface is significantly increased. This increased risk can be reduced
-by only allowing specific ISAPI extensions or CGI extensions to run on the web
-server."
+  attack surface is significantly increased. This increased risk can be reduced
+  by only allowing specific ISAPI extensions or CGI extensions to run on the web
+  server."
   impact 0.7
   tag "gtitle": "SRG-APP-000516-WSR-000174"
   tag "gid": "V-76769"
@@ -25,29 +25,29 @@ server."
   tag "ia_controls": nil
   tag "check": "Open the IIS 8.5 Manager.
 
-Click the IIS 8.5 web server name.
+  Click the IIS 8.5 web server name.
 
-Double-click the \"ISAPI and CGI restrictions\" icon.
+  Double-click the \"ISAPI and CGI restrictions\" icon.
 
-Click “Edit Feature Settings\".
+  Click “Edit Feature Settings\".
 
-Verify the \"Allow unspecified CGI modules\" and the \"Allow unspecified ISAPI
-modules\" check boxes are NOT checked.
+  Verify the \"Allow unspecified CGI modules\" and the \"Allow unspecified ISAPI
+  modules\" check boxes are NOT checked.
 
-If either or both of the \"Allow unspecified CGI modules\" and the \"Allow
-unspecified ISAPI modules\" check boxes are checked, this is a finding."
+  If either or both of the \"Allow unspecified CGI modules\" and the \"Allow
+  unspecified ISAPI modules\" check boxes are checked, this is a finding."
   tag "fix": "Open the IIS 8.5 Manager.
 
-Click the IIS 8.5 web server name.
+  Click the IIS 8.5 web server name.
 
-Double-click the \"ISAPI and CGI restrictions\" icon.
+  Double-click the \"ISAPI and CGI restrictions\" icon.
 
-Click \"Edit Feature Settings\".
+  Click \"Edit Feature Settings\".
 
-Remove the check from the \"Allow unspecified CGI modules\" and the \"Allow
-unspecified ISAPI modules\" check boxes.
+  Remove the check from the \"Allow unspecified CGI modules\" and the \"Allow
+  unspecified ISAPI modules\" check boxes.
 
-Click OK."
+  Click OK."
 
   isInstalledIsapiCGI = !command('Get-WindowsFeature Web-ISAPI-Ext | Where Installed').stdout.strip.nil?
   notListedCgisAllowed = command('Get-WebConfigurationProperty -pspath "MACHINE/WEBROOT/APPHOST" -filter "system.webServer/security/isapiCgiRestriction" -Name notListedCgisAllowed | select -expandProperty value').stdout.strip == "False"
@@ -71,6 +71,4 @@ Click OK."
       expect(subject).to cmp("False")
     end
   end
-
 end
-

@@ -1,14 +1,14 @@
 control "V-76761" do
   title "A web server must maintain the confidentiality of controlled
-information during transmission through the use of an approved TLS version."
+  information during transmission through the use of an approved TLS version."
   desc  "Transport Layer Security (TLS) is a required transmission protocol for
-a web server hosting controlled information. The use of TLS provides
-confidentiality of data in transit between the web server and client. FIPS
-140-2-approved TLS versions must be enabled and non-FIPS-approved SSL versions
-must be disabled.
+  a web server hosting controlled information. The use of TLS provides
+  confidentiality of data in transit between the web server and client. FIPS
+  140-2-approved TLS versions must be enabled and non-FIPS-approved SSL versions
+  must be disabled.
 
-    NIST SP 800-52 defines the approved TLS versions for government
-applications.
+      NIST SP 800-52 defines the approved TLS versions for government
+  applications.
   "
   impact 0.7
   tag "gtitle": "SRG-APP-000439-WSR-000156"
@@ -29,12 +29,12 @@ applications.
   tag "responsibility": nil
   tag "ia_controls": nil
   tag "check": "Review the web server documentation and deployed configuration
-to determine which version of TLS is being used.
+  to determine which version of TLS is being used.
 
-If the TLS version is not TLS 1.1 or higher, according to NIST SP 800-52, or if
-non-FIPS-approved algorithms are enabled, this is a finding."
+  If the TLS version is not TLS 1.1 or higher, according to NIST SP 800-52, or if
+  non-FIPS-approved algorithms are enabled, this is a finding."
   tag "fix": "Configure the web server to use an approved TLS version according
-to NIST SP 800-52 and to disable all non-approved versions."
+  to NIST SP 800-52 and to disable all non-approved versions."
 
   tls1_1Enabled = registry_key('HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.1\Client').Enabled
   tls1_2Enabled = registry_key('HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client').Enabled
@@ -54,4 +54,3 @@ to NIST SP 800-52 and to disable all non-approved versions."
     end
   end
 end
-

@@ -25,25 +25,24 @@ disclosing sensitive content is increased."
   tag "ia_controls": nil
   tag "check": "Open the IIS 8.5 Manager.
 
-Click the IIS 8.5 web server name.
+  Click the IIS 8.5 web server name.
 
-Double-click the \"Directory Browsing\" icon.
+  Double-click the \"Directory Browsing\" icon.
 
-Under the “Actions” pane verify \"Directory Browsing\" is disabled.
+  Under the “Actions” pane verify \"Directory Browsing\" is disabled.
 
-If “Directory Browsing” is not disabled, this is a finding."
+  If “Directory Browsing” is not disabled, this is a finding."
   tag "fix": "Open the IIS 8.5 Manager.
 
-Click the IIS 8.5 web server name.
+  Click the IIS 8.5 web server name.
 
-Double-click the \"Directory Browsing\" icon.
+  Double-click the \"Directory Browsing\" icon.
 
-Under the \"Actions\" pane click \"Disabled\".
+  Under the \"Actions\" pane click \"Disabled\".
 
-Under the \"Actions\" pane, click \"Apply\"."
+  Under the \"Actions\" pane, click \"Apply\"."
 
   describe command("Get-WebConfigurationProperty -pspath \"MACHINE/WEBROOT/APPHOST\" -filter \"system.webServer/directoryBrowse\" -Name enabled | select -expandProperty value").stdout.strip do
     it {should cmp "False"}
   end
 end
-

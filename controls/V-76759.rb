@@ -1,15 +1,15 @@
 control "V-76759" do
   title "An IIS 8.5 web server must maintain the confidentiality of controlled
-information during transmission through the use of an approved TLS version."
+  information during transmission through the use of an approved TLS version."
   desc  "Transport Layer Security (TLS) encryption is a required security
-setting for a private web server. Encryption of private information is
-essential to ensuring data confidentiality. If private information is not
-encrypted, it can be intercepted and easily read by an unauthorized party. A
-private web server must use a FIPS 140-2-approved TLS version, and all
-non-FIPS-approved SSL versions must be disabled.
+  setting for a private web server. Encryption of private information is
+  essential to ensuring data confidentiality. If private information is not
+  encrypted, it can be intercepted and easily read by an unauthorized party. A
+  private web server must use a FIPS 140-2-approved TLS version, and all
+  non-FIPS-approved SSL versions must be disabled.
 
-    FIPS 140-2-approved TLS versions include TLS V1.1 or greater. NIST SP
-800-52 specifies the preferred configurations for government systems.
+      FIPS 140-2-approved TLS versions include TLS V1.1 or greater. NIST SP
+  800-52 specifies the preferred configurations for government systems.
   "
   impact 0.7
   tag "gtitle": "SRG-APP-000439-WSR-000156"
@@ -31,58 +31,58 @@ non-FIPS-approved SSL versions must be disabled.
   tag "ia_controls": nil
   tag "check": "Access the IIS 8.5 Web Server.
 
-Access an administrator command prompt and type \"regedit <enter>\" to access
-the server's registry.
+  Access an administrator command prompt and type \"regedit <enter>\" to access
+  the server's registry.
 
-Navigate to:
-HKLM\\SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\SCHANNEL\\Protocols\\TLS
-1.1\\Server
+  Navigate to:
+  HKLM\\SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\SCHANNEL\\Protocols\\TLS
+  1.1\\Server
 
-HKLM\\SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\SCHANNEL\\Protocols\\TLS
-1.2\\Server
+  HKLM\\SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\SCHANNEL\\Protocols\\TLS
+  1.2\\Server
 
-Verify a REG_DWORD value of \"0\" for \"DisabledByDefault\"
+  Verify a REG_DWORD value of \"0\" for \"DisabledByDefault\"
 
-Navigate to:
-HKLM\\SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\SCHANNEL\\Protocols\\TLS
-1.0\\Server
+  Navigate to:
+  HKLM\\SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\SCHANNEL\\Protocols\\TLS
+  1.0\\Server
 
-HKLM\\SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\SCHANNEL\\Protocols\\SSL
-2.0\\Server
+  HKLM\\SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\SCHANNEL\\Protocols\\SSL
+  2.0\\Server
 
-HKLM\\SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\SCHANNEL\\Protocols\\SSL
-3.0\\Server
+  HKLM\\SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\SCHANNEL\\Protocols\\SSL
+  3.0\\Server
 
-Verify a REG_DWORD value of \"1\" for \"DisabledByDefault\"
+  Verify a REG_DWORD value of \"1\" for \"DisabledByDefault\"
 
-If any of the respective registry paths are not existent or configured with the
-wrong value, this is a finding."
+  If any of the respective registry paths are not existent or configured with the
+  wrong value, this is a finding."
   tag "fix": "Access the IIS 8.5 Web Server.
 
-Access an administrator command prompt and type \"regedit <enter>\" to access
-the server's registry.
+  Access an administrator command prompt and type \"regedit <enter>\" to access
+  the server's registry.
 
-Navigate to the following registry paths and configure the
-\"DisabledByDefault\" REG_DWORD with the appropriate values:
+  Navigate to the following registry paths and configure the
+  \"DisabledByDefault\" REG_DWORD with the appropriate values:
 
-HKLM\\SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\SCHANNEL\\Protocols\\TLS
-1.1\\Server
+  HKLM\\SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\SCHANNEL\\Protocols\\TLS
+  1.1\\Server
 
-HKLM\\SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\SCHANNEL\\Protocols\\TLS
-1.2\\Server
+  HKLM\\SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\SCHANNEL\\Protocols\\TLS
+  1.2\\Server
 
-With a REG_DWORD value of \"0\" for \"DisabledByDefault\"
+  With a REG_DWORD value of \"0\" for \"DisabledByDefault\"
 
-HKLM\\SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\SCHANNEL\\Protocols\\TLS
-1.0\\Server
+  HKLM\\SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\SCHANNEL\\Protocols\\TLS
+  1.0\\Server
 
-HKLM\\SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\SCHANNEL\\Protocols\\SSL
-2.0\\Server
+  HKLM\\SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\SCHANNEL\\Protocols\\SSL
+  2.0\\Server
 
-HKLM\\SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\SCHANNEL\\Protocols\\SSL
-3.0\\Server
+  HKLM\\SYSTEM\\CurrentControlSet\\Control\\SecurityProviders\\SCHANNEL\\Protocols\\SSL
+  3.0\\Server
 
-With a REG_DWORD value of \"1\" for \"DisabledByDefault\""
+  With a REG_DWORD value of \"1\" for \"DisabledByDefault\""
 
   tls1_1Disabled = registry_key('HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.1\Client').DisabledByDefault == 0
   tls1_2Disabled = registry_key('HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client').DisabledByDefault == 0
@@ -121,4 +121,3 @@ With a REG_DWORD value of \"1\" for \"DisabledByDefault\""
     end
   end
 end
-

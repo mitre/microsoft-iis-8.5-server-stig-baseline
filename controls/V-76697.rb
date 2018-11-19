@@ -1,11 +1,11 @@
 control "V-76697" do
   title "The log data and records from the IIS 8.5 web server must be backed up
-onto a different system or media."
+  onto a different system or media."
   desc  "Protection of log data includes assuring log data is not accidentally
-lost or deleted. Backing up log records to an unrelated system or onto separate
-media than the system the web server is actually running on helps to assure
-that, in the event of a catastrophic system failure, the log records will be
-retained."
+  lost or deleted. Backing up log records to an unrelated system or onto separate
+  media than the system the web server is actually running on helps to assure
+  that, in the event of a catastrophic system failure, the log records will be
+  retained."
   impact 0.7
   tag "gtitle": "SRG-APP-000125-WSR-000071"
   tag "gid": "V-76697"
@@ -25,31 +25,31 @@ retained."
   tag "responsibility": nil
   tag "ia_controls": nil
   tag "check": "The IIS 8.5 web server and website log files should be backed
-up by the system backup.
+  up by the system backup.
 
-To determine if log files are backed up by the system backup, determine the
-location of the web server log files and each website's log files.
+  To determine if log files are backed up by the system backup, determine the
+  location of the web server log files and each website's log files.
 
-Open the IIS 8.5 Manager.
+  Open the IIS 8.5 Manager.
 
-Click the IIS 8.5 server name.
+  Click the IIS 8.5 server name.
 
-Click the \"Logging\" icon.
+  Click the \"Logging\" icon.
 
-Under \"Log File\" >> \"Directory\" obtain the path of the log file.
+  Under \"Log File\" >> \"Directory\" obtain the path of the log file.
 
-Once all locations are known, consult with the System Administrator to review
-the server's backup procedure and policy.
+  Once all locations are known, consult with the System Administrator to review
+  the server's backup procedure and policy.
 
-Verify the paths of all log files are part of the system backup.
-Verify log files are backed up to an unrelated system or onto separate media
-than the system the web server is running on.
+  Verify the paths of all log files are part of the system backup.
+  Verify log files are backed up to an unrelated system or onto separate media
+  than the system the web server is running on.
 
-If the paths of all log files are not part of the system backup and/or not
-backed up to a separate media, this is a finding.
-"
+  If the paths of all log files are not part of the system backup and/or not
+  backed up to a separate media, this is a finding.
+  "
   tag "fix": "Configure system backups to include the directory paths of all
-IIS 8.5 web server and website log files."
+  IIS 8.5 web server and website log files."
   describe windows_feature('Web-Server') do
     it{ should be_installed }
   end
@@ -59,6 +59,4 @@ IIS 8.5 web server and website log files."
   describe windows_feature('Web-Common-Http') do
     it{ should be_installed }
   end
-
 end
-
