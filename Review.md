@@ -9,7 +9,7 @@
 ||Documentation quality (i.e. README)<br> novice level instructions including prerequisites|*|*|*|
 ||Consistency across other profile conventions |*|*|*|
 ||Spelling grammar|Alicia Sturtevant|*|*|
-||Removing debugging documentation and code|*|*|*|
+||Removing debugging documentation and code|Alicia Sturtevant|*|*|
 | Error handling |“Profile Error” containment: “null” responses <br>should only happen if InSpec is run with incorrect privileges|*|*|*|
 ||Slowing the target (e.g. filling up disk, CPU spikes)|*|*|*|
 ||Check for risky commands (e.g. rm, del, purge, etc.)|*|*|*|
