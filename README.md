@@ -10,6 +10,19 @@ InSpec is an open-source run-time framework and rule language used to specify co
 
 see: https://iasecontent.disa.mil/stigs/zip/U_MS_IIS_8-5_Server_V1R5_STIG.zip
 
+## Versioning and State of Development
+This project uses the [Semantic Versioning Policy](https://semver.org/). 
+
+### Branches
+The master branch contains the latest version of the software leading up to a new release. 
+
+Other branches contain feature-specific updates. 
+
+### Tags
+Tags indicate official releases of the project.
+
+Please note 0.x releases are works in progress (WIP) and may change at any time.   
+
 ## Requirements
 
 - [ruby](https://www.ruby-lang.org/en/) version 2.4  or greater

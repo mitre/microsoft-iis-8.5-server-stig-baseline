@@ -63,6 +63,7 @@ control "V-76715" do
   	}
   }').stdout.strip.split("\r\n")
 
+<<<<<<< HEAD
   CertList_Issuer = command('Import-Module -Name WebAdministration;
   Get-ChildItem IIS:SSLBindings `
   | select -expand store `
@@ -78,6 +79,23 @@ control "V-76715" do
   		 Write-Output  "$subject issued by $issuer will expire on  $expirationDate "
   	}
   }').stdout.strip.split("\r\n")
+=======
+  CertList_NotExpired_Issuer = command('Import-Module -Name WebAdministration;
+Get-ChildItem IIS:SSLBindings `
+| select -expand store `
+| ForEach-Object -Process `
+{
+	$DaysToExpiration = 0
+	$expirationDate = (Get-Date).AddDays($DaysToExpiration)
+	$cert = Get-ChildItem CERT:LocalMachine/$_
+	if (($cert.EnhancedKeyUsageList | select -expand FriendlyName) -eq "Server Authentication") {
+    $expirationDate = $cert.NotAfter
+		if ($cert.Subject -match "=") {$subject = $cert.Subject.split("=")[1]} else {$subject = $cert.Subject}
+    if ($cert.Issuer -match "C=") {$issuer = $cert.Issuer -match  ".*\s+C=(\S+)"; $issuer = $matches[1]} else {$issuer = "unknown"}
+		 Write-Output  "$subject issued by $issuer will expire on  $expirationDate "
+	}
+}').stdout.strip.split("\r\n")
+>>>>>>> 0de6f972d0cf94f8f466c57538fa0399220bcb82
 
   #describe "Number of Expired Certificates used by IIS   "  do
   #  subject { CertList_Expired }

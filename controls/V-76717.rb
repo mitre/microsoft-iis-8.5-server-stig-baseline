@@ -45,7 +45,6 @@ control "V-76717" do
   tag "fix": "Remove all files from the web server with both .java and .jpp
   extensions."
 
-  # Needs to be improved, takes too long to do a file system search
   describe command('Get-Childitem –Path C:\ -Include *.java,*.jpp -File -Recurse -ErrorAction SilentlyContinue').stdout.strip do
     it {should cmp ''}
   end
