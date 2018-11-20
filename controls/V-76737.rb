@@ -47,7 +47,10 @@ control "V-76737" do
   Set each error message to “Detailed errors for local requests and custom error
   pages for remote requests”."
 
-  describe command("Get-WebConfigurationProperty -pspath \"MACHINE/WEBROOT/APPHOST\" -filter \"system.webServer/httpErrors\" -Name errorMode").stdout.strip do
-    it {should cmp "DetailedLocalOnly"}
+  errorMode = command("Get-WebConfigurationProperty -filter \"system.webServer/httpErrors\" -Name errorMode").stdout.strip
+
+  describe "The websites error mode" do
+     subject { errorMode }
+     it {should cmp "DetailedLocalOnly"}
   end
 end

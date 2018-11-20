@@ -63,7 +63,7 @@ control "V-76715" do
   	}
   }').stdout.strip.split("\r\n")
 
-<<<<<<< HEAD
+
   CertList_Issuer = command('Import-Module -Name WebAdministration;
   Get-ChildItem IIS:SSLBindings `
   | select -expand store `
@@ -79,7 +79,7 @@ control "V-76715" do
   		 Write-Output  "$subject issued by $issuer will expire on  $expirationDate "
   	}
   }').stdout.strip.split("\r\n")
-=======
+
   CertList_NotExpired_Issuer = command('Import-Module -Name WebAdministration;
 Get-ChildItem IIS:SSLBindings `
 | select -expand store `
@@ -95,7 +95,7 @@ Get-ChildItem IIS:SSLBindings `
 		 Write-Output  "$subject issued by $issuer will expire on  $expirationDate "
 	}
 }').stdout.strip.split("\r\n")
->>>>>>> 0de6f972d0cf94f8f466c57538fa0399220bcb82
+
 
   #describe "Number of Expired Certificates used by IIS   "  do
   #  subject { CertList_Expired }

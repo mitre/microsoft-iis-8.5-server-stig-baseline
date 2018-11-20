@@ -42,7 +42,10 @@ control "V-76733" do
 
   Under the \"Actions\" pane, click \"Apply\"."
 
-  describe command("Get-WebConfigurationProperty -pspath \"MACHINE/WEBROOT/APPHOST\" -filter \"system.webServer/directoryBrowse\" -Name enabled | select -expandProperty value").stdout.strip do
-    it {should cmp "False"}
+  directory_browsing = command('Get-WebConfigurationProperty -Filter system.webServer/directoryBrowse -name * | select -expand enabled').stdout.strip
+
+  describe "The websites enable directory browsing" do
+     subject { directory_browsing }
+     it {should cmp 'False'}
   end
 end

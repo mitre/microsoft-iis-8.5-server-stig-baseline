@@ -50,17 +50,29 @@ control "V-76731" do
 
   Click \"Apply\" in the \"Actions\" pane.
   "
-  describe command('Get-WebConfigurationProperty -Filter system.web/machineKey -name * | select -expand decryption').stdout.strip do
+
+  encryption_method = command('Get-WebConfigurationProperty -Filter system.web/machineKey -name * | select -expand decryption').stdout.strip
+
+  validation_method = command('Get-WebConfigurationProperty -Filter system.web/machineKey -name * | select -expand validation').stdout.strip
+
+  describe "The IIS web server encryption method" do
+    subject { encryption_method }
     it {should cmp "Auto"}
   end
+
   describe.one do
-    describe command('Get-WebConfigurationProperty -Filter system.web/machineKey -name * | select -expand validation').stdout.strip do
+    describe "The IIS web server machine key validation method" do
+      subject { validation_method}
       it {should cmp "HMACSHA256"}
     end
-    describe command('Get-WebConfigurationProperty -Filter system.web/machineKey -name * | select -expand validation').stdout.strip do
+
+    describe "The IIS web server machine key validation method" do
+      subject { validation_method }
       it {should cmp "HMACSHA384"}
     end
-    describe command('Get-WebConfigurationProperty -Filter system.web/machineKey -name * | select -expand validation').stdout.strip do
+
+    describe "The IIS web server machine key validation method" do
+      subject { validation_method }
       it {should cmp "HMACSHA512"}
     end
   end

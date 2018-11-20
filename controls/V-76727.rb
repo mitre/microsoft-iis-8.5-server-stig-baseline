@@ -55,10 +55,15 @@ control "V-76727" do
 
   Under “Time-out (in minutes), enter a value of “20 or less”.
   "
-  describe command('Get-WebConfigurationProperty -Filter system.web/sessionState -name * | select -expand cookieless').stdout.strip do
+  cookie_setting = command('Get-WebConfigurationProperty -Filter system.web/sessionState -name * | select -expand cookieless').stdout.strip
+  cookie_timeout = command('Get-WebConfigurationProperty -Filter system.web/sessionState -name * | select -expand timeout | select -expand Minutes').stdout.strip
+
+  describe "The website session state cookie settings" do
+    subject { cookie_setting }
     it {should cmp "UseCookies"}
   end
-  describe command('Get-WebConfigurationProperty -Filter system.web/sessionState -name * | select -expand timeout | select -expand Minutes').stdout.strip.to_i do
+  describe "The IIS web server cookie timeout limit" do
+    subject { 'cookie_timeout' }
     it {should be <= 20}
   end
 end

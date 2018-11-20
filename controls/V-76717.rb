@@ -45,7 +45,10 @@ control "V-76717" do
   tag "fix": "Remove all files from the web server with both .java and .jpp
   extensions."
 
-  describe command('Get-Childitem –Path C:\ -Include *.java,*.jpp -File -Recurse -ErrorAction SilentlyContinue').stdout.strip do
+  java_software = command('Get-Childitem –Path C:\ -Include *.java,*.jpp -File -Recurse -ErrorAction SilentlyContinue').stdout.strip
+
+  describe "The java software installed on the IIS webserver" do
+    subject { java_software }
     it {should cmp ''}
   end
 end
