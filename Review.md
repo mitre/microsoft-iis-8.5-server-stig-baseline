@@ -10,7 +10,7 @@
 ||Consistency across other profile conventions |*|*|*|
 ||Spelling grammar|Alicia Sturtevant|11/19/2018|*|
 ||Removing debugging documentation and code|Alicia Sturtevant|11/19/2018|Issue #8|
-| Error handling |“Profile Error” containment: “null” responses <br>should only happen if InSpec is run with incorrect privileges|Alicia Sturtevant|11/19/2018|*|
+| Error handling |“Profile Error” containment: “null” responses <br>should only happen if InSpec is run with incorrect privileges|Alicia Sturtevant, Eugene Aronne|*|Issue #20|
 ||Slowing the target (e.g. filling up disk, CPU spikes)|*|*|*|
 ||Check for risky commands (e.g. rm, del, purge, etc.)|Alicia Sturtevant|*|Issue #10|
 ||Check for “stuck” situations (e.g., profile goes on forever)|*|*|*|
