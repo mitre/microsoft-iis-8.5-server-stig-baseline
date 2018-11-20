@@ -1,12 +1,12 @@
 control "V-76739" do
   title "Remote access to the IIS 8.5 web server must follow access policy or
-work in conjunction with enterprise tools designed to enforce policy
-requirements."
+  work in conjunction with enterprise tools designed to enforce policy
+  requirements."
   desc  "Logging into a web server remotely using an unencrypted protocol or
-service when performing updates and maintenance is a major risk. Data, such as
-user account, is transmitted in plaintext and can easily be compromised. When
-performing remote administrative tasks, a protocol or service that encrypts the
-communication channel must be used."
+  service when performing updates and maintenance is a major risk. Data, such as
+  user account, is transmitted in plaintext and can easily be compromised. When
+  performing remote administrative tasks, a protocol or service that encrypts the
+  communication channel must be used."
   impact 0.7
   tag "gtitle": "SRG-APP-000315-WSR-000003"
   tag "gid": "V-76739"

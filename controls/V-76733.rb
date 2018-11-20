@@ -1,10 +1,10 @@
 control "V-76733" do
   title "Directory Browsing on the IIS 8.5 web server must be disabled."
   desc  "Directory browsing allows the contents of a directory to be displayed
-upon request from a web client. If directory browsing is enabled for a
-directory in IIS, users could receive a web page listing the contents of the
-directory. If directory browsing is enabled the risk of inadvertently
-disclosing sensitive content is increased."
+  upon request from a web client. If directory browsing is enabled for a
+  directory in IIS, users could receive a web page listing the contents of the
+  directory. If directory browsing is enabled the risk of inadvertently
+  disclosing sensitive content is increased."
   impact 0.7
   tag "gtitle": "SRG-APP-000251-WSR-000157"
   tag "gid": "V-76733"
