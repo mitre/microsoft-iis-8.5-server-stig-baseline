@@ -90,13 +90,7 @@ control "V-76689" do
 
   Click \"Apply\" under the \"Actions\" pane.
   "
-  describe windows_feature('Web-Server') do
-    it{ should be_installed }
-  end
-  describe windows_feature('Web-WebServer') do
-    it{ should be_installed }
-  end
-  describe windows_feature('Web-Common-Http') do
-    it{ should be_installed }
-  end
+  describe "Manual review of web server is required." do
+    skip "Manual review of web server is required"
+  end 
 end

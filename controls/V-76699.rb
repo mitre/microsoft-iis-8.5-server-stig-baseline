@@ -50,15 +50,6 @@ control "V-76699" do
   perform user management outside the IIS 8.5 web server.
 
   Document how the hosted application user management is accomplished."
-  describe windows_feature('Web-Server') do
-    it{ should be_installed }
-  end
-  describe windows_feature('Web-WebServer') do
-    it{ should be_installed }
-  end
-  describe windows_feature('Web-Common-Http') do
-    it{ should be_installed }
-  end
   describe "Manual review of User Management documentation is required." do
     skip "Ensure Centralization of User Management is documented and implemented."
   end

@@ -63,15 +63,6 @@ control "V-76679" do
   tag "fix": "Ensure the web server administration is only performed over a
   secure path."
 
-  describe windows_feature('Web-Server') do
-    it{ should be_installed }
-  end
-  describe windows_feature('Web-WebServer') do
-    it{ should be_installed }
-  end
-  describe windows_feature('Web-Common-Http') do
-    it{ should be_installed }
-  end
   describe "Manual validation required. Review Remote Administration Procedures if Remote Administration of IIS or hosted Applications is allowed" do
     skip "Manual validation required. Review Remote Administration Procedures if Remote Administration of IIS or hosted Applications is allowed"
   end

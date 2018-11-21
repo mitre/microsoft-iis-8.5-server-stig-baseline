@@ -50,13 +50,7 @@ control "V-76697" do
   "
   tag "fix": "Configure system backups to include the directory paths of all
   IIS 8.5 web server and website log files."
-  describe windows_feature('Web-Server') do
-    it{ should be_installed }
-  end
-  describe windows_feature('Web-WebServer') do
-    it{ should be_installed }
-  end
-  describe windows_feature('Web-Common-Http') do
-    it{ should be_installed }
-  end
+  describe "Manual review of web server is required." do
+    skip "Manual review of web server is required"
+  end 
 end

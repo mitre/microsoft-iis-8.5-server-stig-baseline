@@ -63,16 +63,7 @@ control "V-76685" do
   tag "fix": "Access the proxy server through which inbound web traffic is
   passed and configure settings to pass web traffic to the IIS 8.5 web server
   transparently."
-  describe windows_feature('Web-Server') do
-    it{ should be_installed }
-  end
-  describe windows_feature('Web-WebServer') do
-    it{ should be_installed }
-  end
-  describe windows_feature('Web-Common-Http') do
-    it{ should be_installed }
-  end
-
+  
   describe "Manual review of IIS Logs is required " do
     skip "Ensure Client IP accurately identifies the client and not proxy server ( if used north of IIS )"
   end
