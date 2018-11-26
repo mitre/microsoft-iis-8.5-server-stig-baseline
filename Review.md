@@ -1,4 +1,4 @@
-| Check          | Sub-check                                                                         | Who | Completion Date | Issue #'s |
+| Check          | Sub-check                                                                         | Who | Completion Date *** | Issue #'s |
 |----------------|-----------------------------------------------------------------------------------|-----|-----------------|-----------|
 |Logical checks| Proper profile directory structure							|Alicia Sturtevant|11/21/2018|n/a|
 ||JSON output review (e.g., pass/fail on ,<br>hardened, not hardened, edge cases, etc.)|*|*|*|
@@ -14,3 +14,6 @@
 ||Slowing the target (e.g. filling up disk, CPU spikes)|Alicia Sturtevant|11/21/2018|n/a|
 ||Check for risky commands (e.g. rm, del, purge, etc.)|Alicia Sturtevant|*|#10|
 ||Check for “stuck” situations (e.g., profile goes on forever)|Alicia Sturtevant|11/21/201|#21|
+
+*** A completion date is entered in a row when all non-enhancement issues are resolved for that review row.
+
