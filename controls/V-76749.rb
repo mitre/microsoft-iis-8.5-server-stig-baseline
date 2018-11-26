@@ -71,21 +71,18 @@ control "V-76749" do
   tag "fix": "Restrict access to the web administration tool to only the web
   manager and the web manager’s designees."
 
-  describe file('%windir%\system32\inetsrv\InetMgr.exe') do
+  describe file('C:\windows\system32\inetsrv\InetMgr.exe') do
     # Full control for administrators
-    it { should be_allowed('full-control', by_user: 'WIN-EFQ98MD6RFI/Administrator') }
+    it { should be_allowed('full-control', by_user: 'BUILTIN\Administrators') }
 
     # read & execute for ALL APPLICATION PACKAGES, SYSTEM, Users
-    it { should be_readable.by('ALL APPLICATION PACKAGES') }
-    it { should be_executable.by('ALL APPLICATION PACKAGES') }
-    it { should be_readable.by('SYSTEM') }
-    it { should be_executable.by('SYSTEM') }
-    it { should be_readable.by('Users') }
-    it { should be_executable.by('Users') }
+    
+    it { should be_allowed('read', by_user: 'APPLICATION PACKAGE AUTHORITY\\ALL APPLICATION PACKAGES') }
+    it { should be_allowed('read', by_user: 'NT AUTHORITY\\SYSTEM') }
+    it { should be_allowed('read', by_user: 'BUILTIN\\Users') }
 
     # users with read & execute permissions
-    it { should be_readable.by_user("#{AUTHORIZED_USERS}") }
-    it { should be_executable.by_user("#{AUTHORIZED_USERS}") }
+    it { should be_allowed('read', by_user: "#{AUTHORIZED_USERS}") }
 
   end
 end
