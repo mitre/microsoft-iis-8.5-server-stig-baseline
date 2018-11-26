@@ -1,7 +1,7 @@
 LOG_FIELDS = attribute(
     'fields',
     description: 'List of fields to be included in Web Server Logging Configuration',
-    default: ['Date', 'Time', 'Client IP Address', 'User Name', 'Method', 'URI Query', 'Protocol Status', 'Referrer']
+    default: ['Date', 'Time', 'ClientIP', 'UserName', 'Method', 'UriQuery', 'HttpStatus', 'Referer']
 )
 
 control "V-76681" do
@@ -80,22 +80,12 @@ control "V-76681" do
 
   logging_fields = command("Get-WebConfiguration system.applicationHost/log/centralW3CLogFile | select -expand logExtFileFlags").stdout.strip.split(',')
 
-  describe windows_feature('Web-Server') do
-    it{ should be_installed }
-  end
-  describe windows_feature('Web-WebServer') do
-    it{ should be_installed }
-  end
-  describe windows_feature('Web-Common-Http') do
-    it{ should be_installed }
-  end
-
   describe "Is Web Server Central W3C Logging Configuration Enabled" do
     subject { is_file_logging_enabled }
     it { should be true }
   end
 
-  logging_fields.each do |myField|
+  fields.each do |myField|
     describe "#{myField}" do
       it { should be_in logging_fields}
     end
