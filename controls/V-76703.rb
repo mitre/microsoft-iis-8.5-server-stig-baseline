@@ -65,12 +65,8 @@ control "V-76703" do
 
   Click \"Apply\" in the \"Actions\" pane."
 
-  # Alternatively
-  # try this - Get-WebConfiguration system.webServer/proxy/*
-
   proxy_checkbox = command('Get-WebConfigurationProperty -pspath "MACHINE/WEBROOT/APPHOST" -filter "system.webServer/proxy" -name "enabled" | select -ExpandProperty Value').stdout.strip
   proxy_enabled = (proxy_checkbox == 'False' || proxy_checkbox == '') ? false : true
-
 
   unless is_proxy
     describe windows_feature('Web-Server') do
@@ -96,9 +92,7 @@ control "V-76703" do
     describe windows_feature('Web-Common-Http') do
       it { should be_installed }
     end
-      # describe package('arr') do
-      #   it should be installed
-      # end
+
     describe "Running as a proxy-server, the ARR proxy should be enabled " do
       subject { proxy_enabled }
       it { should be true }

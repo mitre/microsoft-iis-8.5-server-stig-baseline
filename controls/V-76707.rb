@@ -1,11 +1,3 @@
-=begin
-MINIMAL_LOCAL_USER_COUNT = attribute(
-    'count of local users',
-    description: 'Minimum number of users required for server to operate',
-    default: 2
-)
-=end
-
 MINIMAL_LOCAL_USERS = attribute(
     'users',
     description: 'Minimum number of users required for server to operate',

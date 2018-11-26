@@ -46,9 +46,6 @@ control "V-76705" do
   describe windows_feature('Web-Common-Http') do
     it{ should be_installed }
   end
-  #describe "Manual validation required. Review Remote Administration Procedures if Remote Administration of IIS or hosted Applications is allowed" do
-  #  skip "Manual validation required. Review Remote Administration Procedures if Remote Administration of IIS or hosted Applications is allowed"
-  #end
 
   webroot_folder_test = command('(Get-Item C:\inetpub) -is [System.IO.DirectoryInfo]').stdout.strip
   webroot_found = ( webroot_folder_test == '' ||  webroot_folder_test == 'False') ? false : true
