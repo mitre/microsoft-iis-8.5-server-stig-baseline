@@ -51,9 +51,9 @@ control "V-76757" do
 
   Select \"Apply\" from the \"Actions\" pane."
 
-  keepSessionIdSecure = command('Get-WebConfigurationProperty -pspath "MACHINE/WEBROOT/APPHOST" -filter "system.webServer/asp/session" -Name keepSessionIdSecure | select -expandProperty value').stdout.strip == "True"
+  #keepSessionIdSecure = command('Get-WebConfigurationProperty -pspath "MACHINE/WEBROOT/APPHOST" -filter "system.webServer/asp/session" -Name keepSessionIdSecure | select -expandProperty value').stdout.strip == "True"
 
-  describe "IIS 8.5 web server session IDs must be sent to the client using TLS, this is performed by going to session and enabling the attribute keepSessionIdSecure. (currently: " + (keepSessionIdSecure ? 'enabled' : 'disabled') + " )\n" do
+  describe "IIS 8.5 web server session IDs must be sent to the client using TLS, this is performed by going to " do
     subject { command('Get-WebConfigurationProperty -pspath "MACHINE/WEBROOT/APPHOST" -filter "system.webServer/asp/session" -Name keepSessionIdSecure | select -expandProperty value').stdout.strip }
     it "The keepSessionIdSecure attribute should be set to True" do
       expect(subject).to cmp("true")
