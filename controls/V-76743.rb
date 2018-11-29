@@ -87,15 +87,9 @@ control "V-76743" do
 
   In the \"Actions\" pane, under \"Manage Server\", click on \"Stop\"."
 
-  describe command("iisreset /stop").stdout.strip do
-    it {should include "Internet services successfully stopped"}
-  end
-
-  describe command("Get-IISSite \"#{IIS_SITE_NAME}\" | select -expandProperty state").stdout.strip do
-    it {should cmp "Stopped"}
-  end
-
-  describe command("iisreset /start").stdout.strip do
-    it {should include "Internet services successfully started"}
+  describe "Manual validation required. Review IIS Webserver for capability to immediately
+  disconnect or disable remote access to the hosted applications" do
+    skip "Manual validation required. Review IIS Webserver for capability to immediately
+  disconnect or disable remote access to the hosted applications"
   end
 end
