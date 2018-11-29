@@ -63,7 +63,7 @@ control 'V-76727' do
     it { should cmp 'UseCookies' }
   end
   describe 'The IIS web server cookie timeout limit' do
-    subject { 'cookie_timeout' }
+    subject { cookie_timeout }
     it { should be <= 20 }
   end
 end
