@@ -64,12 +64,12 @@ control "V-76707" do
   local_users = command('Get-WmiObject -Class Win32_UserAccount -Filter  "LocalAccount=\'True\'" | select -ExpandProperty Name').stdout.strip.split("\r\n")
   is_min_users = (local_users.length == MINIMAL_LOCAL_USERS.length) ? false : true
 
-  describe local_users do
+  describe "The number of local users" do
+    subject {local_users}
     its('length') { should eq MINIMAL_LOCAL_USERS.length }
   end
 
-  describe "List of Local Users on the system is #{(local_users.length == MINIMAL_LOCAL_USERS.length) ? "equal"  : "over"} MINIMAL Number of #{MINIMAL_LOCAL_USERS.length}, a manual review is required to determine if any of these users are left from uninstalled features (i.e., tools, utilities,
-  specific, etc.)  " do
+  describe "List of Local Users on the system" do
     subject { local_users }
     it { should cmp MINIMAL_LOCAL_USERS}
   end
