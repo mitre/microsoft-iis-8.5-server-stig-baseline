@@ -5,7 +5,7 @@
 ||InSpec syntax checker|Alicia Sturtevant|*|#3, #4, #5, #6, #9, #11, #12, #13, #16|
 ||Local commands focused on target not the runner|Alicia Sturtevant|11/21/2018|n/a|
 |Quality checks|Alignment (including tagging) to original<br> standard (i.e. STIG, CIS Benchmark, NIST Tags)|Alicia Sturtevant|11/21/2018|n/a|
-||Descriptive output for findings details|Alicia Sturtevant|*|#14, #15|
+||Descriptive output for findings details|Alicia Sturtevant|11/27/2018|#14, #15|
 ||Documentation quality (i.e. README)<br> novice level instructions including prerequisites|*|*|*|
 ||Consistency across other profile conventions |Alicia Sturtevant|*|#19|
 ||Spelling grammar|Alicia Sturtevant|11/21/2018|n/a|
