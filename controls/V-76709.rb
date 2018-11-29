@@ -1,8 +1,8 @@
-control "V-76709" do
+control 'V-76709' do
   title "The IIS 8.5 web server must be reviewed on a regular basis to remove
   any Operating System features, utility programs, plug-ins, and modules not
   necessary for operation."
-  desc  "Just as running unneeded services and protocols is a danger to the web
+  desc "Just as running unneeded services and protocols is a danger to the web
   server at the lower levels of the OSI model, running unneeded utilities and
   programs is also a danger at the application layer of the OSI model. Office
   suites, development tools, and graphical editors are examples of such programs
@@ -17,13 +17,13 @@ control "V-76709" do
   services and programs were installed and removed manually.
   "
   impact 0.7
-  tag "gtitle": "SRG-APP-000141-WSR-000080"
-  tag "gid": "V-76709"
-  tag "rid": "SV-91405r1_rule"
-  tag "stig_id": "IISW-SV-000123"
-  tag "fix_id": "F-83405r1_fix"
-  tag "cci": ["CCI-000381"]
-  tag "nist": ["CM-7 a", "Rev_4"]
+  tag "gtitle": 'SRG-APP-000141-WSR-000080'
+  tag "gid": 'V-76709'
+  tag "rid": 'SV-91405r1_rule'
+  tag "stig_id": 'IISW-SV-000123'
+  tag "fix_id": 'F-83405r1_fix'
+  tag "cci": ['CCI-000381']
+  tag "nist": ['CM-7 a', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false

@@ -1,8 +1,8 @@
-control "V-76689" do
+control 'V-76689' do
   title "The IIS 8.5 web server must produce log records containing sufficient
   information to establish the identity of any user/subject or process associated
   with an event."
-  desc  "Web server logging capability is critical for accurate forensic
+  desc "Web server logging capability is critical for accurate forensic
   analysis. Without sufficient and accurate information, a correct replay of the
   events cannot be determined.
 
@@ -17,13 +17,13 @@ control "V-76689" do
   and access control or flow control rules invoked.
   "
   impact 0.7
-  tag "gtitle": "SRG-APP-000100-WSR-000064"
-  tag "gid": "V-76689"
-  tag "rid": "SV-91385r2_rule"
-  tag "stig_id": "IISW-SV-000111"
-  tag "fix_id": "F-83385r2_fix"
-  tag "cci": ["CCI-001487"]
-  tag "nist": ["AU-3", "Rev_4"]
+  tag "gtitle": 'SRG-APP-000100-WSR-000064'
+  tag "gid": 'V-76689'
+  tag "rid": 'SV-91385r2_rule'
+  tag "stig_id": 'IISW-SV-000111'
+  tag "fix_id": 'F-83385r2_fix'
+  tag "cci": ['CCI-001487']
+  tag "nist": ['AU-3', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -90,7 +90,7 @@ control "V-76689" do
 
   Click \"Apply\" under the \"Actions\" pane.
   "
-  describe "Manual review of web server is required." do
-    skip "Manual review of web server is required"
-  end 
+  describe 'Manual review of web server is required.' do
+    skip 'Manual review of web server is required'
+  end
 end

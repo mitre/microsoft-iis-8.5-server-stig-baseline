@@ -1,7 +1,7 @@
-control "V-76713" do
+control 'V-76713' do
   title "The IIS 8.5 web server must have Web Distributed Authoring and
   Versioning (WebDAV) disabled."
-  desc  "A web server can be installed with functionality that, just by its
+  desc "A web server can be installed with functionality that, just by its
   nature, is not secure. Web Distributed Authoring (WebDAV) is an extension to
   the HTTP protocol that, when developed, was meant to allow users to create,
   change, and move documents on a server, typically a web server or web share.
@@ -12,13 +12,13 @@ control "V-76713" do
   allow clients to modify unauthorized files on the web server.
   "
   impact 0.7
-  tag "gtitle": "SRG-APP-000141-WSR-000085"
-  tag "gid": "V-76713"
-  tag "rid": "SV-91409r1_rule"
-  tag "stig_id": "IISW-SV-000125"
-  tag "fix_id": "F-83409r1_fix"
-  tag "cci": ["CCI-000381"]
-  tag "nist": ["CM-7 a", "Rev_4"]
+  tag "gtitle": 'SRG-APP-000141-WSR-000085'
+  tag "gid": 'V-76713'
+  tag "rid": 'SV-91409r1_rule'
+  tag "stig_id": 'IISW-SV-000125'
+  tag "fix_id": 'F-83409r1_fix'
+  tag "cci": ['CCI-000381']
+  tag "nist": ['CM-7 a', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false

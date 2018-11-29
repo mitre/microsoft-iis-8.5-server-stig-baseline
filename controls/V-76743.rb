@@ -1,13 +1,13 @@
-IIS_SITE_NAME= attribute(
-    'iis_site_name',
-    description: 'Name of Tomcat service',
-    default: 'Default Web Site'
+IIS_SITE_NAME = attribute(
+  'iis_site_name',
+  description: 'Name of Tomcat service',
+  default: 'Default Web Site'
 )
 
-control "V-76743" do
+control 'V-76743' do
   title "The IIS 8.5 web server must provide the capability to immediately
   disconnect or disable remote access to the hosted applications."
-  desc  "During an attack on the web server or any of the hosted applications,
+  desc "During an attack on the web server or any of the hosted applications,
   the system administrator may need to disconnect or disable access by users to
   stop the attack.
 
@@ -24,13 +24,13 @@ control "V-76743" do
   log data is conserved for later forensic analysis.
   "
   impact 0.7
-  tag "gtitle": "SRG-APP-000316-WSR-000170"
-  tag "gid": "V-76743"
-  tag "rid": "SV-91439r1_rule"
-  tag "stig_id": "IISW-SV-000143"
-  tag "fix_id": "F-83439r1_fix"
-  tag "cci": ["CCI-002322"]
-  tag "nist": ["AC-17 (9)", "Rev_4"]
+  tag "gtitle": 'SRG-APP-000316-WSR-000170'
+  tag "gid": 'V-76743'
+  tag "rid": 'SV-91439r1_rule'
+  tag "stig_id": 'IISW-SV-000143'
+  tag "fix_id": 'F-83439r1_fix'
+  tag "cci": ['CCI-002322']
+  tag "nist": ['AC-17 (9)', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false

@@ -1,7 +1,7 @@
-control "V-76731" do
+control 'V-76731' do
   title "The production IIS 8.5 web server must utilize SHA2 encryption for the
   Machine Key."
-  desc  "The Machine Key element of the ASP.NET web.config specifies the
+  desc "The Machine Key element of the ASP.NET web.config specifies the
   algorithm and keys that ASP.NET will use for encryption. The Machine Key
   feature can be managed to specify hashing and encryption settings for
   application services such as view state, forms authentication, membership and
@@ -9,13 +9,13 @@ control "V-76731" do
   mitigate the risk of data tampering in crucial functional areas such as forms
   authentication cookies, or view state."
   impact 0.7
-  tag "gtitle": "SRG-APP-000231-WSR-000144"
-  tag "gid": "V-76731"
-  tag "rid": "SV-91427r2_rule"
-  tag "stig_id": "IISW-SV-000137"
-  tag "fix_id": "F-83427r2_fix"
-  tag "cci": ["CCI-001199"]
-  tag "nist": ["SC-28", "Rev_4"]
+  tag "gtitle": 'SRG-APP-000231-WSR-000144'
+  tag "gid": 'V-76731'
+  tag "rid": 'SV-91427r2_rule'
+  tag "stig_id": 'IISW-SV-000137'
+  tag "fix_id": 'F-83427r2_fix'
+  tag "cci": ['CCI-001199']
+  tag "nist": ['SC-28', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -55,25 +55,25 @@ control "V-76731" do
 
   validation_method = command('Get-WebConfigurationProperty -Filter system.web/machineKey -name * | select -expand validation').stdout.strip
 
-  describe "The IIS web server encryption method" do
+  describe 'The IIS web server encryption method' do
     subject { encryption_method }
-    it {should cmp "Auto"}
+    it { should cmp 'Auto' }
   end
 
   describe.one do
-    describe "The IIS web server machine key validation method" do
-      subject { validation_method}
-      it {should cmp "HMACSHA256"}
+    describe 'The IIS web server machine key validation method' do
+      subject { validation_method }
+      it { should cmp 'HMACSHA256' }
     end
 
-    describe "The IIS web server machine key validation method" do
+    describe 'The IIS web server machine key validation method' do
       subject { validation_method }
-      it {should cmp "HMACSHA384"}
+      it { should cmp 'HMACSHA384' }
     end
 
-    describe "The IIS web server machine key validation method" do
+    describe 'The IIS web server machine key validation method' do
       subject { validation_method }
-      it {should cmp "HMACSHA512"}
+      it { should cmp 'HMACSHA512' }
     end
   end
 end

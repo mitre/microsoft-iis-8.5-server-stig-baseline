@@ -1,17 +1,17 @@
-control "V-76735" do
-  title "The IIS 8.5 web server Indexing must only index web content."
+control 'V-76735' do
+  title 'The IIS 8.5 web server Indexing must only index web content.'
   desc  "The indexing service can be used to facilitate a search function for
   websites. Enabling indexing may facilitate a directory traversal exploit and
   reveal unwanted information to a malicious user. Indexing must be limited to
   web document directories only."
   impact 0.7
-  tag "gtitle": "SRG-APP-000266-WSR-000142"
-  tag "gid": "V-76735"
-  tag "rid": "SV-91431r1_rule"
-  tag "stig_id": "IISW-SV-000139"
-  tag "fix_id": "F-83431r1_fix"
-  tag "cci": ["CCI-001312"]
-  tag "nist": ["SI-11 a", "Rev_4"]
+  tag "gtitle": 'SRG-APP-000266-WSR-000142'
+  tag "gid": 'V-76735'
+  tag "rid": 'SV-91431r1_rule'
+  tag "stig_id": 'IISW-SV-000139'
+  tag "fix_id": 'F-83431r1_fix'
+  tag "cci": ['CCI-001312']
+  tag "nist": ['SI-11 a', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false

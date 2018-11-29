@@ -1,14 +1,14 @@
-LOG_DIRECTORY= attribute(
-    'log_directory',
-    description: 'Name of Tomcat service',
-    default: '%SystemDrive%\inetpub\logs\LogFiles'
+LOG_DIRECTORY = attribute(
+  'log_directory',
+  description: 'Name of Tomcat service',
+  default: '%SystemDrive%\inetpub\logs\LogFiles'
 )
 
-control "V-76747" do
+control 'V-76747' do
   title "The IIS 8.5 web server must use a logging mechanism that is configured
   to allocate log record storage capacity large enough to accommodate the logging
   requirements of the IIS 8.5 web server."
-  desc  "In order to make certain that the logging mechanism used by the web
+  desc "In order to make certain that the logging mechanism used by the web
   server has sufficient storage capacity in which to write the logs, the logging
   mechanism needs to be able to allocate log record storage capacity.
 
@@ -20,13 +20,13 @@ control "V-76747" do
   storage dependent on the impact of the web server.
   "
   impact 0.7
-  tag "gtitle": "SRG-APP-000357-WSR-000150"
-  tag "gid": "V-76747"
-  tag "rid": "SV-91443r1_rule"
-  tag "stig_id": "IISW-SV-000145"
-  tag "fix_id": "F-83443r1_fix"
-  tag "cci": ["CCI-001849"]
-  tag "nist": ["AU-4", "Rev_4"]
+  tag "gtitle": 'SRG-APP-000357-WSR-000150'
+  tag "gid": 'V-76747'
+  tag "rid": 'SV-91443r1_rule'
+  tag "stig_id": 'IISW-SV-000145'
+  tag "fix_id": 'F-83443r1_fix'
+  tag "cci": ['CCI-001849']
+  tag "nist": ['AU-4', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -78,13 +78,13 @@ control "V-76747" do
   log_directory = command('Get-WebConfigurationProperty -pspath "MACHINE/WEBROOT/APPHOST" -filter "system.ApplicationHost/log" -Name centralW3CLogFile | select -expandProperty directory').stdout.strip
   log_period = command('Get-WebConfigurationProperty -pspath "MACHINE/WEBROOT/APPHOST" -filter "system.ApplicationHost/log" -Name centralW3CLogFile | select -expandProperty period').stdout.strip
 
-  describe "The IIS log directory" do
+  describe 'The IIS log directory' do
     subject { log_directory }
-    it {should cmp "#{LOG_DIRECTORY}"}
+    it { should cmp LOG_DIRECTORY.to_s }
   end
 
-  describe "The websites log file rollover period" do
+  describe 'The websites log file rollover period' do
     subject { log_period }
-    it {should cmp "Daily"}
+    it { should cmp 'Daily' }
   end
 end

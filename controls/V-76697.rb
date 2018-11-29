@@ -1,19 +1,19 @@
-control "V-76697" do
+control 'V-76697' do
   title "The log data and records from the IIS 8.5 web server must be backed up
   onto a different system or media."
-  desc  "Protection of log data includes assuring log data is not accidentally
+  desc "Protection of log data includes assuring log data is not accidentally
   lost or deleted. Backing up log records to an unrelated system or onto separate
   media than the system the web server is actually running on helps to assure
   that, in the event of a catastrophic system failure, the log records will be
   retained."
   impact 0.7
-  tag "gtitle": "SRG-APP-000125-WSR-000071"
-  tag "gid": "V-76697"
-  tag "rid": "SV-91393r2_rule"
-  tag "stig_id": "IISW-SV-000116"
-  tag "fix_id": "F-83393r1_fix"
-  tag "cci": ["CCI-001348"]
-  tag "nist": ["AU-9 (2)", "Rev_4"]
+  tag "gtitle": 'SRG-APP-000125-WSR-000071'
+  tag "gid": 'V-76697'
+  tag "rid": 'SV-91393r2_rule'
+  tag "stig_id": 'IISW-SV-000116'
+  tag "fix_id": 'F-83393r1_fix'
+  tag "cci": ['CCI-001348']
+  tag "nist": ['AU-9 (2)', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -50,7 +50,7 @@ control "V-76697" do
   "
   tag "fix": "Configure system backups to include the directory paths of all
   IIS 8.5 web server and website log files."
-  describe "Manual review of web server is required." do
-    skip "Manual review of web server is required"
-  end 
+  describe 'Manual review of web server is required.' do
+    skip 'Manual review of web server is required'
+  end
 end

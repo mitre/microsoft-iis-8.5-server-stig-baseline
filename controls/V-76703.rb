@@ -1,25 +1,25 @@
 is_proxy = attribute(
-    'is_proxy',
-    description: 'this system is running as a proxy server',
-    default: false
+  'is_proxy',
+  description: 'this system is running as a proxy server',
+  default: false
 )
 
-control "V-76703" do
+control 'V-76703' do
   title "The IIS 8.5 web server must not be both a website server and a proxy
-  server. (In #{is_proxy ? "Proxy"  : "Web Server"} mode)"
-  desc  "A web server should be primarily a web server or a proxy server but
+  server. (In #{is_proxy ? 'Proxy' : 'Web Server'} mode)"
+  desc "A web server should be primarily a web server or a proxy server but
   not both, for the same reasons that other multi-use servers are not
   recommended. Scanning for web servers that will also proxy requests into an
   otherwise protected network is a very common attack making the attack
   anonymous."
   impact 0.7
-  tag "gtitle": "SRG-APP-000141-WSR-000076"
-  tag "gid": "V-76703"
-  tag "rid": "SV-91399r1_rule"
-  tag "stig_id": "IISW-SV-000119"
-  tag "fix_id": "F-83399r1_fix"
-  tag "cci": ["CCI-000381"]
-  tag "nist": ["CM-7 a", "Rev_4"]
+  tag "gtitle": 'SRG-APP-000141-WSR-000076'
+  tag "gid": 'V-76703'
+  tag "rid": 'SV-91399r1_rule'
+  tag "stig_id": 'IISW-SV-000119'
+  tag "fix_id": 'F-83399r1_fix'
+  tag "cci": ['CCI-000381']
+  tag "nist": ['CM-7 a', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -66,9 +66,9 @@ control "V-76703" do
   Click \"Apply\" in the \"Actions\" pane."
 
   proxy_checkbox = command('Get-WebConfigurationProperty -pspath "MACHINE/WEBROOT/APPHOST" -filter "system.webServer/proxy" -name "enabled" | select -ExpandProperty Value').stdout.strip
-  proxy_enabled = (proxy_checkbox == 'False' || proxy_checkbox == '') ? false : true
+  proxy_enabled = proxy_checkbox == 'False' || proxy_checkbox == '' ? false : true
 
-  unless is_proxy
+  if is_proxy
     describe windows_feature('Web-Server') do
       it { should be_installed }
     end
@@ -78,9 +78,10 @@ control "V-76703" do
     describe windows_feature('Web-Common-Http') do
       it { should be_installed }
     end
-    describe "Running as a web-server, the ARR Server Proxy should not be enabled " do
+
+    describe 'Running as a proxy-server, the ARR proxy should be enabled ' do
       subject { proxy_enabled }
-      it { should be false }
+      it { should be true }
     end
   else
     describe windows_feature('Web-Server') do
@@ -92,10 +93,9 @@ control "V-76703" do
     describe windows_feature('Web-Common-Http') do
       it { should be_installed }
     end
-
-    describe "Running as a proxy-server, the ARR proxy should be enabled " do
+    describe 'Running as a web-server, the ARR Server Proxy should not be enabled ' do
       subject { proxy_enabled }
-      it { should be true }
+      it { should be false }
     end
   end
 end

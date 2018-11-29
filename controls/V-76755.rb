@@ -1,19 +1,19 @@
-control "V-76755" do
+control 'V-76755' do
   title "The IIS 8.5 web server must be tuned to handle the operational
   requirements of the hosted application."
-  desc  "A Denial of Service (DoS) can occur when the web server is so
+  desc "A Denial of Service (DoS) can occur when the web server is so
   overwhelmed that it can no longer respond to additional requests. A web server
   not properly tuned may become overwhelmed and cause a DoS condition even with
   expected traffic from users. To avoid a DoS, the web server must be tuned to
   handle the expected traffic for the hosted applications."
   impact 0.7
-  tag "gtitle": "SRG-APP-000435-WSR-000148"
-  tag "gid": "V-76755"
-  tag "rid": "SV-91451r1_rule"
-  tag "stig_id": "IISW-SV-000151"
-  tag "fix_id": "F-83451r1_fix"
-  tag "cci": ["CCI-002385"]
-  tag "nist": ["SC-5", "Rev_4"]
+  tag "gtitle": 'SRG-APP-000435-WSR-000148'
+  tag "gid": 'V-76755'
+  tag "rid": 'SV-91451r1_rule'
+  tag "stig_id": 'IISW-SV-000151'
+  tag "fix_id": 'F-83451r1_fix'
+  tag "cci": ['CCI-002385']
+  tag "nist": ['SC-5', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false

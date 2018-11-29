@@ -1,8 +1,8 @@
-control "V-76687" do
+control 'V-76687' do
   title "The IIS 8.5 web server must produce log records that contain
   sufficient information to establish the outcome (success or failure) of IIS 8.5
   web server events."
-  desc  "Web server logging capability is critical for accurate forensic
+  desc "Web server logging capability is critical for accurate forensic
   analysis. Without sufficient and accurate information, a correct replay of the
   events cannot be determined.
 
@@ -24,13 +24,13 @@ control "V-76687" do
   control rules invoked.
   "
   impact 0.7
-  tag "gtitle": "SRG-APP-000099-WSR-000061"
-  tag "gid": "V-76687"
-  tag "rid": "SV-91383r2_rule"
-  tag "stig_id": "IISW-SV-000110"
-  tag "fix_id": "F-83383r2_fix"
-  tag "cci": ["CCI-000134"]
-  tag "nist": ["AU-3", "Rev_4"]
+  tag "gtitle": 'SRG-APP-000099-WSR-000061'
+  tag "gid": 'V-76687'
+  tag "rid": 'SV-91383r2_rule'
+  tag "stig_id": 'IISW-SV-000110'
+  tag "fix_id": 'F-83383r2_fix'
+  tag "cci": ['CCI-000134']
+  tag "nist": ['AU-3', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -89,30 +89,30 @@ control "V-76687" do
   Click \"Apply\" under the \"Actions\" pane.
   "
   describe windows_feature('Web-Server') do
-    it{ should be_installed }
+    it { should be_installed }
   end
   describe windows_feature('Web-WebServer') do
-    it{ should be_installed }
+    it { should be_installed }
   end
   describe windows_feature('Web-Common-Http') do
-    it{ should be_installed }
+    it { should be_installed }
   end
 
   ### One could also do get-iisSite to get the list of all configured sites and iterate ...
 
   # Get Log Format
   log_format = command('Get-WebConfigurationProperty -pspath "MACHINE/WEBROOT/APPHOST"  -filter "system.applicationHost/sites/siteDefaults/logFile" -name "logFormat"').stdout.strip
-  describe "IIS Logging format" do
+  describe 'IIS Logging format' do
     subject { log_format }
     it { should cmp 'W3C' }
   end
 
   # Get Custom Vars
   custom_field_configuration = command('Get-WebConfiguration -pspath "MACHINE/WEBROOT/APPHOST"  -filter "system.applicationHost/sites/siteDefaults/logFile/customFields/*"').stdout.strip
-  describe "IIS Custom Fields logging configuration" do
+  describe 'IIS Custom Fields logging configuration' do
     subject { custom_field_configuration }
-    it { should match /sourceName\s+:\s+Connection\s+sourceType\s+:\s+RequestHeader/}
-    it { should match /sourceName\s+:\s+Warning\s+sourceType\s+:\s+RequestHeader/}
-    it { should match /sourceName\s+:\s+SERVER_NAME\s+sourceType\s+:\s+ServerVariable/}
+    it { should match /sourceName\s+:\s+Connection\s+sourceType\s+:\s+RequestHeader/ }
+    it { should match /sourceName\s+:\s+Warning\s+sourceType\s+:\s+RequestHeader/ }
+    it { should match /sourceName\s+:\s+SERVER_NAME\s+sourceType\s+:\s+ServerVariable/ }
   end
 end

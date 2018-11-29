@@ -1,8 +1,8 @@
-control "V-76685" do
+control 'V-76685' do
   title "An IIS 8.5 web server behind a load balancer or proxy server, must
   produce log records containing the source client IP and destination
   information."
-  desc  "Web server logging capability is critical for accurate forensic
+  desc "Web server logging capability is critical for accurate forensic
   analysis. Without sufficient and accurate information, a correct replay of the
   events cannot be determined.
 
@@ -20,13 +20,13 @@ control "V-76685" do
   each event the client source of the event.
   "
   impact 0.7
-  tag "gtitle": "SRG-APP-000098-WSR-000060"
-  tag "gid": "V-76685"
-  tag "rid": "SV-91381r1_rule"
-  tag "stig_id": "IISW-SV-000109"
-  tag "fix_id": "F-83381r1_fix"
-  tag "cci": ["CCI-000133"]
-  tag "nist": ["AU-3", "Rev_4"]
+  tag "gtitle": 'SRG-APP-000098-WSR-000060'
+  tag "gid": 'V-76685'
+  tag "rid": 'SV-91381r1_rule'
+  tag "stig_id": 'IISW-SV-000109'
+  tag "fix_id": 'F-83381r1_fix'
+  tag "cci": ['CCI-000133']
+  tag "nist": ['AU-3', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -63,8 +63,8 @@ control "V-76685" do
   tag "fix": "Access the proxy server through which inbound web traffic is
   passed and configure settings to pass web traffic to the IIS 8.5 web server
   transparently."
-  
-  describe "Manual review of IIS Logs is required " do
-    skip "Ensure Client IP accurately identifies the client and not proxy server ( if used north of IIS )"
+
+  describe 'Manual review of IIS Logs is required ' do
+    skip 'Ensure Client IP accurately identifies the client and not proxy server ( if used north of IIS )'
   end
 end

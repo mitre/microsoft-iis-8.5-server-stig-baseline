@@ -1,7 +1,7 @@
-control "V-76711" do
+control 'V-76711' do
   title "The IIS 8.5 web server must have Multipurpose Internet Mail Extensions
   (MIME) that invoke OS shell programs disabled."
-  desc  "Controlling what a user of a hosted application can access is part of
+  desc "Controlling what a user of a hosted application can access is part of
   the security posture of the web server. Any time a user can access more
   functionality than is needed for the operation of the hosted application poses
   a security issue. A user with too much access can view information that is not
@@ -19,13 +19,13 @@ control "V-76711" do
   server.
   "
   impact 0.7
-  tag "gtitle": "SRG-APP-000141-WSR-000081"
-  tag "gid": "V-76711"
-  tag "rid": "SV-91407r1_rule"
-  tag "stig_id": "IISW-SV-000124"
-  tag "fix_id": "F-83407r1_fix"
-  tag "cci": ["CCI-000381"]
-  tag "nist": ["CM-7 a", "Rev_4"]
+  tag "gtitle": 'SRG-APP-000141-WSR-000081'
+  tag "gid": 'V-76711'
+  tag "rid": 'SV-91407r1_rule'
+  tag "stig_id": 'IISW-SV-000124'
+  tag "fix_id": 'F-83407r1_fix'
+  tag "cci": ['CCI-000381']
+  tag "nist": ['CM-7 a', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -84,29 +84,28 @@ control "V-76711" do
 
   csh_files = command("Get-WebConfiguration -pspath \"MACHINE/WEBROOT/APPHOST\" -filter \"system.webServer/staticContent/mimeMap\" | ? {$_.fileextension -eq '.csh'}").stdout.strip
 
-
-  describe "The MIME .exe files found" do
+  describe 'The MIME .exe files found' do
     subject { exe_files }
-    it {should cmp ''}
+    it { should cmp '' }
   end
 
-  describe "The MIME .dll files found" do
+  describe 'The MIME .dll files found' do
     subject { com_files }
-    it {should cmp ''}
+    it { should cmp '' }
   end
 
-  describe "The MIME .com files found" do
+  describe 'The MIME .com files found' do
     subject { dll_files }
-    it {should cmp ''}
+    it { should cmp '' }
   end
 
-  describe "The MIME .bat files found" do
+  describe 'The MIME .bat files found' do
     subject { bat_files }
-    it {should cmp ''}
+    it { should cmp '' }
   end
 
-  describe "The MIME .csh files found" do
+  describe 'The MIME .csh files found' do
     subject { csh_files }
-    it {should cmp ''}
+    it { should cmp '' }
   end
 end

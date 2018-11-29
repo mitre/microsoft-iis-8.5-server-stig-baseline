@@ -1,19 +1,19 @@
-control "V-76753" do
+control 'V-76753' do
   title "The Internet Printing Protocol (IPP) must be disabled on the IIS 8.5
   web server."
-  desc  "The use of Internet Printing Protocol (IPP) on an IIS web server
+  desc "The use of Internet Printing Protocol (IPP) on an IIS web server
   allows client’s access to shared printers. This privileged access could allow
   remote code execution by increasing the web servers attack surface.
   Additionally, since IPP does not support SSL, it is considered a risk and will
   not be deployed."
   impact 0.7
-  tag "gtitle": "SRG-APP-000383-WSR-000175"
-  tag "gid": "V-76753"
-  tag "rid": "SV-91449r1_rule"
-  tag "stig_id": "IISW-SV-000149"
-  tag "fix_id": "F-83449r1_fix"
-  tag "cci": ["CCI-001762"]
-  tag "nist": ["CM-7 (1) (b)", "Rev_4"]
+  tag "gtitle": 'SRG-APP-000383-WSR-000175'
+  tag "gid": 'V-76753'
+  tag "rid": 'SV-91449r1_rule'
+  tag "stig_id": 'IISW-SV-000149'
+  tag "fix_id": 'F-83449r1_fix'
+  tag "cci": ['CCI-001762']
+  tag "nist": ['CM-7 (1) (b)', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false

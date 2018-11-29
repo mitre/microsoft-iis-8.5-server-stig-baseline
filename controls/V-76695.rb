@@ -1,19 +1,19 @@
-control "V-76695" do
+control 'V-76695' do
   title "The log information from the IIS 8.5 web server must be protected from
   unauthorized modification or deletion."
-  desc  "A major tool in exploring the website use, attempted use, unusual
+  desc "A major tool in exploring the website use, attempted use, unusual
   conditions, and problems are the access and error logs. In the event of a
   security incident, these logs can provide the SA and the web manager with
   valuable information. Failure to protect log files could enable an attacker to
   modify the log file data or falsify events to mask an attacker's activity."
   impact 0.7
-  tag "gtitle": "SRG-APP-000120-WSR-000070"
-  tag "gid": "V-76695"
-  tag "rid": "SV-91391r3_rule"
-  tag "stig_id": "IISW-SV-000115"
-  tag "fix_id": "F-83391r2_fix"
-  tag "cci": ["CCI-000162", "CCI-000163", "CCI-000164"]
-  tag "nist": ["AU-9", "AU-9", "AU-9", "Rev_4"]
+  tag "gtitle": 'SRG-APP-000120-WSR-000070'
+  tag "gid": 'V-76695'
+  tag "rid": 'SV-91391r3_rule'
+  tag "stig_id": 'IISW-SV-000115'
+  tag "fix_id": 'F-83391r2_fix'
+  tag "cci": ['CCI-000162', 'CCI-000163', 'CCI-000164']
+  tag "nist": ['AU-9', 'AU-9', 'AU-9', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -85,7 +85,7 @@ control "V-76695" do
 
   Select \"Apply\" in the \"Actions\" pane.
   "
-  describe "Manual review of web server is required." do
-    skip "Manual review of web server is required"
-  end 
+  describe 'Manual review of web server is required.' do
+    skip 'Manual review of web server is required'
+  end
 end

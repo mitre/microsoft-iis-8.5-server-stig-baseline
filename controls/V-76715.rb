@@ -1,20 +1,20 @@
-control "V-76715" do
+control 'V-76715' do
   title "The IIS 8.5 web server must perform RFC 5280-compliant certification
   path validation."
-  desc  "This check verifies the server certificate is actually a DoD-issued
+  desc "This check verifies the server certificate is actually a DoD-issued
   certificate used by the organization being reviewed. This is used to verify the
   authenticity of the website to the user. If the certificate is not issued by
   the DoD or if the certificate has expired, then there is no assurance the use
   of the certificate is valid. The entire purpose of using a certificate is,
   therefore, compromised."
   impact 0.7
-  tag "gtitle": "SRG-APP-000175-WSR-000095"
-  tag "gid": "V-76715"
-  tag "rid": "SV-91411r1_rule"
-  tag "stig_id": "IISW-SV-000129"
-  tag "fix_id": "F-83411r1_fix"
-  tag "cci": ["CCI-000185"]
-  tag "nist": ["IA-5 (2) (a)", "Rev_4"]
+  tag "gtitle": 'SRG-APP-000175-WSR-000095'
+  tag "gid": 'V-76715'
+  tag "rid": 'SV-91411r1_rule'
+  tag "stig_id": 'IISW-SV-000129'
+  tag "fix_id": 'F-83411r1_fix'
+  tag "cci": ['CCI-000185']
+  tag "nist": ['IA-5 (2) (a)', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -57,7 +57,6 @@ control "V-76715" do
   	}
   }').stdout.strip.split("\r\n")
 
-
   CertList_Issuer = command('Import-Module -Name WebAdministration;
   Get-ChildItem IIS:SSLBindings `
   | select -expand store `
@@ -91,18 +90,20 @@ Get-ChildItem IIS:SSLBindings `
 }').stdout.strip.split("\r\n")
 
   CertList_Expired.each do |cert|
-  describe cert do
-    it { should_not match  /\S+\s+EXPIRED/}
+    describe cert do
+      it { should_not match /\S+\s+EXPIRED/ }
     end
   end
 
   CertList_NotExpired_Issuer.each do |cert|
     describe cert do
-      it { should match  /US/}
+      it { should match /US/ }
     end
   end
 
-  describe "Number of Certificates used by IIS   "  do
-    skip "Could not find any SSL Certificates used by IIS on this system "
-  end  if CertList_NotExpired_Issuer.length != 0
+  unless CertList_NotExpired_Issuer.empty?
+    describe 'Number of Certificates used by IIS   ' do
+      skip 'Could not find any SSL Certificates used by IIS on this system '
+    end
+  end
 end

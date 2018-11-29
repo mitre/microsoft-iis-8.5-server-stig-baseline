@@ -1,4 +1,4 @@
-control "V-76683" do
+control 'V-76683' do
   title "Both the log file and Event Tracing for Windows (ETW) for the IIS 8.5
   web server must be enabled."
   desc  "Internet Information Services (IIS) on Windows Server 2012 provides
@@ -14,15 +14,15 @@ control "V-76683" do
   over parsing text-based log files that are not updated in real time.
   "
   impact 0.7
-  tag "gtitle": "SRG-APP-000092-WSR-000055"
-  tag "satisfies": ["SRG-APP-000092-WSR-000055", "SRG-APP-000108-WSR-000166",
-  "SRG-APP-000358-WSR-000063"]
-  tag "gid": "V-76683"
-  tag "rid": "SV-91379r1_rule"
-  tag "stig_id": "IISW-SV-000103"
-  tag "fix_id": "F-83379r1_fix"
-  tag "cci": ["CCI-000139", "CCI-001464", "CCI-001851"]
-  tag "nist": ["AU-5 a", "AU-14 (1)", "AU-4 (1)", "Rev_4"]
+  tag "gtitle": 'SRG-APP-000092-WSR-000055'
+  tag "satisfies": ['SRG-APP-000092-WSR-000055', 'SRG-APP-000108-WSR-000166',
+                    'SRG-APP-000358-WSR-000063']
+  tag "gid": 'V-76683'
+  tag "rid": 'SV-91379r1_rule'
+  tag "stig_id": 'IISW-SV-000103'
+  tag "fix_id": 'F-83379r1_fix'
+  tag "cci": ['CCI-000139', 'CCI-001464', 'CCI-001851']
+  tag "nist": ['AU-5 a', 'AU-14 (1)', 'AU-4 (1)', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -65,17 +65,16 @@ control "V-76683" do
     it { should be_installed }
   end
 
+  iis_modules = command('Get-WebConfiguration  system.webServer/globalModules/*').stdout.strip
 
-  iis_modules = command("Get-WebConfiguration  system.webServer/globalModules/*").stdout.strip
-
-  describe "Is required IIS Module for ETW (Tracing) installed " do
+  describe 'Is required IIS Module for ETW (Tracing) installed ' do
     subject { iis_modules }
     it { should include 'TracingModule' }
   end
 
-  iis_logging_configuration = command('Get-WebConfigurationProperty -pspath "MACHINE/WEBROOT/APPHOST" -filter "System.Applicationhost/Sites/SiteDefaults/logfile"  -name logTargetW3C').stdout.strip.split(",")
+  iis_logging_configuration = command('Get-WebConfigurationProperty -pspath "MACHINE/WEBROOT/APPHOST" -filter "System.Applicationhost/Sites/SiteDefaults/logfile"  -name logTargetW3C').stdout.strip.split(',')
 
-  describe "IIS Logging configuration   " do
+  describe 'IIS Logging configuration   ' do
     subject { iis_logging_configuration }
     it { should include 'File' }
     it { should include 'ETW' }

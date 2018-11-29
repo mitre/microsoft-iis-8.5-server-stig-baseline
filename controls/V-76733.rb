@@ -1,18 +1,18 @@
-control "V-76733" do
-  title "Directory Browsing on the IIS 8.5 web server must be disabled."
+control 'V-76733' do
+  title 'Directory Browsing on the IIS 8.5 web server must be disabled.'
   desc  "Directory browsing allows the contents of a directory to be displayed
   upon request from a web client. If directory browsing is enabled for a
   directory in IIS, users could receive a web page listing the contents of the
   directory. If directory browsing is enabled the risk of inadvertently
   disclosing sensitive content is increased."
   impact 0.7
-  tag "gtitle": "SRG-APP-000251-WSR-000157"
-  tag "gid": "V-76733"
-  tag "rid": "SV-91429r1_rule"
-  tag "stig_id": "IISW-SV-000138"
-  tag "fix_id": "F-83429r1_fix"
-  tag "cci": ["CCI-001310"]
-  tag "nist": ["SI-10", "Rev_4"]
+  tag "gtitle": 'SRG-APP-000251-WSR-000157'
+  tag "gid": 'V-76733'
+  tag "rid": 'SV-91429r1_rule'
+  tag "stig_id": 'IISW-SV-000138'
+  tag "fix_id": 'F-83429r1_fix'
+  tag "cci": ['CCI-001310']
+  tag "nist": ['SI-10', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -44,8 +44,8 @@ control "V-76733" do
 
   directory_browsing = command('Get-WebConfigurationProperty -Filter system.webServer/directoryBrowse -name * | select -expand enabled').stdout.strip
 
-  describe "The websites enable directory browsing" do
-     subject { directory_browsing }
-     it {should cmp 'False'}
+  describe 'The websites enable directory browsing' do
+    subject { directory_browsing }
+    it { should cmp 'False' }
   end
 end

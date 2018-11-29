@@ -1,7 +1,7 @@
-control "V-76741" do
+control 'V-76741' do
   title "The IIS 8.5 web server must restrict inbound connections from
   nonsecure zones."
-  desc  "Remote access to the web server is any access that communicates
+  desc "Remote access to the web server is any access that communicates
   through an external, non-organization-controlled network. Remote access can be
   used to access hosted applications or to perform management functions.
 
@@ -15,13 +15,13 @@ control "V-76741" do
   service (DoS) attacks on the web server.
   "
   impact 0.7
-  tag "gtitle": "SRG-APP-000315-WSR-000004"
-  tag "gid": "V-76741"
-  tag "rid": "SV-91437r2_rule"
-  tag "stig_id": "IISW-SV-000142"
-  tag "fix_id": "F-83437r1_fix"
-  tag "cci": ["CCI-002314"]
-  tag "nist": ["AC-17 (1)", "Rev_4"]
+  tag "gtitle": 'SRG-APP-000315-WSR-000004'
+  tag "gid": 'V-76741'
+  tag "rid": 'SV-91437r2_rule'
+  tag "stig_id": 'IISW-SV-000142'
+  tag "fix_id": 'F-83437r1_fix'
+  tag "cci": ['CCI-002314']
+  tag "nist": ['AC-17 (1)', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -69,4 +69,3 @@ control "V-76741" do
     skip 'This check must be preformed manually'
   end
 end
-

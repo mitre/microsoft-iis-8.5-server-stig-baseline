@@ -1,7 +1,7 @@
-control "V-76727" do
+control 'V-76727' do
   title "The IIS 8.5 web server must limit the amount of time a cookie
   persists."
-  desc  "ASP.NET provides a session state, which is available as the
+  desc "ASP.NET provides a session state, which is available as the
   HttpSessionState class, as a method of storing session-specific information
   that is visible only within the session. ASP.NET session state identifies
   requests from the same browser during a limited time window as a session, and
@@ -14,13 +14,13 @@ control "V-76727" do
   because cookies do not require any redirection.
   "
   impact 0.7
-  tag "gtitle": "SRG-APP-000223-WSR-000145"
-  tag "gid": "V-76727"
-  tag "rid": "SV-91423r2_rule"
-  tag "stig_id": "IISW-SV-000135"
-  tag "fix_id": "F-83423r3_fix"
-  tag "cci": ["CCI-001664"]
-  tag "nist": ["SC-23 (3)", "Rev_4"]
+  tag "gtitle": 'SRG-APP-000223-WSR-000145'
+  tag "gid": 'V-76727'
+  tag "rid": 'SV-91423r2_rule'
+  tag "stig_id": 'IISW-SV-000135'
+  tag "fix_id": 'F-83423r3_fix'
+  tag "cci": ['CCI-001664']
+  tag "nist": ['SC-23 (3)', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -58,12 +58,12 @@ control "V-76727" do
   cookie_setting = command('Get-WebConfigurationProperty -Filter system.web/sessionState -name * | select -expand cookieless').stdout.strip
   cookie_timeout = command('Get-WebConfigurationProperty -Filter system.web/sessionState -name * | select -expand timeout | select -expand Minutes').stdout.strip
 
-  describe "The website session state cookie settings" do
+  describe 'The website session state cookie settings' do
     subject { cookie_setting }
-    it {should cmp "UseCookies"}
+    it { should cmp 'UseCookies' }
   end
-  describe "The IIS web server cookie timeout limit" do
+  describe 'The IIS web server cookie timeout limit' do
     subject { 'cookie_timeout' }
-    it {should be <= 20}
+    it { should be <= 20 }
   end
 end

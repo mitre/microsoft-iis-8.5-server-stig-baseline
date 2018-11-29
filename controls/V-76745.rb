@@ -1,4 +1,4 @@
-control "V-76745" do
+control 'V-76745' do
   title "IIS 8.5 web server system files must conform to minimum file
   permission requirements."
   desc  "This check verifies the key web server system configuration files are
@@ -9,13 +9,13 @@ control "V-76745" do
   control of its managers and owners; properties in the web server configuration
   could be altered to compromise the entire server platform."
   impact 0.7
-  tag "gtitle": "SRG-APP-000340-WSR-000029"
-  tag "gid": "V-76745"
-  tag "rid": "SV-91441r1_rule"
-  tag "stig_id": "IISW-SV-000144"
-  tag "fix_id": "F-83441r1_fix"
-  tag "cci": ["CCI-002235"]
-  tag "nist": ["AC-6 (10)", "Rev_4"]
+  tag "gtitle": 'SRG-APP-000340-WSR-000029'
+  tag "gid": 'V-76745'
+  tag "rid": 'SV-91441r1_rule'
+  tag "stig_id": 'IISW-SV-000144'
+  tag "fix_id": 'F-83441r1_fix'
+  tag "cci": ['CCI-002235']
+  tag "nist": ['AC-6 (10)', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -41,20 +41,20 @@ control "V-76745" do
   ALL APPLICATION PACKAGES (built-in security group): Read and execute
   Users: Read and execute, list folder contents
   Creator/Owner: Special permissions to subkeys"
-    tag "fix": "Open Explorer and navigate to the inetpub directory.
+  tag "fix": "Open Explorer and navigate to the inetpub directory.
 
-  Right-click inetpub and select “Properties”.
+Right-click inetpub and select “Properties”.
 
-  Click the \"Security\" tab.
+Click the \"Security\" tab.
 
-  Set the following permissions:
+Set the following permissions:
 
-  SYSTEM: Full control
-  Administrators: Full control
-  TrustedInstaller: Full control
-  ALL APPLICATION PACKAGES (built-in security group): Read and execute
-  Users: Read and execute, list folder contents
-  Creator/Owner: special permissions to subkeys"
+SYSTEM: Full control
+Administrators: Full control
+TrustedInstaller: Full control
+ALL APPLICATION PACKAGES (built-in security group): Read and execute
+Users: Read and execute, list folder contents
+Creator/Owner: special permissions to subkeys"
 
   describe directory('C:\\inetpub') do
     it { should be_allowed('full-control', by_user: 'NT AUTHORITY\\SYSTEM') }

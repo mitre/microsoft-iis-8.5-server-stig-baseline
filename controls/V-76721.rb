@@ -1,7 +1,7 @@
-control "V-76721" do
+control 'V-76721' do
   title "The IIS 8.5 web server must separate the hosted applications from
   hosted web server management functionality."
-  desc  "The separation of user functionality from web server management can be
+  desc "The separation of user functionality from web server management can be
   accomplished by moving management functions to a separate IP address or port.
   To further separate the management functions, separate authentication methods
   and certificates should be used.
@@ -11,13 +11,13 @@ control "V-76721" do
   application use is minimized.
   "
   impact 0.7
-  tag "gtitle": "SRG-APP-000211-WSR-000129"
-  tag "gid": "V-76721"
-  tag "rid": "SV-91417r1_rule"
-  tag "stig_id": "IISW-SV-000132"
-  tag "fix_id": "F-83417r1_fix"
-  tag "cci": ["CCI-001082"]
-  tag "nist": ["SC-2", "Rev_4"]
+  tag "gtitle": 'SRG-APP-000211-WSR-000129'
+  tag "gid": 'V-76721'
+  tag "rid": 'SV-91417r1_rule'
+  tag "stig_id": 'IISW-SV-000132'
+  tag "fix_id": 'F-83417r1_fix'
+  tag "cci": ['CCI-001082']
+  tag "nist": ['SC-2', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -46,8 +46,7 @@ control "V-76721" do
   tag "fix": "Develop a method to manage the hosted applications, either by
   moving its management functions off of the IIS 8.5 web server or by accessing
   the application's management via a uniquely assigned IP address."
-  describe "Manual review of hosted applications and management procedure is required" do
-    skip "Manual review of hosted applications and management procedure is required"
+  describe 'Manual review of hosted applications and management procedure is required' do
+    skip 'Manual review of hosted applications and management procedure is required'
   end
 end
-

@@ -1,7 +1,7 @@
-control "V-76701" do
+control 'V-76701' do
   title "The IIS 8.5 web server must only contain functions necessary for
   operation."
-  desc  "A web server can provide many features, services, and processes. Some
+  desc "A web server can provide many features, services, and processes. Some
   of these may be deemed unnecessary or too unsecure to run on a production DoD
   system.
 
@@ -10,13 +10,13 @@ control "V-76701" do
   the web server mission or can adversely impact server performance.
   "
   impact 0.7
-  tag "gtitle": "SRG-APP-000141-WSR-000075"
-  tag "gid": "V-76701"
-  tag "rid": "SV-91397r1_rule"
-  tag "stig_id": "IISW-SV-000118"
-  tag "fix_id": "F-83397r1_fix"
-  tag "cci": ["CCI-000381"]
-  tag "nist": ["CM-7 a", "Rev_4"]
+  tag "gtitle": 'SRG-APP-000141-WSR-000075'
+  tag "gid": 'V-76701'
+  tag "rid": 'SV-91397r1_rule'
+  tag "stig_id": 'IISW-SV-000118'
+  tag "fix_id": 'F-83397r1_fix'
+  tag "cci": ['CCI-000381']
+  tag "nist": ['CM-7 a', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -44,6 +44,6 @@ control "V-76701" do
   8.5 web server."
   describe "The IIS 8.5 web server must only contain functions necessary for
   operation." do
-    skip "Manual review required for this control"
+    skip 'Manual review required for this control'
   end
 end

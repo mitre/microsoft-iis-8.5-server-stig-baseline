@@ -1,4 +1,4 @@
-control "V-76761" do
+control 'V-76761' do
   title "A web server must maintain the confidentiality of controlled
   information during transmission through the use of an approved TLS version."
   desc  "Transport Layer Security (TLS) is a required transmission protocol for
@@ -11,13 +11,13 @@ control "V-76761" do
   applications.
   "
   impact 0.7
-  tag "gtitle": "SRG-APP-000439-WSR-000156"
-  tag "gid": "V-76761"
-  tag "rid": "SV-91457r1_rule"
-  tag "stig_id": "IISW-SV-000154"
-  tag "fix_id": "F-83457r1_fix"
-  tag "cci": ["CCI-002418"]
-  tag "nist": ["SC-8", "Rev_4"]
+  tag "gtitle": 'SRG-APP-000439-WSR-000156'
+  tag "gid": 'V-76761'
+  tag "rid": 'SV-91457r1_rule'
+  tag "stig_id": 'IISW-SV-000154'
+  tag "fix_id": 'F-83457r1_fix'
+  tag "cci": ['CCI-002418']
+  tag "nist": ['SC-8', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -40,16 +40,16 @@ control "V-76761" do
   tls1_2Enabled = registry_key('HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2\Client').Enabled
 
   describe.one do
-    describe "The web server must maintain the confidentiality of controlled information during transmission through the use of an approved TLS version such as TLS 1.1. (currently: " + (tls1_1Enabled ? 'TLS 1.1 enabled' : 'Other enabled') + " )\n" do
+    describe 'The web server must maintain the confidentiality of controlled information during transmission through the use of an approved TLS version such as TLS 1.1. (currently: ' + (tls1_1Enabled ? 'TLS 1.1 enabled' : 'Other enabled') + " )\n" do
       subject { tls1_1Enabled }
-      it "TLS 1.1 should be enabled" do
-        expect(subject).to cmp("1")
+      it 'TLS 1.1 should be enabled' do
+        expect(subject).to cmp('1')
       end
     end
-    describe "The web server must maintain the confidentiality of controlled information during transmission through the use of an approved TLS version such as TLS 1.2. (currently: " + (tls1_2Enabled ? 'TLS 1.2 enabled' : 'Other enabled') + " )\n" do
+    describe 'The web server must maintain the confidentiality of controlled information during transmission through the use of an approved TLS version such as TLS 1.2. (currently: ' + (tls1_2Enabled ? 'TLS 1.2 enabled' : 'Other enabled') + " )\n" do
       subject { tls1_2Enabled }
-      it "TLS 1.2 should be enabled" do
-        expect(subject).to cmp("1")
+      it 'TLS 1.2 should be enabled' do
+        expect(subject).to cmp('1')
       end
     end
   end

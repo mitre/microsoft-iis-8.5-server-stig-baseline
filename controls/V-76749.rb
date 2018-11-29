@@ -1,13 +1,13 @@
-AUTHORIZED_USERS= attribute(
-    'authorized_users',
-    description: 'Name of Tomcat service',
-    default: 'inspec'
+AUTHORIZED_USERS = attribute(
+  'authorized_users',
+  description: 'Name of Tomcat service',
+  default: 'inspec'
 )
 
-control "V-76749" do
+control 'V-76749' do
   title "Access to web administration tools must be restricted to the web
   manager and the web managers designees."
-  desc  "A web server can be modified through parameter modification, patch
+  desc "A web server can be modified through parameter modification, patch
   installation, upgrades to the web server or modules, and security parameter
   changes. With each of these changes, there is the potential for an adverse
   effect such as a DoS, web server instability, or hosted application instability.
@@ -23,15 +23,15 @@ control "V-76749" do
   to authorized users and administrators.
   "
   impact 0.7
-  tag "gtitle": "SRG-APP-000380-WSR-000072"
-  tag "satisfies": ["SRG-APP-000380-WSR-000072", "SRG-APP-000435-WSR-000147",
-  "SRG-APP-000033-WSR-000169"]
-  tag "gid": "V-76749"
-  tag "rid": "SV-91445r1_rule"
-  tag "stig_id": "IISW-SV-000147"
-  tag "fix_id": "F-83445r1_fix"
-  tag "cci": ["CCI-000213", "CCI-001813", "CCI-002385"]
-  tag "nist": ["AC-3", "CM-5 (1)", "SC-5", "Rev_4"]
+  tag "gtitle": 'SRG-APP-000380-WSR-000072'
+  tag "satisfies": ['SRG-APP-000380-WSR-000072', 'SRG-APP-000435-WSR-000147',
+                    'SRG-APP-000033-WSR-000169']
+  tag "gid": 'V-76749'
+  tag "rid": 'SV-91445r1_rule'
+  tag "stig_id": 'IISW-SV-000147'
+  tag "fix_id": 'F-83445r1_fix'
+  tag "cci": ['CCI-000213', 'CCI-001813', 'CCI-002385']
+  tag "nist": ['AC-3', 'CM-5 (1)', 'SC-5', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -76,13 +76,12 @@ control "V-76749" do
     it { should be_allowed('full-control', by_user: 'BUILTIN\Administrators') }
 
     # read & execute for ALL APPLICATION PACKAGES, SYSTEM, Users
-    
+
     it { should be_allowed('read', by_user: 'APPLICATION PACKAGE AUTHORITY\\ALL APPLICATION PACKAGES') }
     it { should be_allowed('read', by_user: 'NT AUTHORITY\\SYSTEM') }
     it { should be_allowed('read', by_user: 'BUILTIN\\Users') }
 
     # users with read & execute permissions
-    it { should be_allowed('read', by_user: "#{AUTHORIZED_USERS}") }
-
+    it { should be_allowed('read', by_user: AUTHORIZED_USERS.to_s) }
   end
 end

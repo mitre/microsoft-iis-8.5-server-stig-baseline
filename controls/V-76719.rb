@@ -1,8 +1,8 @@
-control "V-76719" do
+control 'V-76719' do
   title "IIS 8.5 Web server accounts accessing the directory tree, the shell,
   or other operating system functions and utilities must only be administrative
   accounts."
-  desc  "As a rule, accounts on a web server are to be kept to a minimum. Only
+  desc "As a rule, accounts on a web server are to be kept to a minimum. Only
   administrators, web managers, developers, auditors, and web authors require
   accounts on the machine hosting the web server. This is in addition to the
   anonymous web user account. The resources to which these accounts have access
@@ -12,13 +12,13 @@ control "V-76719" do
   files. The anonymous web user account must not have access to system resources
   as that account could then control the server."
   impact 0.7
-  tag "gtitle": "SRG-APP-000211-WSR-000030"
-  tag "gid": "V-76719"
-  tag "rid": "SV-91415r1_rule"
-  tag "stig_id": "IISW-SV-000131"
-  tag "fix_id": "F-83415r1_fix"
-  tag "cci": ["CCI-001082"]
-  tag "nist": ["SC-2", "Rev_4"]
+  tag "gtitle": 'SRG-APP-000211-WSR-000030'
+  tag "gid": 'V-76719'
+  tag "rid": 'SV-91415r1_rule'
+  tag "stig_id": 'IISW-SV-000131'
+  tag "fix_id": 'F-83415r1_fix'
+  tag "cci": ['CCI-001082']
+  tag "nist": ['SC-2', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -55,4 +55,3 @@ control "V-76719" do
     skip 'This check must be preformed manually'
   end
 end
-

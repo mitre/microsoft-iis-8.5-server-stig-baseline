@@ -1,7 +1,7 @@
-control "V-76717" do
+control 'V-76717' do
   title "Java software installed on a production IIS 8.5 web server must be
   limited to .class files and the Java Virtual Machine."
-  desc  "Mobile code in hosted applications allows the developer to add
+  desc "Mobile code in hosted applications allows the developer to add
   functionality and displays to hosted applications that are fluid, as opposed to
   a static web page. The data presentation becomes more appealing to the user, is
   easier to analyze, and navigation through the hosted application and data is
@@ -21,13 +21,13 @@ control "V-76717" do
   and permissions to resources on the server.
   "
   impact 0.7
-  tag "gtitle": "SRG-APP-000206-WSR-000128"
-  tag "gid": "V-76717"
-  tag "rid": "SV-91413r1_rule"
-  tag "stig_id": "IISW-SV-000130"
-  tag "fix_id": "F-83413r1_fix"
-  tag "cci": ["CCI-001166"]
-  tag "nist": ["SC-18 (1)", "Rev_4"]
+  tag "gtitle": 'SRG-APP-000206-WSR-000128'
+  tag "gid": 'V-76717'
+  tag "rid": 'SV-91413r1_rule'
+  tag "stig_id": 'IISW-SV-000130'
+  tag "fix_id": 'F-83413r1_fix'
+  tag "cci": ['CCI-001166']
+  tag "nist": ['SC-18 (1)', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -47,8 +47,8 @@ control "V-76717" do
 
   java_software = command('Get-Childitem –Path C:\ -Include *.java,*.jpp -File -Recurse -ErrorAction SilentlyContinue').stdout.strip
 
-  describe "The java software installed on the IIS webserver" do
+  describe 'The java software installed on the IIS webserver' do
     subject { java_software }
-    it {should cmp ''}
+    it { should cmp '' }
   end
 end

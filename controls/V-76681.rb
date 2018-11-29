@@ -1,13 +1,13 @@
 LOG_FIELDS = attribute(
-    'fields',
-    description: 'List of fields to be included in Web Server Logging Configuration',
-    default: ['Date', 'Time', 'ClientIP', 'UserName', 'Method', 'UriQuery', 'HttpStatus', 'Referer']
+  'fields',
+  description: 'List of fields to be included in Web Server Logging Configuration',
+  default: %w[Date Time ClientIP UserName Method UriQuery HttpStatus Referer]
 )
 
-control "V-76681" do
+control 'V-76681' do
   title "The enhanced logging for the IIS 8.5 web server must be enabled and
   capture all user and web server events."
-  desc  "Log files are a critical component to the successful management of an
+  desc "Log files are a critical component to the successful management of an
   ISS server used within the DoD. By generating log files with useful information web
   administrators can leverage them in the event of a disaster, malicious attack,
   or other site specific needs.
@@ -27,17 +27,17 @@ control "V-76681" do
   rules invoked.
   "
   impact 0.7
-  tag "gtitle": "SRG-APP-000092-WSR-000055"
-  tag "satisfies": ["SRG-APP-000092-WSR-000055", "SRG-APP-000093-WSR-000053",
-  "SRG-APP-000095-WSR-000056", "SRG-APP-000096-WSR-000057",
-  "SRG-APP-000097-WSR-000058", "SRG-APP-000097-WSR-000059"]
-  tag "gid": "V-76681"
-  tag "rid": "SV-91377r1_rule"
-  tag "stig_id": "IISW-SV-000102"
-  tag "fix_id": "F-83377r1_fix"
-  tag "cci": ["CCI-000130", "CCI-000131", "CCI-000132", "CCI-000133",
-  "CCI-001462", "CCI-001464"]
-  tag "nist": ["AU-3", "AU-14 (2)", "AU-14 (1)", "Rev_4"]
+  tag "gtitle": 'SRG-APP-000092-WSR-000055'
+  tag "satisfies": ['SRG-APP-000092-WSR-000055', 'SRG-APP-000093-WSR-000053',
+                    'SRG-APP-000095-WSR-000056', 'SRG-APP-000096-WSR-000057',
+                    'SRG-APP-000097-WSR-000058', 'SRG-APP-000097-WSR-000059']
+  tag "gid": 'V-76681'
+  tag "rid": 'SV-91377r1_rule'
+  tag "stig_id": 'IISW-SV-000102'
+  tag "fix_id": 'F-83377r1_fix'
+  tag "cci": ['CCI-000130', 'CCI-000131', 'CCI-000132', 'CCI-000133',
+              'CCI-001462', 'CCI-001464']
+  tag "nist": ['AU-3', 'AU-14 (2)', 'AU-14 (1)', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -74,20 +74,19 @@ control "V-76681" do
 
   Under the \"Actions\" pane, click \"Apply\"."
 
+  is_file_logging_enabled_string = command('Get-WebConfiguration system.applicationHost/log/centralW3CLogFile | select -expand enabled').stdout.strip
+  is_file_logging_enabled = is_file_logging_enabled_string == 'False' || is_file_logging_enabled_string == '' ? false : true
 
-  is_file_logging_enabled_string = command("Get-WebConfiguration system.applicationHost/log/centralW3CLogFile | select -expand enabled").stdout.strip
-  is_file_logging_enabled = (is_file_logging_enabled_string == 'False' || is_file_logging_enabled_string == '') ? false : true
+  logging_fields = command('Get-WebConfiguration system.applicationHost/log/centralW3CLogFile | select -expand logExtFileFlags').stdout.strip.split(',')
 
-  logging_fields = command("Get-WebConfiguration system.applicationHost/log/centralW3CLogFile | select -expand logExtFileFlags").stdout.strip.split(',')
-
-  describe "Is Web Server Central W3C Logging Configuration Enabled" do
+  describe 'Is Web Server Central W3C Logging Configuration Enabled' do
     subject { is_file_logging_enabled }
     it { should be true }
   end
 
   fields.each do |myField|
-    describe "#{myField}" do
-      it { should be_in logging_fields}
+    describe myField.to_s do
+      it { should be_in logging_fields }
     end
   end
 end

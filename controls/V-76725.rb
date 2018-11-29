@@ -1,5 +1,5 @@
-control "V-76725" do
-  title "The IIS 8.5 web server must use cookies to track session state."
+control 'V-76725' do
+  title 'The IIS 8.5 web server must use cookies to track session state.'
   desc  "Cookies are used to exchange data between the web server and the
   client. Cookies, such as a session cookie, may contain session information and
   user credentials used to maintain a persistent connection between the user and
@@ -11,13 +11,13 @@ control "V-76725" do
   because cookies do not require any redirection.
   "
   impact 0.7
-  tag "gtitle": "SRG-APP-000223-WSR-000011"
-  tag "gid": "V-76725"
-  tag "rid": "SV-91421r3_rule"
-  tag "stig_id": "IISW-SV-000134"
-  tag "fix_id": "F-83421r3_fix"
-  tag "cci": ["CCI-001185", "CCI-001664"]
-  tag "nist": ["SC-23 (1)", "SC-23 (3)", "Rev_4"]
+  tag "gtitle": 'SRG-APP-000223-WSR-000011'
+  tag "gid": 'V-76725'
+  tag "rid": 'SV-91421r3_rule'
+  tag "stig_id": 'IISW-SV-000134'
+  tag "fix_id": 'F-83421r3_fix'
+  tag "cci": ['CCI-001185', 'CCI-001664']
+  tag "nist": ['SC-23 (1)', 'SC-23 (3)', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -52,9 +52,9 @@ control "V-76725" do
   Click \"Apply\" in the \"Actions\" pane.
   "
   cookie_setting = command('Get-WebConfigurationProperty -Filter system.web/sessionState -name * | select -expand cookieless').stdout.strip
-  
-  describe "The website session state cookie settings" do
+
+  describe 'The website session state cookie settings' do
     subject { cookie_setting }
-    it {should cmp "UseCookies"}
+    it { should cmp 'UseCookies' }
   end
 end

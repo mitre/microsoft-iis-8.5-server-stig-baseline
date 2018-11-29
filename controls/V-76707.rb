@@ -1,17 +1,17 @@
 MINIMAL_LOCAL_USERS = attribute(
-    'users',
-    description: 'Minimum number of users required for server to operate',
-    default: %w[
-            Administrator
-            Guest
-            inspec
-           ]
+  'users',
+  description: 'Minimum number of users required for server to operate',
+  default: %w[
+    Administrator
+    Guest
+    inspec
+  ]
 )
 
-control "V-76707" do
+control 'V-76707' do
   title "The accounts created by uninstalled features (i.e., tools, utilities,
   specific, etc.) must be deleted from the IIS 8.5 server."
-  desc  "When accounts used for web server features such as documentation,
+  desc "When accounts used for web server features such as documentation,
   sample code, example applications, tutorials, utilities, and services are
   created even though the feature is not installed, they become an exploitable
   threat to a web server.
@@ -25,13 +25,13 @@ control "V-76707" do
   and must be deleted when these features are uninstalled.
   "
   impact 0.7
-  tag "gtitle": "SRG-APP-000141-WSR-000078"
-  tag "gid": "V-76707"
-  tag "rid": "SV-91403r1_rule"
-  tag "stig_id": "IISW-SV-000121"
-  tag "fix_id": "F-83403r1_fix"
-  tag "cci": ["CCI-000381"]
-  tag "nist": ["CM-7 a", "Rev_4"]
+  tag "gtitle": 'SRG-APP-000141-WSR-000078'
+  tag "gid": 'V-76707'
+  tag "rid": 'SV-91403r1_rule'
+  tag "stig_id": 'IISW-SV-000121'
+  tag "fix_id": 'F-83403r1_fix'
+  tag "cci": ['CCI-000381']
+  tag "nist": ['CM-7 a', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -62,15 +62,15 @@ control "V-76707" do
   uninstalled or are not used."
 
   local_users = command('Get-WmiObject -Class Win32_UserAccount -Filter  "LocalAccount=\'True\'" | select -ExpandProperty Name').stdout.strip.split("\r\n")
-  is_min_users = (local_users.length == MINIMAL_LOCAL_USERS.length) ? false : true
+  is_min_users = local_users.length != MINIMAL_LOCAL_USERS.length
 
-  describe "The number of local users" do
-    subject {local_users}
+  describe 'The number of local users' do
+    subject { local_users }
     its('length') { should eq MINIMAL_LOCAL_USERS.length }
   end
 
-  describe "List of Local Users on the system" do
+  describe 'List of Local Users on the system' do
     subject { local_users }
-    it { should cmp MINIMAL_LOCAL_USERS}
+    it { should cmp MINIMAL_LOCAL_USERS }
   end
 end

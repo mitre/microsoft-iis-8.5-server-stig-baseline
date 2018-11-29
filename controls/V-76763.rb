@@ -1,4 +1,4 @@
-control "V-76763" do
+control 'V-76763' do
   title "The IIS 8.5 web server must install security-relevant software updates
   within the configured time period directed by an authoritative source (e.g.,
   IAVM, CTOs, DTMs, and STIGs)."
@@ -7,13 +7,13 @@ control "V-76763" do
   included in the next version of the server software. Maintaining the web server
   at a current version makes the efforts of a malicious user more difficult."
   impact 0.7
-  tag "gtitle": "SRG-APP-000456-WSR-000187"
-  tag "gid": "V-76763"
-  tag "rid": "SV-91459r2_rule"
-  tag "stig_id": "IISW-SV-000155"
-  tag "fix_id": "F-83459r1_fix"
-  tag "cci": ["CCI-002605"]
-  tag "nist": ["SI-2 c", "Rev_4"]
+  tag "gtitle": 'SRG-APP-000456-WSR-000187'
+  tag "gid": 'V-76763'
+  tag "rid": 'SV-91459r2_rule'
+  tag "stig_id": 'IISW-SV-000155'
+  tag "fix_id": 'F-83459r1_fix'
+  tag "cci": ['CCI-002605']
+  tag "nist": ['SI-2 c', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false

@@ -1,7 +1,7 @@
-control "V-76679" do
+control 'V-76679' do
   title "The IIS 8.5 web server remote authors or content providers must only
   use secure encrypted logons and connections to upload web server content."
-  desc  "Logging onto a web server remotely using an unencrypted protocol or
+  desc "Logging onto a web server remotely using an unencrypted protocol or
   service when performing updates and maintenance is a major risk. Data, such as
   user account, is transmitted in plaintext and can easily be compromised. When
   performing remote administrative tasks, a protocol or service that encrypts the
@@ -12,13 +12,13 @@ control "V-76679" do
   console implies physical access to the server.
   "
   impact 0.7
-  tag "gtitle": "SRG-APP-000015-WSR-000014"
-  tag "gid": "V-76679"
-  tag "rid": "SV-91375r1_rule"
-  tag "stig_id": "IISW-SV-000100"
-  tag "fix_id": "F-83375r1_fix"
-  tag "cci": ["CCI-001453"]
-  tag "nist": ["AC-17 (2)", "Rev_4"]
+  tag "gtitle": 'SRG-APP-000015-WSR-000014'
+  tag "gid": 'V-76679'
+  tag "rid": 'SV-91375r1_rule'
+  tag "stig_id": 'IISW-SV-000100'
+  tag "fix_id": 'F-83375r1_fix'
+  tag "cci": ['CCI-001453']
+  tag "nist": ['AC-17 (2)', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -63,7 +63,7 @@ control "V-76679" do
   tag "fix": "Ensure the web server administration is only performed over a
   secure path."
 
-  describe "Manual validation required. Review Remote Administration Procedures if Remote Administration of IIS or hosted Applications is allowed" do
-    skip "Manual validation required. Review Remote Administration Procedures if Remote Administration of IIS or hosted Applications is allowed"
+  describe 'Manual validation required. Review Remote Administration Procedures if Remote Administration of IIS or hosted Applications is allowed' do
+    skip 'Manual validation required. Review Remote Administration Procedures if Remote Administration of IIS or hosted Applications is allowed'
   end
 end

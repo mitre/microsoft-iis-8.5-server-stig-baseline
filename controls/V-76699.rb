@@ -1,7 +1,7 @@
-control "V-76699" do
+control 'V-76699' do
   title "The IIS 8.5 web server must not perform user management for hosted
   applications."
-  desc  "User management and authentication can be an essential part of any
+  desc "User management and authentication can be an essential part of any
   application hosted by the web server. Along with authenticating users, the user
   management function must perform several other tasks like password complexity,
   locking users after a configurable number of failed logons, and management of
@@ -14,13 +14,13 @@ control "V-76699" do
   is built for enterprise-wide user management, like LDAP and Active Directory.
   "
   impact 0.7
-  tag "gtitle": "SRG-APP-000141-WSR-000015"
-  tag "gid": "V-76699"
-  tag "rid": "SV-91395r1_rule"
-  tag "stig_id": "IISW-SV-000117"
-  tag "fix_id": "F-83395r1_fix"
-  tag "cci": ["CCI-000381"]
-  tag "nist": ["CM-7 a", "Rev_4"]
+  tag "gtitle": 'SRG-APP-000141-WSR-000015'
+  tag "gid": 'V-76699'
+  tag "rid": 'SV-91395r1_rule'
+  tag "stig_id": 'IISW-SV-000117'
+  tag "fix_id": 'F-83395r1_fix'
+  tag "cci": ['CCI-000381']
+  tag "nist": ['CM-7 a', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -50,7 +50,7 @@ control "V-76699" do
   perform user management outside the IIS 8.5 web server.
 
   Document how the hosted application user management is accomplished."
-  describe "Manual review of User Management documentation is required." do
-    skip "Ensure Centralization of User Management is documented and implemented."
+  describe 'Manual review of User Management documentation is required.' do
+    skip 'Ensure Centralization of User Management is documented and implemented.'
   end
 end

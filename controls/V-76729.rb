@@ -1,7 +1,7 @@
-control "V-76729" do
+control 'V-76729' do
   title "The IIS 8.5 web server must augment re-creation to a stable and known
   baseline."
-  desc  "Making certain that the web server has not been updated by an
+  desc "Making certain that the web server has not been updated by an
   unauthorized user is always a concern. Adding patches, functions, and modules
   that are untested and not part of the baseline opens the possibility for
   security risks. The web server must offer, and not hinder, a method that allows
@@ -14,13 +14,13 @@ control "V-76729" do
   server, can be used.
   "
   impact 0.7
-  tag "gtitle": "SRG-APP-000225-WSR-000074"
-  tag "gid": "V-76729"
-  tag "rid": "SV-91425r1_rule"
-  tag "stig_id": "IISW-SV-000136"
-  tag "fix_id": "F-83425r1_fix"
-  tag "cci": ["CCI-001190"]
-  tag "nist": ["SC-24", "Rev_4"]
+  tag "gtitle": 'SRG-APP-000225-WSR-000074'
+  tag "gid": 'V-76729'
+  tag "rid": 'SV-91425r1_rule'
+  tag "stig_id": 'IISW-SV-000136'
+  tag "fix_id": 'F-83425r1_fix'
+  tag "cci": ['CCI-001190']
+  tag "nist": ['SC-24', 'Rev_4']
   tag "false_negatives": nil
   tag "false_positives": nil
   tag "documentable": false
@@ -43,7 +43,7 @@ control "V-76729" do
 
   Document and test the disaster recovery methods designed."
 
-  describe "Manual review of DR portion of BCDR is required." do
-    skip "Manual review of DR portion of BCDR is required."
+  describe 'Manual review of DR portion of BCDR is required.' do
+    skip 'Manual review of DR portion of BCDR is required.'
   end
 end
