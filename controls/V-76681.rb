@@ -1,9 +1,3 @@
-LOG_FIELDS = attribute(
-  'fields',
-  description: 'List of fields to be included in Web Server Logging Configuration',
-  default: %w[Date Time ClientIP UserName Method UriQuery HttpStatus Referer]
-)
-
 control 'V-76681' do
   title "The enhanced logging for the IIS 8.5 web server must be enabled and
   capture all user and web server events."
@@ -76,7 +70,7 @@ control 'V-76681' do
 
   is_file_logging_enabled_string = command('Get-WebConfiguration system.applicationHost/log/centralW3CLogFile | select -expand enabled').stdout.strip
   is_file_logging_enabled = is_file_logging_enabled_string == 'False' || is_file_logging_enabled_string == '' ? false : true
-
+  fields = attribute('log_fileds')
   logging_fields = command('Get-WebConfiguration system.applicationHost/log/centralW3CLogFile | select -expand logExtFileFlags').stdout.strip.split(',')
 
   describe 'Is Web Server Central W3C Logging Configuration Enabled' do

@@ -6,3 +6,23 @@ copyright_email:
 license: Apache-2.0
 summary: This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense DoD information systems. The requirements are derived from the National Institute of Standards and Technology NIST 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address
 version: 0.1.0
+
+attributes:
+  - name: is_proxy
+    description: 'Set to true if this system is running as a proxy server'
+    default: false
+
+  - name: log_fileds
+    description: 'List of fields to be included in Web Server Logging Configuration'
+    type: array
+    default: ['Date', 'Time', 'ClientIP', 'UserName', 'Method', 'UriQuery', 'HttpStatus', 'Referer']
+
+  - name: minimal_local_users
+    description: 'Minimum number of users required for server to operate'
+    type: array
+    default: ['Administrator', 'Guest', 'inspec']
+
+  - name: log_directory
+    description: 'IIS site log directory'
+    type: string
+    default: 'C:\inetpub\logs\LogFiles'

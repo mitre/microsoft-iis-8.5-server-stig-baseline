@@ -1,9 +1,3 @@
-IIS_SITE_NAME = attribute(
-  'iis_site_name',
-  description: 'Name of Tomcat service',
-  default: 'Default Web Site'
-)
-
 control 'V-76743' do
   title "The IIS 8.5 web server must provide the capability to immediately
   disconnect or disable remote access to the hosted applications."

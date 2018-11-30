@@ -1,9 +1,3 @@
-is_proxy = attribute(
-  'is_proxy',
-  description: 'this system is running as a proxy server',
-  default: false
-)
-
 control 'V-76703' do
   title "The IIS 8.5 web server must not be both a website server and a proxy
   server. (In #{is_proxy ? 'Proxy' : 'Web Server'} mode)"
@@ -65,10 +59,12 @@ control 'V-76703' do
 
   Click \"Apply\" in the \"Actions\" pane."
 
+  is_proxy_server = attribute('is_proxy')
+
   proxy_checkbox = command('Get-WebConfigurationProperty -pspath "MACHINE/WEBROOT/APPHOST" -filter "system.webServer/proxy" -name "enabled" | select -ExpandProperty Value').stdout.strip
   proxy_enabled = proxy_checkbox == 'False' || proxy_checkbox == '' ? false : true
 
-  if is_proxy
+  if is_proxy_server
     describe windows_feature('Web-Server') do
       it { should be_installed }
     end

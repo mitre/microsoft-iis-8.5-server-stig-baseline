@@ -1,9 +1,5 @@
-FILE_SYSTEM_OBJECT_COMPONENT_REQUIRED = attribute(
-  'file_system_object_component_required',
-  description: 'Set to true if the file system object component is required for operations',
-  default: false
-)
 
+ 
 control 'V-76767' do
   title "The File System Object component must be disabled on the IIS 8.5 web
   server."
@@ -43,8 +39,8 @@ control 'V-76767' do
   supporting documentation signed by the ISSO, this is not a finding."
   tag "fix": "Run the following command, with administrator privileges, to
   unregister the File System Object: regsvr32 scrrun.dll /u."
-
-  if FILE_SYSTEM_OBJECT_COMPONENT_REQUIRED
+  file_system_object_component_required = attribute('file_system_object_component_required')
+  if file_system_object_component_required
     describe registry_key('HKEY_CLASSES_ROOT\CLSID\{0D43FE01-F093-11CF-8940-00A0C9054228}') do
       it { should exist }
     end

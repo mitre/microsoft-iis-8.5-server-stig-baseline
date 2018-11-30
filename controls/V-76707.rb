@@ -1,13 +1,3 @@
-MINIMAL_LOCAL_USERS = attribute(
-  'users',
-  description: 'Minimum number of users required for server to operate',
-  default: %w[
-    Administrator
-    Guest
-    inspec
-  ]
-)
-
 control 'V-76707' do
   title "The accounts created by uninstalled features (i.e., tools, utilities,
   specific, etc.) must be deleted from the IIS 8.5 server."
@@ -60,17 +50,17 @@ control 'V-76707' do
 
   Delete any local accounts which were created by features which have been
   uninstalled or are not used."
-
+  min_local_users = attribute('minimal_local_users')
   local_users = command('Get-WmiObject -Class Win32_UserAccount -Filter  "LocalAccount=\'True\'" | select -ExpandProperty Name').stdout.strip.split("\r\n")
-  is_min_users = local_users.length != MINIMAL_LOCAL_USERS.length
+  is_min_users = local_users.length != min_local_users.length
 
   describe 'The number of local users' do
     subject { local_users }
-    its('length') { should eq MINIMAL_LOCAL_USERS.length }
+    its('length') { should eq min_local_users.length }
   end
 
   describe 'List of Local Users on the system' do
     subject { local_users }
-    it { should cmp MINIMAL_LOCAL_USERS }
+    it { should cmp min_local_users }
   end
 end
