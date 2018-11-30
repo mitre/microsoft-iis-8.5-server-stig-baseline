@@ -2,7 +2,7 @@
 |----------------|-----------------------------------------------------------------------------------|-----|-----------------|-----------|
 |Logical checks| Proper profile directory structure							|Alicia Sturtevant|11/21/2018|n/a|
 ||JSON output review (e.g., pass/fail on ,<br>hardened, not hardened, edge cases, etc.)|Alicia Sturtevant|11/29/2018|*|
-||InSpec syntax checker|Alicia Sturtevant|*|[#3](../../issues/3), [#4](../../issues/4), [#5](../../issues/5), [#6](../../issues/6), [#9](../../issues/9), [#11](../../issues/11), [#12](../../issues/12), [#13](../../issues/13), [#16](../../issues/16)|
+||InSpec syntax checker|Alicia Sturtevant|11/30/2018|[#3](../../issues/3), [#4](../../issues/4), [#5](../../issues/5), [#6](../../issues/6), [#9](../../issues/9), [#11](../../issues/11), [#12](../../issues/12), [#13](../../issues/13), [#16](../../issues/16)|
 ||Local commands focused on target not the runner|Alicia Sturtevant|11/21/2018|n/a|
 |Quality checks|Alignment (including tagging) to original<br> standard (i.e. STIG, CIS Benchmark, NIST Tags)|Alicia Sturtevant|11/21/2018|n/a|
 ||Descriptive output for findings details|Alicia Sturtevant|11/27/2018|[#14](../../issues/14), [#15](../../issues/15)|
