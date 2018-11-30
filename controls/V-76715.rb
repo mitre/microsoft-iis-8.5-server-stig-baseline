@@ -101,7 +101,7 @@ Get-ChildItem IIS:SSLBindings `
     end
   end
 
-  unless CertList_NotExpired_Issuer.empty?
+  if CertList_NotExpired_Issuer.empty?
     describe 'Number of Certificates used by IIS   ' do
       skip 'Could not find any SSL Certificates used by IIS on this system '
     end
