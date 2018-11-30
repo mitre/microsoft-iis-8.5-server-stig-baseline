@@ -83,8 +83,12 @@ control 'V-76747' do
     it { should cmp LOG_DIRECTORY.to_s }
   end
 
+  describe "Manually verify the 'Do not create new log files' is not selected on the IIS web server" do
+    skip "Manually verify the 'Do not create new log files' is not selected on the IIS web server"
+  end
+
   describe 'The websites log file rollover period' do
     subject { log_period }
     it { should cmp 'Daily' }
-  end
+  end 
 end
