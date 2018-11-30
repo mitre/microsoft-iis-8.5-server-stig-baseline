@@ -7,7 +7,7 @@
 |Quality checks|Alignment (including tagging) to original<br> standard (i.e. STIG, CIS Benchmark, NIST Tags)|Alicia Sturtevant|11/21/2018|n/a|
 ||Descriptive output for findings details|Alicia Sturtevant|11/27/2018|[#14](../../issues/14), [#15](../../issues/15)|
 ||Documentation quality (i.e. README)<br> novice level instructions including prerequisites|Alicia Sturtevant|11/29/2018|*|
-||Consistency across other profile conventions |Alicia Sturtevant|*|[#19](../../issues/19)|
+||Consistency across other profile conventions |Alicia Sturtevant|11/30/2018|[#19](../../issues/19)|
 ||Spelling grammar|Alicia Sturtevant|11/21/2018|n/a|
 ||Removing debugging documentation and code|Alicia Sturtevant|11/19/2018|[#8](../../issues/8), [#17](../../issues/17), [#18](../../issues/18)|
 | Error handling |“Profile Error” containment: “null” responses <br>should only happen if InSpec is run with incorrect privileges|Alicia Sturtevant, Eugene Aronne|11/30/2018|[#20](../../issues/20)|
