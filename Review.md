@@ -1,12 +1,12 @@
 | Check          | Sub-check                                                                         | Who | Completion Date *** | Issue #'s |
 |----------------|-----------------------------------------------------------------------------------|-----|-----------------|-----------|
 |Logical checks| Proper profile directory structure							|Alicia Sturtevant|11/21/2018|n/a|
-||JSON output review (e.g., pass/fail on ,<br>hardened, not hardened, edge cases, etc.)|*|*|*|
+||JSON output review (e.g., pass/fail on ,<br>hardened, not hardened, edge cases, etc.)|Alicia Sturtevant|11/29/2018|*|
 ||InSpec syntax checker|Alicia Sturtevant|*|[#3](../../issues/3), [#4](../../issues/4), [#5](../../issues/5), [#6](../../issues/6), [#9](../../issues/9), [#11](../../issues/11), [#12](../../issues/12), [#13](../../issues/13), [#16](../../issues/16)|
 ||Local commands focused on target not the runner|Alicia Sturtevant|11/21/2018|n/a|
 |Quality checks|Alignment (including tagging) to original<br> standard (i.e. STIG, CIS Benchmark, NIST Tags)|Alicia Sturtevant|11/21/2018|n/a|
 ||Descriptive output for findings details|Alicia Sturtevant|11/27/2018|[#14](../../issues/14), [#15](../../issues/15)|
-||Documentation quality (i.e. README)<br> novice level instructions including prerequisites|*|*|*|
+||Documentation quality (i.e. README)<br> novice level instructions including prerequisites|Alicia Sturtevant|11/29/2018|*|
 ||Consistency across other profile conventions |Alicia Sturtevant|*|[#19](../../issues/19)|
 ||Spelling grammar|Alicia Sturtevant|11/21/2018|n/a|
 ||Removing debugging documentation and code|Alicia Sturtevant|11/19/2018|[#8](../../issues/8), [#17](../../issues/17), [#18](../../issues/18)|
