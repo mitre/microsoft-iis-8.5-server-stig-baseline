@@ -41,9 +41,17 @@ control 'V-76735' do
 
   Edit the indexed directories to only include web document directories."
 
-  unless registry_key('HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\ContentIndex\Catalogs').nil?
-    describe registry_key('HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\ContentIndex\Catalogs') do
-      it { should exist }
+  if registry_key('HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\ContentIndex\Catalogs').exists
+    describe "This control requires manual review to determine if directories other than web document
+    directories are being indexed" do
+      skip "This control requires manual review to determine if directories other than web document
+      directories are being indexed"
+    end
+  end
+  if !registry_key('HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\ContentIndex\Catalogs').exists
+    impact 0.0
+    describe "Indexing is not enabled, control Not Applicable" do
+      skip "Indexing is not enabled, control Not Applicable"
     end
   end
 end
