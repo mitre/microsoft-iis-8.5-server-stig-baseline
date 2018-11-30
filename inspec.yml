@@ -26,3 +26,9 @@ attributes:
     description: 'IIS site log directory'
     type: string
     default: 'C:\inetpub\logs\LogFiles'
+
+  - name: file_system_object_component_required
+    description: 'Set to true if the file system object component is required for operations'
+    default: false
+
+
