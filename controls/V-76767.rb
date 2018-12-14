@@ -1,5 +1,3 @@
-
- 
 control 'V-76767' do
   title "The File System Object component must be disabled on the IIS 8.5 web
   server."
@@ -45,8 +43,14 @@ control 'V-76767' do
       it { should exist }
     end
   else
-    describe registry_key('HKEY_CLASSES_ROOT\CLSID\{0D43FE01-F093-11CF-8940-00A0C9054228}') do
-      it { should_not exist }
+    if registry_key('HKEY_CLASSES_ROOT\TypeLib\{420B2830-E718-11CF-893D-00A0C9054228}\1.0\0\win32').exists?
+      describe registry_key('HKEY_CLASSES_ROOT\CLSID\{0D43FE01-F093-11CF-8940-00A0C9054228}') do
+        it { should_not exist }
+      end
+    else
+      describe registry_key('HKEY_CLASSES_ROOT\CLSID\{0D43FE01-F093-11CF-8940-00A0C9054228}') do
+        it { should exist }
+      end
     end
   end
 end
