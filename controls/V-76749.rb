@@ -1,9 +1,3 @@
-AUTHORIZED_USERS = attribute(
-  'authorized_users',
-  description: 'Name of Tomcat service',
-  default: 'inspec'
-)
-
 control 'V-76749' do
   title "Access to web administration tools must be restricted to the web
   manager and the web managers designees."
@@ -71,6 +65,8 @@ control 'V-76749' do
   tag "fix": "Restrict access to the web administration tool to only the web
   manager and the web manager’s designees."
 
+  authorized_users = attribute('authorized_users')
+
   describe file('C:\windows\system32\inetsrv\InetMgr.exe') do
     # Full control for administrators
     it { should be_allowed('full-control', by_user: 'BUILTIN\Administrators') }
@@ -82,6 +78,8 @@ control 'V-76749' do
     it { should be_allowed('read', by_user: 'BUILTIN\\Users') }
 
     # users with read & execute permissions
-    it { should be_allowed('read', by_user: AUTHORIZED_USERS.to_s) }
+    authorized_users.each do |user|
+      it { should be_allowed('read', by_user: user.to_s) }
+    end
   end
 end
