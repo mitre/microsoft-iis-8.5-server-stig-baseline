@@ -1,6 +1,8 @@
+is_proxy_server = attribute('is_proxy')
+
 control 'V-76703' do
   title "The IIS 8.5 web server must not be both a website server and a proxy
-  server. (In #{is_proxy ? 'Proxy' : 'Web Server'} mode)"
+  server. (In #{is_proxy_server ? 'Proxy' : 'Web Server'} mode)"
   desc "A web server should be primarily a web server or a proxy server but
   not both, for the same reasons that other multi-use servers are not
   recommended. Scanning for web servers that will also proxy requests into an
@@ -58,8 +60,6 @@ control 'V-76703' do
   the \"Enable proxy\" check box.
 
   Click \"Apply\" in the \"Actions\" pane."
-
-  is_proxy_server = attribute('is_proxy')
 
   proxy_checkbox = command('Get-WebConfigurationProperty -pspath "MACHINE/WEBROOT/APPHOST" -filter "system.webServer/proxy" -name "enabled" | select -ExpandProperty Value').stdout.strip
   proxy_enabled = proxy_checkbox == 'False' || proxy_checkbox == '' ? false : true
