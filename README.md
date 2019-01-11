@@ -1,6 +1,6 @@
 # microsoft-iis-8.5-server-stig-baseline
 
-InSpec Profile to validate the secure configuration of Microsoft IIS 8.5 Server against the [DISA](https://iase.disa.mil/stigs/Pages/index.aspx) <https://iase.disa.mil/stigs/> Microsoft IIS 8.5 Site Security Technical Implementation Guide (STIG) Version 1, Release 5.
+InSpec Profile to validate the secure configuration of Microsoft IIS 8.5 Server against the [DISA](https://iase.disa.mil/stigs/) Microsoft IIS 8.5 Site Security Technical Implementation Guide (STIG) Version 1, Release 5.
 
 IIS 8.5 Site Security Technical Implementation Guide
 
