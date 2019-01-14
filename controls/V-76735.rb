@@ -28,7 +28,7 @@ control 'V-76735' do
   the server's registry.
 
   Navigate to
-  KEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\ContentIndex\\Catalogs\\.
+  HKEY_LOCAL_MACHINE\\SYSTEM\\CurrentControlSet\\Control\\ContentIndex\\Catalogs\\.
 
   If this key exists then indexing is enabled; if the key does not exist then
   this check is Not Applicable.
@@ -55,3 +55,4 @@ control 'V-76735' do
     end
   end
 end
+
