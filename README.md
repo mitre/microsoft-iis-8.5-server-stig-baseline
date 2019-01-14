@@ -38,7 +38,7 @@ This project is licensed under the terms of the Apache license 2.0 (apache-2.0)
 
 ### NOTICE  
 
-© 2018 The MITRE Corporation.  
+© 2019 The MITRE Corporation.  
 
 Approved for Public Release; Distribution Unlimited. Case Number 18-3678.  
 
