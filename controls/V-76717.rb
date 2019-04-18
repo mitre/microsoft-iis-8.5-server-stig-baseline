@@ -60,7 +60,4 @@ control 'V-76717' do
       it { should cmp '' }
     end
   end
-
-
-
 end
