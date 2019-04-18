@@ -55,63 +55,72 @@ control 'V-76705' do
     it { should be true }
   end
 
+
   # Checking for Executable File Signature
+  if disable_slow_controls
+    describe "This control consistently takes a long time to run and has been disabled
+      using the disable_slow_controls attribute." do
+      skip "This control consistently takes a long time to run and has been disabled
+            using the disable_slow_controls attribute. You must enable this control for a
+            full accreditation for production."
+    end
+  else
+    C_Inetpub_two_bytes = command('Get-ChildItem -Path "C:\Inetpub" -Recurse | ForEach { if ( $_ -is [System.IO.FileInfo] ) {-join ([char[]](Get-Content  $_.FullName -Encoding byte -TotalCount 2))} }').stdout.strip.split("\r\n")
+    C_Program_Files_Common_Files_System_msadc_two_bytes = command('Get-ChildItem -Path "C:\Program Files\Common Files\System\msadc" -Recurse | ForEach { if ( $_ -is [System.IO.FileInfo] ) {-join ([char[]](Get-Content  $_.FullName -Encoding byte -TotalCount 2))} }').stdout.strip.split("\r\n")
+    C_Program_Files_x86_Common_Files_System_msadc_two_bytes = command('Get-ChildItem -Path "C:\Program Files (x86)\Common Files\System\msadc" -Recurse | ForEach { if ( $_ -is [System.IO.FileInfo] ) {-join ([char[]](Get-Content  $_.FullName -Encoding byte -TotalCount 2))} }').stdout.strip.split("\r\n")
 
-  C_Inetpub_two_bytes = command('Get-ChildItem -Path "C:\Inetpub" -Recurse | ForEach { if ( $_ -is [System.IO.FileInfo] ) {-join ([char[]](Get-Content  $_.FullName -Encoding byte -TotalCount 2))} }').stdout.strip.split("\r\n")
-  C_Program_Files_Common_Files_System_msadc_two_bytes = command('Get-ChildItem -Path "C:\Program Files\Common Files\System\msadc" -Recurse | ForEach { if ( $_ -is [System.IO.FileInfo] ) {-join ([char[]](Get-Content  $_.FullName -Encoding byte -TotalCount 2))} }').stdout.strip.split("\r\n")
-  C_Program_Files_x86_Common_Files_System_msadc_two_bytes = command('Get-ChildItem -Path "C:\Program Files (x86)\Common Files\System\msadc" -Recurse | ForEach { if ( $_ -is [System.IO.FileInfo] ) {-join ([char[]](Get-Content  $_.FullName -Encoding byte -TotalCount 2))} }').stdout.strip.split("\r\n")
+    C_Inetpub_FileExtentions = command('Get-ChildItem -Path "C:\Inetpub" -Recurse | ForEach { if ( $_ -is [System.IO.FileInfo] ) {-join (  ([System.IO.FileInfo]$_.FullName).Extension ) } }').stdout.strip.split("\r\n")
+    C_Program_Files_Common_Files_System_msadc_FileExtensions = command('Get-ChildItem -Path "C:\Program Files\Common Files\System\msadc" -Recurse | ForEach { if ( $_ -is [System.IO.FileInfo] ) {-join (  ([System.IO.FileInfo]$_.FullName).Extension ) } }').stdout.strip.split("\r\n")
+    C_Program_Files_x86_Common_Files_System_msadc_FileExtensions = command('Get-ChildItem -Path "C:\Program Files (x86)\Common Files\System\msadc" -Recurse | ForEach { if ( $_ -is [System.IO.FileInfo] ) {-join (  ([System.IO.FileInfo]$_.FullName).Extension ) } }').stdout.strip.split("\r\n")
 
-  C_Inetpub_FileExtentions = command('Get-ChildItem -Path "C:\Inetpub" -Recurse | ForEach { if ( $_ -is [System.IO.FileInfo] ) {-join (  ([System.IO.FileInfo]$_.FullName).Extension ) } }').stdout.strip.split("\r\n")
-  C_Program_Files_Common_Files_System_msadc_FileExtensions = command('Get-ChildItem -Path "C:\Program Files\Common Files\System\msadc" -Recurse | ForEach { if ( $_ -is [System.IO.FileInfo] ) {-join (  ([System.IO.FileInfo]$_.FullName).Extension ) } }').stdout.strip.split("\r\n")
-  C_Program_Files_x86_Common_Files_System_msadc_FileExtensions = command('Get-ChildItem -Path "C:\Program Files (x86)\Common Files\System\msadc" -Recurse | ForEach { if ( $_ -is [System.IO.FileInfo] ) {-join (  ([System.IO.FileInfo]$_.FullName).Extension ) } }').stdout.strip.split("\r\n")
+    # Check of any of the files are executable
+    describe 'Executable files found at C:\\Inetpub as File Signatures ' do
+      subject { C_Inetpub_two_bytes }
+      it { should_not include 'MZ' }
+    end
 
-  # Check of any of the files are executable
-  describe 'Executable files found at C:\\Inetpub as File Signatures ' do
-    subject { C_Inetpub_two_bytes }
-    it { should_not include 'MZ' }
-  end
+    describe 'Executable files found at C:\\Program Files\\Common Files\\System\\msadc as File Signatures ' do
+      subject { C_Program_Files_Common_Files_System_msadc_two_bytes }
+      it { should_not include 'MZ' }
+    end
 
-  describe 'Executable files found at C:\\Program Files\\Common Files\\System\\msadc as File Signatures ' do
-    subject { C_Program_Files_Common_Files_System_msadc_two_bytes }
-    it { should_not include 'MZ' }
-  end
+    describe 'Executable files found at C:\\Program Files (x86)\\Common Files\\System\\msadc as File Signatures ' do
+      subject { C_Program_Files_x86_Common_Files_System_msadc_two_bytes }
+      it { should_not include 'MZ' }
+    end
 
-  describe 'Executable files found at C:\\Program Files (x86)\\Common Files\\System\\msadc as File Signatures ' do
-    subject { C_Program_Files_x86_Common_Files_System_msadc_two_bytes }
-    it { should_not include 'MZ' }
-  end
+    # Check for known bad extensions
+    describe 'Executable files found at C:\\Inetpub as File Signatures ' do
+      subject { C_Inetpub_FileExtentions }
+      it { should_not include 'ASP' }
+      it { should_not include 'ASPX' }
+      it { should_not include 'PHP' }
+      it { should_not include 'DLL' }
+      it { should_not include 'EXE' }
+      it { should_not include 'HTM' }
+      it { should_not include 'HTML' }
+    end
 
-  # Check for known bad extensions
-  describe 'Executable files found at C:\\Inetpub as File Signatures ' do
-    subject { C_Inetpub_FileExtentions }
-    it { should_not include 'ASP' }
-    it { should_not include 'ASPX' }
-    it { should_not include 'PHP' }
-    it { should_not include 'DLL' }
-    it { should_not include 'EXE' }
-    it { should_not include 'HTM' }
-    it { should_not include 'HTML' }
-  end
+    describe 'Executable files found at C:\\Program Files\\Common Files\\System\\msadc as as File Signatures ' do
+      subject { C_Program_Files_Common_Files_System_msadc_FileExtensions }
+      it { should_not include 'ASP' }
+      it { should_not include 'ASPX' }
+      it { should_not include 'PHP' }
+      it { should_not include 'DLL' }
+      it { should_not include 'EXE' }
+      it { should_not include 'HTM' }
+      it { should_not include 'HTML' }
+    end
 
-  describe 'Executable files found at C:\\Program Files\\Common Files\\System\\msadc as as File Signatures ' do
-    subject { C_Program_Files_Common_Files_System_msadc_FileExtensions }
-    it { should_not include 'ASP' }
-    it { should_not include 'ASPX' }
-    it { should_not include 'PHP' }
-    it { should_not include 'DLL' }
-    it { should_not include 'EXE' }
-    it { should_not include 'HTM' }
-    it { should_not include 'HTML' }
-  end
-
-  describe 'Executable files found at C:\\Program Files (x86)\\Common Files\\System\\msadc as File Signatures ' do
-    subject { C_Program_Files_x86_Common_Files_System_msadc_FileExtensions }
-    it { should_not include 'ASP' }
-    it { should_not include 'ASPX' }
-    it { should_not include 'PHP' }
-    it { should_not include 'DLL' }
-    it { should_not include 'EXE' }
-    it { should_not include 'HTM' }
-    it { should_not include 'HTML' }
+    describe 'Executable files found at C:\\Program Files (x86)\\Common Files\\System\\msadc as File Signatures ' do
+      subject { C_Program_Files_x86_Common_Files_System_msadc_FileExtensions }
+      it { should_not include 'ASP' }
+      it { should_not include 'ASPX' }
+      it { should_not include 'PHP' }
+      it { should_not include 'DLL' }
+      it { should_not include 'EXE' }
+      it { should_not include 'HTM' }
+      it { should_not include 'HTML' }
+    end
   end
 end

@@ -45,10 +45,22 @@ control 'V-76717' do
   tag "fix": "Remove all files from the web server with both .java and .jpp
   extensions."
 
-  java_software = command('Get-Childitem –Path C:\ -Include *.java,*.jpp -File -Recurse -ErrorAction SilentlyContinue').stdout.strip
+  if disable_slow_controls
+    describe "This control consistently takes a long time to run and has been disabled
+      using the disable_slow_controls attribute." do
+      skip "This control consistently takes a long time to run and has been disabled
+            using the disable_slow_controls attribute. You must enable this control for a
+            full accreditation for production."
+    end
+  else
+    java_software = command('Get-Childitem –Path C:\ -Include *.java,*.jpp -File -Recurse -ErrorAction SilentlyContinue').stdout.strip
 
-  describe 'The java software installed on the IIS webserver' do
-    subject { java_software }
-    it { should cmp '' }
+    describe 'The java software installed on the IIS webserver' do
+      subject { java_software }
+      it { should cmp '' }
+    end
   end
+
+
+
 end
