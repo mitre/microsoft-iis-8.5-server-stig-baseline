@@ -57,7 +57,7 @@ control 'V-76705' do
 
 
   # Checking for Executable File Signature
-  if disable_slow_controls
+  if attribute('disable_slow_controls')
     describe "This control consistently takes a long time to run and has been disabled
       using the disable_slow_controls attribute." do
       skip "This control consistently takes a long time to run and has been disabled
