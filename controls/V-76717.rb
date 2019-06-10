@@ -45,7 +45,7 @@ control 'V-76717' do
   tag "fix": "Remove all files from the web server with both .java and .jpp
   extensions."
 
-  if disable_slow_controls
+  if attribute('disable_slow_controls')
     describe "This control consistently takes a long time to run and has been disabled
       using the disable_slow_controls attribute." do
       skip "This control consistently takes a long time to run and has been disabled
