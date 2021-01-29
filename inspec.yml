@@ -1,42 +1,43 @@
 name: microsoft-iis-8.5-server-stig-baseline
-title: IIS 8.5 Server Security Technical Implementation Guide
+title: microsoft-iis-8.5-server-stig-baseline
 maintainer: The MITRE Corporation
 copyright: The MITRE Corporation
 copyright_email:
 license: Apache-2.0
-summary: This Security Technical Implementation Guide is published as a tool to improve the security of Department of Defense DoD information systems. The requirements are derived from the National Institute of Standards and Technology NIST 800-53 and related documents. Comments or proposed revisions to this document should be sent via email to the following address
-version: 0.1.0
+summary: 'InSpec Validation Profile for Microsoft IIS 8.5 Server STIG'
+version: 1.5.0
 inspec_version: ">= 4.0"
 
-attributes:
+inputs:
   - name: is_proxy
     description: 'Set to true if this system is running as a proxy server'
-    default: false
+    value: false
 
   - name: log_fileds
     description: 'List of fields to be included in Web Server Logging Configuration'
     type: array
-    default: ['Date', 'Time', 'ClientIP', 'UserName', 'Method', 'UriQuery', 'HttpStatus', 'Referer']
+    value: ['Date', 'Time', 'ClientIP', 'UserName', 'Method', 'UriQuery', 'HttpStatus', 'Referer']
 
   - name: authorized_users
     description: 'A list of authorized users'
     type: array
-    default: ['VAGRANT-IFT3JLA\vagrant']
+    value: ['VAGRANT-IFT3JLA\vagrant']
+    sensitive: true
 
   - name: minimal_local_users
     description: 'Minimum number of users required for server to operate'
     type: array
-    default: ['Administrator', 'Guest', 'vagrant']
+    value: ['Administrator', 'Guest', 'vagrant']
 
   - name: log_directory
     description: 'IIS site log directory'
     type: string
-    default: '%SystemDrive%\inetpub\logs\LogFiles'
+    value: '%SystemDrive%\inetpub\logs\LogFiles'
 
   - name: file_system_object_component_required
     description: 'Set to true if the file system object component is required for operations'
-    default: false
+    value: false
 
   - name: disable_slow_controls
     description: 'Disable slow running controls V-76705 and V-76717'
-    default: false
+    value: false
