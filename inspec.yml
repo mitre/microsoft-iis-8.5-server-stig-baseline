@@ -42,11 +42,6 @@ inputs:
     type: string
     value: '%SystemDrive%\inetpub\logs\LogFiles'
 
-  # SV-214430
-  - name: file_system_object_component_required
-    description: 'Set to true if the file system object component is required for operations'
-    value: false
-
   # SV-214410, SV-214416
   - name: disable_slow_controls
     description: 'Disable slow running controls V-76705 and V-76717'
